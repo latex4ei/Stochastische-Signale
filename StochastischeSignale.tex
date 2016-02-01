@@ -15,7 +15,7 @@
 \documentclass[german,color,6pt]{latex4ei/latex4ei_sheet}
 
 % set document information
-\title{Stochastische Signale}
+\title{Stochastische \\ Signale}
 \author{von Emanuel Regnath, Martin Zellner, Alexander Preißner und Hendrik Böttcher}	
 \myemail{info@latex4ei.de}	
 
@@ -67,14 +67,14 @@
 \end{sectionbox}
 
 %Methode: Mengen so zerlegen, dass sie disjunkt sind, nur dann ist die Mengensumme(Vereinigung) auch die arithmeitsche Summe(+):
-%$\P(A \cup B) = P(A\setminus B)+\P(B) = \P(A) + P(B) - P(A \cap B)$\\
+%$\P(A \cup B) = \P(A\setminus B)+\P(B) = \P(A) + \P(B) - \P(A \cap B)$\\
 \begin{sectionbox}
 	\subsection{Grundbegriffe}
 	
 	\begin{tablebox}{ll}
 		Tupel & $(i,j) \neq (j,i)$ für $i \neq j$ \\
 		Ungeordnetes Paar & $\{i,j\} = \{j,i\}$ \\
-		Potenzmenge & $\mathbb P(\Omega)$ ist Menge aller Teilmengen von $\Omega$ \\
+		Potenzmenge & $\mathbb \P(\Omega)$ ist Menge aller Teilmengen von $\Omega$ \\
 	\end{tablebox}
 \end{sectionbox}
 
@@ -113,7 +113,7 @@
 \section{Wahrscheinlichkeitsräume $(\Omega,\mathbb F,\P)$}
 % ============================================================================================
 \begin{sectionbox}
-	\subsection{Definition}
+	%\subsection{Definition}
 	Ein Wahrscheinlichkeitsraum $(\Omega,\mathbb F,\P)$ besteht aus
 	\begin{itemize}
 		\item Ergebnismenge $\Omega = \eset{\omega_1,\omega_2, ...}:$\\
@@ -124,14 +124,25 @@
 	\end{itemize}
 \end{sectionbox}
 
+%\begin{sectionbox}
+%	\subsection{Ergebnismenge $\Omega$}
+%	Die nichtleere Menge $\Omega$ aller relevanten Ergebnisse eines Experiments heißt Ergebnismenge.
+%\end{sectionbox}
+
 \begin{sectionbox}
-	\subsection{Ereignisalgebra $\F \subseteq \mathbb P(\Omega)$}
+	\subsection{Ereignisalgebra $\F \subseteq \mathbb \P(\Omega)$}
 	\begin{itemize}
 		\item $\Omega \in \F$
 		\item $A_i \in \F \Ra A_i^\complement \in \F$
-		\item $\bigcup\limits_{i \ge 1}^{k} A_i \in \F$
+		\item $A_1$,...,$A_k \in \F\Ra\bigcup\limits_{i \ge 1}^{k} A_i \in \F$
 	\end{itemize}
-	$|\F| = 2^{\text{Anzahl disjunkter Teilmengen}}$ (muss endlich sein)\\
+	Daraus folgt:
+	\begin{itemize}
+		\item $\emptyset \in \mathbb F$
+		\item $A_i \backslash A_j \in \mathbb F$
+		\item $\bigcap_{i=1}^k A_i \in \mathbb F$
+	\end{itemize}
+	$|\F| = 2^{\text{Anzahl disjunkter Teilmengen}}$ (muss endlich sein)
 	\subsubsection{$\sigma$-Algebra}
 	Entwicklung $k \ra \infty$.
 	Unendlich viele Ergebnisse, aber jedes $A_i$ besteht aus abzählbar vielen Ergebnissen. Besitzt mindestens 2 Ereignisse.
@@ -147,6 +158,17 @@
 		Additivität: & $\P\left(\bigcup\limits_{i=1}^{\infty} A_i \right) = \sum\limits_{i=1}^{\infty} \P(A_i)$, \\
 		& wenn $A_i \cap A_j = \emptyset$, $\forall i \neq j$ \\
 	\end{tabular}
+	\subsubsection{Weitere Eigenschaften}
+	\begin{itemize}	
+		\item 	$\P(A^c) = 1 - \P(A)$
+		\item 	$\P(\emptyset) = 0$
+		\item 	$\P(A \backslash B) = \P(A \cap B^c) = \P(A) - \P(A \cap B)$
+		\item 	$\P(A \cup B) = \P(A) + \P (B) - \P(A \cap B)$
+		\item 	$A \subset B \Rightarrow \P(A) \leq \P(B)$
+		\item 	$\P(\bigcup_{i=1}^k A_i) \leq \sum_{i=1}^k \P(A_i)$
+	\end{itemize}
+	
+
 \end{sectionbox}
 
 % --------------------------------------------------
@@ -168,6 +190,7 @@
 		Totale Wahrscheinlichkeit: & $\P(A) = \sum\limits_{i \in I} \P(A|B_i)\P(B_i)$\\
 		Satz von Bayes: & $\P(B_k | A) = \frac{\P(A | B_k)\P(B_k)}{\sum\limits_{i \in I} \P(A|B_i) \P(B_i)}$\\
 	\end{tabular}
+
 	
 	\subsubsection{Multiplikationssatz}
 	$\P(A \cap B) = \P(A|B)\P(B) = \P(B|A)\P(A)$
@@ -181,14 +204,15 @@
 \begin{sectionbox}
 	\subsection{Stochastische Unabhängigkeit}
 	Ereignise $A$ und $B$ sind unabhängig falls:\\
-	$\P(A \cap B) = \P(A)\P(B)$ \\ \\ 
+	$\P(A \cap B) = \P(A)\P(B)$ \\
+	$\Rightarrow \P(B|A)=\P(B)$  \\ \\
 	\textbf{Allgemein:}  \\ 
 	$\P\left(\bigcap\limits_{i \in J} A_i\right) = \prod\limits_{i \in J}\P\left(A_i\right)$
 	mit Indexmenge $I$ und $\emptyset \neq J \subseteq I$
 \end{sectionbox}	
 
 %\vfill 
-\columnbreak
+%\columnbreak
 
 % ------------------------------------------------------
 % | Zufallsvariablen und Wahrscheinlichkeitsverteilung |
@@ -201,7 +225,6 @@
 	$\X : \Omega \mapsto \Omega'$ ist Zufallsvariable, wenn für jedes Ereignis $A' \in \F'$  \\ 
 	im Bildraum ein Ereignis $A$ im Urbildraum $\F$ existiert, \\ 
 	sodass $\left\{\omega \in \Omega|\X(\omega) \in A'\right\} \in \F$\\ \\ 
-	(Zeichnung erstellen)
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -221,12 +244,14 @@
 %Entropie und Transinforation
 \begin{sectionbox}
 	\subsection{Bedingte Zufallsvariablen}
-	
 	Bedingte Wahrscheinlichkeit für Zufallsvariablen:\\
-	$F_{\X|A}(x|A) = \P\left(\eset{\X \le x} | A\right)$\\
-	$F_{\X|\Y}(x|y)= \P\left(\eset{\X \le x} | \eset{\Y = y}\right)$\\
-	$p_{\X|\Y}(x|y) = \frac{p_{\X,\Y}(x,y)}{p_{\Y}(y)}$\\
-	$f_{\X|\Y}(x|y) = \frac{f_{\X,\Y}(x,y)}{f_{\Y}(y)}$\\
+	\begin{tabular}{ll}
+		Ereignis A gegeben & $F_{\X|A}(x|A) = \P\left(\eset{\X \le x} | A\right)$\\
+		ZV $\Y$ gegeben & $F_{\X|\Y}(x|y)= \P\left(\eset{\X \le x} | \eset{\Y = y}\right)$\\
+		& $p_{\X|\Y}(x|y) = \frac{p_{\X,\Y}(x,y)}{p_{\Y}(y)}$\\
+		& $f_{\X|\Y}(x|y) = \frac{f_{\X,\Y}(x,y)}{f_{\Y}(y)} = \frac{\diff F_{X|Y}(x|y)}{\diff x}$\\
+	\end{tabular}
+
 \end{sectionbox}
 
 % ----------------------------------
@@ -237,7 +262,7 @@
 % ============================================================================================
 \begin{sectionbox}
 	$\X: \Omega \ra \Omega' = \R$ und jetzt $g:\Omega' \ra \Omega'' = \R$\\
-	$\P(A'') = \P(\Y \in A'') = P(\iset{\X \in \Omega'}{g(\X) \in A''} = \P(\iset{\omega \in \Omega}{g(\X(\omega)) \in A''}$
+	$\P(A'') = \P(\Y \in A'') = \P(\iset{\X \in \Omega'}{g(\X) \in A''} = \P(\iset{\omega \in \Omega}{g(\X(\omega)) \in A''}$
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -245,17 +270,21 @@
 	Berechnung von $f_{\Y}(y)$ aus $f_{\X}(x)$
 	
 	$g(x)$ streng monoton \& differenzierbar:\\
-	$f_{\Y}(y) = f_{\X}\left(g^{-1}(y)\right)\left[\abs{\frac{\diff y}{\diff x}(x)}_{x = g^{-1}(y)}\right]^{-1}$\\
+	$f_{\Y}(y) = f_{\X}\left(g^{-1}(y)\right)\left[\abs{\frac{\diff g(x)}{\diff x}(x)}_{x = g^{-1}(y)}\right]^{-1}$\\
 	$g(x)$ nur differenzierbar:\\
-	$f_{\Y}(y) = \sum\limits_{i = 1}^{N}{f_{\X}(x_i)\left[\abs{\frac{\diff y}{\diff x}(x)}_{x = x_i}\right]^{-1}}$
-	
+	$f_{\Y}(y) = \sum\limits_{i = 1}^{N}{f_{\X}(x_i)\left[\abs{\frac{\diff g(x)}{\diff x}(x)}_{x = x_i}\right]^{-1}}$
 	mit $i \in \{1,\dots,N\}$ sind Nullstellen von $y - g(x_i) = 0$
+	\subsubsection{Beispiel: lineare Funktion}
+	$Y=aX+b \Leftrightarrow g(x)=ax+b$ mit $a\in\mathbb{R}\backslash 0,\;b\in\mathbb{R}$:
+	\[\Rightarrow f_Y(y)=\frac{1}{|a|}f_X\left(\frac{y-b}{a}\right)\]
+	\[F_Y(y)=\begin{cases}F_X\left(\frac{y-b}{a}\right) & a>0 \\ 1-F_X\left(\frac{y-b}{a}\right) & a<0\end{cases}\]
+	
 \end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{Summe unabhängiger Zufallsvariablen}
 	$\textit{Z} = \X + \Y$ mit $\X$ und $\Y$ unabhängig.\\
-	$\Ra f_{\textit{Z} = \X + \Y}(z) = \left(f_{\X} \ast f_{\Y}\right)(z)$
+	$\Ra f_{\textit{Z} = \X + \Y}(z) = \left(f_{\X} \ast f_{\Y}\right)(z) = \int\limits_{-\infty}^{\infty}{f_{\X}(z-y)f_{\Y}\diff y}$
 \end{sectionbox}
 
 % SECTION ====================================================================================
@@ -263,10 +292,10 @@
 % ============================================================================================
 \begin{sectionbox}
 	\subsubsection{Definition}
-	$\P_{\X}(A') = \P(\{\omega \in \Omega|\X(\omega) \in A'\}) = P(\{\X \in A'\}) \quad \forall A' \in \F'$
-\end{sectionbox}
+	$\P_{\X}(A') = \P(\{\omega \in \Omega|\X(\omega) \in A'\}) = \P(\{\X \in A'\}) \quad \forall A' \in \F'$\\
+%\end{sectionbox}
 
-\begin{sectionbox}
+%\begin{sectionbox}
 	\subsubsection{Kumulative Verteilungsfunktion (KVF bzw. CDF)}
 	\boxed{F_{\X}(x) = \P(\{\X \leq x\})} \\ 
 	\textbf{Eigenschaften}
@@ -275,28 +304,30 @@
 		\item $F_{\X}(x) \geq 0$
 		\item $F_{\X}(x)$ ist rechtsseitig stetig: \newline
 		$\forall h > 0: \lim\limits_{h\ra0}F_{\X}(x + h) = F_{\X}(x) \quad \forall x \in \R$
-		\item $\lim\limits_{x\ra-\infty}F_{\X}(x) = 0$ \& $\lim\limits_{x\ra\infty}F_{\X}(x) = 1$
+		\item $\lim\limits_{x\ra-\infty}F_{\X}(x) = 0$ ; $\lim\limits_{x\ra\infty}F_{\X}(x) = 1$
+		\item  $\P(\{a < \mathsf{X} \leq b \}) = F_\mathsf{X}(b) - F_\mathsf{X}(a)$
+		\item  $\P(\{\mathsf{X} > c \}) = 1 - F_\mathsf{X}(c)$
 	\end{itemize}
-\end{sectionbox}
+%\end{sectionbox}
 
-\begin{sectionbox}
+%\begin{sectionbox}
 	\subsubsection{Verteilung diskreter Zufallsvariablen}
 	
 	
 	\begin{tablebox}{lll}
 		
 		Bezeichnung  & Abk. & Zusammenhang\\ \cmrule
-		Zähldichte & pmf & $p_{\X}(x) = \P(\{\X = x\})$\\
+		Wahrscheinlichkeitsmassenfkt. & pmf & $p_{\X}(x) = \P(\{\X = x\})$\\
 		Kumulative Verteilungsfkt. & cdf & $F_{\X}(x) = \sum\limits_{\xi\in\Omega':\xi\leq x}{p_{\X}(\xi)}$ \\ 
 		\ctrule
 	\end{tablebox}
-\end{sectionbox}
+%\end{sectionbox}
 
-\begin{sectionbox}
+%\begin{sectionbox}
 	\subsubsection{Verteilung stetiger Zufallsvariablen}
 	\begin{tablebox}{lll}
 		Bezeichnung  & Abk. & Zusammenhang\\ \cmrule
-		Wahrscheinlichkeitsdichte & pdf & $f_{\X}(x) = \frac{\diff F_{\X}(x)}{\diff x}$\\
+		Wahrscheinlichkeitsdichtefkt. & pdf & $f_{\X}(x) = \frac{\diff F_{\X}(x)}{\diff x}$\\
 		Kumulative Verteilungsfkt. & cdf & $F_{\X}(x) = \int\limits_{-\infty}^{x}{f_{\X}(\xi)\diff\xi}$ \\ 
 	\end{tablebox}
 	\emph{Berechnung von $f_{\X}(x)$:}\\
@@ -314,7 +345,7 @@
 	$F_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) = \boxed{F_{\vec{\X}}(\vec{x}) = \P(\{\vec{\X} \leq \vec{x}\})} = \newline
 	\P(\{\X_1 \leq x_1,\shdots,\X_n \leq x_n\})$
 	\subsubsection{Diskrete Zufallsvariablen:}
-	$p_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) = \P(\{\vec{\X} \leq \vec{x}\})$ (joint probability mass function)
+	$p_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) = \P(\{\vec{\X} = \vec{x}\})$ (joint probability mass function)
 	\subsubsection{Stetige Zufallsvariablen:}
 	$F_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) =\! \int\limits_{-\infty}^{x_1}\shdots\int\limits_{-\infty}^{x_n}{f_{\X_1,\shdots,\X_n}(\xi_1,\shdots,\xi_n)\diff\xi_n\shdots\diff\xi_1}$\\
 	$f_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) = \frac{\partial^n F_{\vec{\X}}(x_1,\shdots,x_n)}{\partial x_1\shdots\partial x_n}$ \hfill $f_{\X,\Y} = f_{\Y,\X}$\\
@@ -331,7 +362,7 @@
 	%\lim\limits_{x_2,\shdots,x_n\ra\infty}{F_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n)} =
 	F_{\X_1,\shdots,\X_n}(x_1,\infty,\shdots,\infty)$
 	
-	\paragraph{Randverteilung der Zähldichte (PMF)}
+	\paragraph{Randverteilung der Wahrscheinlichkeitsmasse (PMF)}
 	(für diskrete ZV) \\
 	$p_{\X_1}(x_1) = \sum\limits_{x_2,\shdots,x_n}{p_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n)}$
 	
@@ -376,7 +407,7 @@
 % ====================================================================================		
 \begin{sectionbox}
 	\subsection{Bernoulliverteilung ($0 \le p \le 1$)} 
-	\textbf{Zähldichte} 2 Ereignisse: Erfolg und Misserfolg:  \\ \\ 
+	\textbf{Wahrscheinlichkeitsmasse} 2 Ereignisse: Erfolg und Misserfolg:  \\ \\ 
 	$p_{\X}(k) = \begin{cases}
 	p, & k = 1 \\
 	1-p & k = 0 \\
@@ -399,7 +430,7 @@
 \begin{sectionbox}
 	\subsection{Binomialverteilung}
 	Folgen von Bernoulli-Experimenten\\ \\ 
-	\textbf{Zähldichte}
+	\textbf{Wahrscheinlichkeitsmasse}
 	\\ 
 	$p_{\X}(k) = B_{n,p}(k) = \begin{cases}
 	\binom{n}{k} p^k (1 - p)^{n - k} & k \in \left\{0,\dots,n\right\} \\
@@ -500,7 +531,7 @@
 
 \begin{sectionbox}
 	\subsection{diskrete (reelle) Zufallsvariablen}
-	\boxed{E [\X] = \sum \limits_{x \in \Omega'} x P(\{ \X = x \}) = \sum \limits_{x \in \Omega'} x p_x (x)} \\
+	\boxed{E [\X] = \sum \limits_{x \in \Omega'} x \P(\{ \X = x \}) = \sum \limits_{x \in \Omega'} x p_x (x)} \\
 	für $\X: \Omega \ra \Omega' \subset \mathbb R$ 
 	
 	Für Funktionen von Zufallsvariablen:
@@ -545,7 +576,7 @@
 	$\E[\X] = \sum \limits_{k=0}^{\infty} \P(\X >k)$ (diskret)
 \end{sectionbox}
 
-\vfill
+%\vfill
 %\columnbreak
 
 % SECTION ====================================================================================
@@ -625,7 +656,7 @@
 	$\Cov[Z,W] = \E[\Z\W^*] - \E[\Z]\E[\W]^* = \Cov[W,Z]^*$
 \end{sectionbox}
 
-\vfill %\textcolor{red}{Bild von der Standardabweichung}
+%\vfill %\textcolor{red}{Bild von der Standardabweichung}
 
 % SECTION ====================================================================================
 \section{Erzeugende und charakter. Funktionen}
@@ -694,8 +725,8 @@
 	\boxed{\lim_{n \ra \infty} \P({\Z_n \le z}) = \Phi (z)}
 \end{sectionbox}	
 % subsection der_zentrale_grenzwertsatz (end)
-\vfill
-\columnbreak 
+%\vfill
+%\columnbreak 
 
 % SECTION ====================================================================================
 \section{Reelle Zufallsfolgen}

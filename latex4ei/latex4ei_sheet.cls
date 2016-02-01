@@ -143,7 +143,7 @@
 	%\titlespacing{Überschriftart}{keine Ahnung}{Abstand oberhalb}{Abstand unterhalb}
 	\titlespacing{\section}{0em}{1.0em}{0.1em}
 	\titlespacing{\subsection}{0em}{0em}{-0.2em}
-	\titlespacing{\subsubsection}{0em}{0em}{-0.5em}
+	\titlespacing{\subsubsection}{0em}{0em}{-0.2em}
 
 % Paragraphs
 % ----------------------------------------------------------------------
