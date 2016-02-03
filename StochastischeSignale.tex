@@ -16,8 +16,8 @@
 
 % set document information
 \title{Stochastische \\ Signale}
-\author{von Emanuel Regnath, Martin Zellner, Alexander Preißner und Hendrik Böttcher}	
-\myemail{info@latex4ei.de}	
+\author{von Emanuel Regnath, Martin Zellner, Alexander Preißner, Hendrik Böttcher, Samuel Harder}	
+\myemail{samuel.harder@tum.de}	
 
 \DeclareMathOperator{\W}{\textit{W}}				% Zufallsvariable W
 \DeclareMathOperator{\U}{\textit{U}}				% Zufallsvariable U
@@ -248,45 +248,12 @@
 	\subsection{Bedingte Zufallsvariablen}
 	Bedingte Wahrscheinlichkeit für Zufallsvariablen:\\
 	\begin{tabular}{ll}
-		Ereignis A gegeben & $F_{\X|A}(x|A) = \P\left(\eset{\X \le x} | A\right)$\\
-		ZV $\Y$ gegeben & $F_{\X|\Y}(x|y)= \P\left(\eset{\X \le x} | \eset{\Y = y}\right)$\\
+		Ereignis A gegeben: & $F_{\X|A}(x|A) = \P\left(\eset{\X \le x} | A\right)$\\
+		ZV $\Y$ gegeben: & $F_{\X|\Y}(x|y)= \P\left(\eset{\X \le x} | \eset{\Y = y}\right)$\\
 		& $p_{\X|\Y}(x|y) = \frac{p_{\X,\Y}(x,y)}{p_{\Y}(y)}$\\
 		& $f_{\X|\Y}(x|y) = \frac{f_{\X,\Y}(x,y)}{f_{\Y}(y)} = \frac{\diff F_{X|Y}(x|y)}{\diff x}$\\
 	\end{tabular}
 
-\end{sectionbox}
-
-% ----------------------------------
-% |Funktionen von Zufallsvariablen |
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% SECTION ====================================================================================
-\section{Funktionen von Zufallsvariablen}
-% ============================================================================================
-\begin{sectionbox}
-	$\X: \Omega \ra \Omega' = \R$ und jetzt $g:\Omega' \ra \Omega'' = \R$\\
-	$\P(A'') = \P(\Y \in A'') = \P(\iset{\X \in \Omega'}{g(\X) \in A''} = \P(\iset{\omega \in \Omega}{g(\X(\omega)) \in A''}$
-\end{sectionbox}
-
-\begin{sectionbox}
-	\subsection{Transformation von Zufallsvariablen}
-	Berechnung von $f_{\Y}(y)$ aus $f_{\X}(x)$
-	
-	$g(x)$ streng monoton \& differenzierbar:\\
-	$f_{\Y}(y) = f_{\X}\left(g^{-1}(y)\right)\left[\abs{\frac{\diff g(x)}{\diff x}(x)}_{x = g^{-1}(y)}\right]^{-1}$\\
-	$g(x)$ nur differenzierbar:\\
-	$f_{\Y}(y) = \sum\limits_{i = 1}^{N}{f_{\X}(x_i)\left[\abs{\frac{\diff g(x)}{\diff x}(x)}_{x = x_i}\right]^{-1}}$
-	mit $i \in \{1,\dots,N\}$ sind Nullstellen von $y - g(x_i) = 0$
-	\subsubsection{Beispiel: lineare Funktion}
-	$Y=aX+b \Leftrightarrow g(x)=ax+b$ mit $a\in\mathbb{R}\backslash 0,\;b\in\mathbb{R}$:
-	\[\Rightarrow f_Y(y)=\frac{1}{|a|}f_X\left(\frac{y-b}{a}\right)\]
-	\[F_Y(y)=\begin{cases}F_X\left(\frac{y-b}{a}\right) & a>0 \\ 1-F_X\left(\frac{y-b}{a}\right) & a<0\end{cases}\]
-	
-\end{sectionbox}
-
-\begin{sectionbox}
-	\subsection{Summe unabhängiger Zufallsvariablen}
-	$\textit{Z} = \X + \Y$ mit $\X$ und $\Y$ unabhängig.\\
-	$\Ra f_{\textit{Z} = \X + \Y}(z) = \left(f_{\X} \ast f_{\Y}\right)(z) = \int\limits_{-\infty}^{\infty}{f_{\X}(z-y)f_{\Y}\diff y}$
 \end{sectionbox}
 
 % SECTION ====================================================================================
@@ -336,7 +303,7 @@
 	\paragraph{Normiertheit}
 	$\sum p(x) + \int_{\R} f_{\X}(x) \diff x \stackrel{!}{=} 1$
 \end{sectionbox}
-
+\vspace{-0.15cm}
 % --------------------------------------------------------
 \begin{sectionbox}
 	\subsection{Mehrdimensionale Verteilungen}
@@ -370,6 +337,43 @@
 	\paragraph{Randverteilung der Wahrscheinlichkeitsdichte (WDF)} ( für stetige ZV) \\
 	$f_{\X_1}(x_1) = \int\limits_{-\infty}^{\infty}{\shdots\int\limits_{-\infty}^{\infty}{f_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n)\diff x_n\shdots}\diff x_2}$
 \end{sectionbox}
+
+
+
+% ----------------------------------
+% |Funktionen von Zufallsvariablen |
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% SECTION ====================================================================================
+\section{Funktionen von Zufallsvariablen}
+% ============================================================================================
+\begin{sectionbox}
+	$\X: \Omega \ra \Omega' = \R$ und jetzt $g:\Omega' \ra \Omega'' = \R$\\
+	$\P(A'') = \P(\Y \in A'') = \P(\iset{\X \in \Omega'}{g(\X) \in A''} = \P(\iset{\omega \in \Omega}{g(\X(\omega)) \in A''}$
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Transformation von Zufallsvariablen}
+	Berechnung von $f_{\Y}(y)$ aus $f_{\X}(x)$
+	
+	$g(x)$ streng monoton \& differenzierbar:\\
+	$f_{\Y}(y) = f_{\X}\left(g^{-1}(y)\right)\left[\abs{\frac{\diff g(x)}{\diff x}(x)}_{x = g^{-1}(y)}\right]^{-1}$\\
+	$g(x)$ nur differenzierbar:\\
+	$f_{\Y}(y) = \sum\limits_{i = 1}^{N}{f_{\X}(x_i)\left[\abs{\frac{\diff g(x)}{\diff x}(x)}_{x = x_i}\right]^{-1}}$ mit $i \in \{1,\dots,N\}$ \\
+	$x_i$ sind Nullstellen von $y - g(x) = 0$
+	\subsubsection{Beispiel: lineare Funktion}
+	$Y=aX+b \Leftrightarrow g(x)=ax+b$ mit $a\in\mathbb{R}\backslash 0,\;b\in\mathbb{R}$:
+	\[\Rightarrow f_Y(y)=\frac{1}{|a|}f_X\left(\frac{y-b}{a}\right)\]
+	\[F_Y(y)=\begin{cases}F_X\left(\frac{y-b}{a}\right) & a>0 \\ 1-F_X\left(\frac{y-b}{a}\right) & a<0\end{cases}\]
+	
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Summe unabhängiger Zufallsvariablen}
+	$\textit{Z} = \X + \Y$ mit $\X$ und $\Y$ unabhängig.\\
+	$\Ra f_{\textit{Z} = \X + \Y}(z) = \left(f_{\X} \ast f_{\Y}\right)(z) = \int\limits_{-\infty}^{\infty}{f_{\X}(z-y)f_{\Y}\diff y}$
+\end{sectionbox}
+
+
 
 %\vfill 
 %\columnbreak
@@ -517,7 +521,16 @@
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
 		$\underset{\text{Erwartungswert}}{\E(\X) = \mu}$ & $\underset{\text{Varianz}}{\Var(\X) =\sigma^2}$ & $\underset{\text{Charakt. Funktion}}{\varphi_{\X}(\omega) = e^{j\omega\mu-\frac{\omega^2\sigma^2}{2}}}$\\ 
 	\end{tablebox}
+	\emph{Schreibweise} $\X \sim \mathcal{N} (\mu,\sigma^2)$ \\
 	\emph{Beispiele:} Rauschen, Ort eines Teilchens relativ zu seiner Anfangsposition bei brownscher Molekularbewegung, abgefahrene Sachen, die man nicht genauer bestimmen will oder kann
+	\subsubsection{Standartnormalverteilung}
+	ist der Spezialfall $\X \sim \mathcal{N} (0,1)$\\
+	$\phi(x) = \frac{1}{\sqrt{2\pi}}e^{{-\frac{x^2}{2}}}$\\
+	Es gilt außerdem:
+	\begin{itemize}
+		\item $\Y \sim \mathcal{N}(\mu,\sigma^2) \Ra \X = \frac{1}{\sigma}(\Y - \mu) \sim \mathcal{N}(0,1)$
+		\item $\X \sim \mathcal{N}(0,1) \Ra \Y = \sigma \X + \mu \sim \mathcal{N}(\mu,\sigma^2)$
+	\end{itemize}
 \end{sectionbox}
 
 % ====================================================================================
@@ -527,7 +540,8 @@
 %	$f_{\X_1..\X_n} (x_1..x_n) = \frac{1}{\sqrt{2 \pi}^n \sqrt{\det \ma C}} e^{(- \frac{1}{2} (x - \mu)^\top \ma C^{-1} (x - \mu))}$
 %\end{sectionbox}
 
-%\vfill 
+
+\vfill 
 %\columnbreak
 % ----------------------------------------------------------------------------
 % | Erwartungswert und Varianz |
@@ -587,7 +601,7 @@
 	$\E[\X] = \sum \limits_{k=0}^{\infty} \P(\X >k)$ (diskret)
 \end{sectionbox}
 
-%\vfill
+\vfill
 %\columnbreak
 
 % SECTION ====================================================================================
@@ -671,6 +685,8 @@
 %	$\Cov[Z,W] = \E[\Z\W^*] - \E[\Z]\E[\W]^* = \Cov[W,Z]^*$
 %\end{sectionbox}
 
+
+
 %\vfill %\textcolor{red}{Bild von der Standardabweichung}
 
 % SECTION ====================================================================================
@@ -685,7 +701,7 @@
 	
 	\paragraph{Anwendungen}
 	\begin{eqnarray*}
-		\P(\eset{\X = n}) = \frac{1}{n!} [\frac{\diff^n}{\diff z^n} G_{\X} (z)]_{z = 0}, \quad \forall n \in \mathbb N_0 \\
+		p_{\X}(n) =\P(\eset{\X = n}) = \frac{1}{n!} [\frac{\diff^n}{\diff z^n} G_{\X} (z)]_{z = 0}, \quad \forall n \in \mathbb N_0 \\
 		\E [\X] = [\frac{\diff}{\diff z} G_{\X} (z)]_{z = 1} \\
 		\E [\X^2]-\E[\X] = [\frac{\diff^2}{\diff z^2} G_{\X} (z)]_{z = 1} \\
 		\Var [\X] =[\frac{\diff^2}{\diff z^2} G_{\X} (z)]_{z = 1} - \E [\X]^2 + \E [\X] 
@@ -695,66 +711,71 @@
 	
 \end{sectionbox}
 
-\begin{sectionbox}
-	\subsection{Momenterzeugende Funktion} % (fold)
-	\label{sub:momenterzeugende_funktion}
-	
-	Mit $\X: \Omega \ra \mathbb R$ eine reelle ZV: \\
-	
-	\boxed{
-		M_{\X} (s) = \E [e^{s \X}], \quad s \in \mathbb D = \eset{s \in \mathbb R }{\E [e^{s \X} < \infty]}
-	}\\ 
-	
-	
-	Potenzreihenentwicklung (mit $s \in ]-a, a[$):\\
-	$M_{\X} (s) = \E [ e^{s \X}] = \E \left[\sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \X^k\right] = \sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \E\left[\X^k\right]$
-	
-	Erwartungswert:
-	$\E[\X^n] = \left[\frac{\diff^n}{\diff s^n} M_{\X} (s)\right]_{s=0}, \quad \forall n \in \mathbb N_0$
-	
-	Summe von ZV:
-	$M_{\Z} (s) = \prod \limits_{i = 1}^{n} M_{\X_i} (s)$
-\end{sectionbox}
+%\begin{sectionbox}
+%	\subsection{Momenterzeugende Funktion} % (fold)
+%	\label{sub:momenterzeugende_funktion}
+%	
+%	Mit $\X: \Omega \ra \mathbb R$ eine reelle ZV: \\
+%	
+%	\boxed{
+%		M_{\X} (s) = \E [e^{s \X}], \quad s \in \mathbb D = \eset{s \in \mathbb R }{\E [e^{s \X} < \infty]}
+%	}\\ 
+%	
+%	
+%	Potenzreihenentwicklung (mit $s \in ]-a, a[$):\\
+%	$M_{\X} (s) = \E [ e^{s \X}] = \E \left[\sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \X^k\right] = \sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \E\left[\X^k\right]$
+%	
+%	Erwartungswert:
+%	$\E[\X^n] = \left[\frac{\diff^n}{\diff s^n} M_{\X} (s)\right]_{s=0}, \quad \forall n \in \mathbb N_0$
+%	
+%	Summe von ZV:
+%	$M_{\Z} (s) = \prod \limits_{i = 1}^{n} M_{\X_i} (s)$
+%\end{sectionbox}
 
 % subsection momenterzeugende_funktion (end)
 \begin{sectionbox}
 	\subsection{Charakteristische Funktion} % (fold)
 	\label{sub:charakteristische_funktion}
 	\boxed{\varphi_{\X} (\omega) = \ew{e^{\i \omega \X}} , \quad \omega \in \mathbb R} $\qquad \varphi_{\X} = \int\limits_{-\infty}^\infty e^{\i\omega x} f_{\X}(x) \diff x$\\
-	$f_{\X}(-x) \laplace \varphi(\omega)$
+	$f_{\X}(-x) \T \varphi(\omega)$ \\
 	
-	Erwartungswert
+	\emph{Erwartungswert:}
 	\begin{eqnarray*}
 		\E[\X^n] = \frac{1}{\i^n} \left[\frac{\diff^n}{\diff \omega^n} \varphi_{\X}(\omega)\right]_{\omega = 0}
 	\end{eqnarray*}
-	Summe von ZV:
+	\emph{	Summe von ZV:}
 	\begin{eqnarray*}
-		\varphi_{\Z} (\omega) = \prod_{i=1}^{n} \varphi_{\X_i} (\omega)
+		\Z = \sum_{i=1}^{n}{\X_i} & \ra	& \varphi_{\Z} (\omega) = \prod_{i=1}^{n} \varphi_{\X_i} (\omega)
 	\end{eqnarray*}
 \end{sectionbox}	
 
 % subsection charakteristische_funktion (end)
 \begin{sectionbox}
-	\subsection{Der zentrale Grenzwertsatz} % (fold)
-	\label{sub:der_zentrale_grenzwertsatz}
-	\boxed{\lim_{n \ra \infty} \P({\Z_n \le z}) = \Phi (z)}
+	\subsection{Der zentrale Grenzwertsatz}
+	\emph{Definition}: Seien $\X_i, i \in {1,...,n}$, stochastisch unabhängige und identisch
+	verteilte reelle Zufallsvariablen und gelte $E[\X_i] = \mu < \infty$ und $Var[\X_i] = \sigma^2 < \infty$. 
+	Dann konvergiert die Verteilung der standardisierten Summe\\ 
+	\centerline{$\Z_n= \sum\limits_{i=1}^{n}\frac{(\X_-\mu)}{\sigma\sqrt{n}}$} \\
+	d.h $E[\Z_n] = 0$ und $Var[\Z_n] = 1$, für $n \ra \infty$ gegen die Standartnormalverteilung. \\
+	Es gilt also: \\
+	\centerline{$\lim_{n \ra \infty} \P({\Z_n \le z}) = \Phi (z)$}
 \end{sectionbox}	
 % subsection der_zentrale_grenzwertsatz (end)
-%\vfill
+
+
+\vfill
 %\columnbreak 
 
 % SECTION ====================================================================================
 \section{Reelle Zufallsfolgen}
 % ============================================================================================
 \begin{sectionbox}
-	Eine reelle Zufallsfolge ist ganz einfach eine Folge reeller Zufallsvariablen.
-	\subsection{Ensemble und Pfad}
-	\subsubsection{Ensemble}
+	Eine reelle Zufallsfolge ist ganz einfach eine Folge reeller Zufallsvariablen. \\ \\
+	\textbf{Ensemble} \\
 	$\textsf{S}_n : \Omega_n \times \Omega_{n-1} \times \dots \times \Omega_1 \ra \R$\\
 	$(\omega_n,\omega_{n-1},\dots,\omega_1) \mapsto s_n(\omega_n,\omega_{n-1},\dots,\omega_1), \quad n \in \N$\\
-	\emph{Erklärung:} Jede Realisierung von $\textsf{S}_n$ wird erzeugt durch die Menge (das Ensemble) aufeinanderfolgender Realisierungen $\X_k$ mit $k \in \{1,\dots,n\}$.
-	
-	\subsubsection{Pfad}
+	\emph{Erklärung:} Jede Realisierung von $\textsf{S}_n$ wird erzeugt durch die Menge (das Ensemble) aufeinanderfolgender Realisierungen $\X_k$ mit $k \in \{1,\dots,n\}$. \\ \\	
+	\textbf{Pfad} \\
 	$\vec{\textsf{S}}_n = (\textsf{S}_n,\textsf{S}_{n-1},\dots,\textsf{S}_1) : \Omega^{(n)} \ra \R^n$\\
 	$\vec{\omega}_n \mapsto \vec{s}_n(\vec{\omega}_n) = (s_n(\vec{\omega}_n),s_{n-1}(\vec{\omega}_n),\dots,s_1(\vec{\omega}_n)), \quad n \in \N$\\
 	\emph{Erklärung:} Die Abfolge der Realisierungen von $\textsf{S}_1$ bis $\textsf{S}_n$ (also der Pfad von $\textsf{S}$) und somit auch jedes einzelne $\textsf{S}_k$ kann als Ergebnis des Ereignisses $\vec{\omega}_n$ angesehen werden.
@@ -766,7 +787,7 @@
 		Erwartungswert & $\mu_{\X}(n) = E[\X_n]$\\
 		Varianzfolge & $\sigma^2_{\X}(n) = Var[\X_n] = E[\X_n^2] - E[\X_n]^2$\\
 		Autokorrelation & $r_{\X}(k,l) = E[\X_k \X_l]$\\
-		Autokovarianzf. & $c_{\X}(k,l) = Cov[\X_k,\X_l]$ \newline $= r_{\X}(k,l) - \mu_{\X}(k) \mu_{\X}(l)$\\
+		Autokovarianz & \!\!\!\!\! $c_{\X}(k,l) = Cov[\X_k,\X_l]$ \newline $= r_{\X}(k,l) - \mu_{\X}(k) \mu_{\X}(l)$\\
 	\end{tablebox}
 \end{sectionbox}
 
@@ -779,8 +800,8 @@
 		} } \parbox{4cm}{ $\P\left(\{\X_i = +\delta\}\right) = p$ \\ $\P\left(\{\X_i = -\delta\}\right) = 1 - p$\\ symmetrisch $\Leftrightarrow p = \frac{1}{2}, \ \mu_{\textsf{S}}(n) = 0$\\ }
 		
 		\begin{tablebox}{@{\extracolsep\fill}ll@{}}
-			$\mu_{\textsf{S}}(n) = n(2p - 1)\delta$ & $E[\X_i] = (2p - 1)\delta$ \\
-			$\sigma^2_{\textsf{S}}(n) = 4np(1 - p)\delta^2$ & $Var[\X_i] = 4p(1 - p)\delta^2$ \\
+			$E[S] = \mu_{\textsf{S}}(n) = n(2p - 1)\delta$ & $E[\X_i] = (2p - 1)\delta$ \\
+			$Var[S] = \sigma^2_{\textsf{S}}(n) = 4np(1 - p)\delta^2$ & $Var[\X_i] = 4p(1 - p)\delta^2$ \\
 		\end{tablebox}
 	\end{sectionbox}
 
@@ -789,38 +810,93 @@
 	Eine Zufallsfolge ist \emph{stationär}, wenn um ein beliebiges $k$ $(k \in \N)$ zueinander verschobene Zufallsvektoren die selbe Verteilung besitzen.\\
 	Im \emph{weiteren Sinne stationär (W.S.S.)}, wenn:\\
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
-		$\mu_{\X}(i) = \mu_{\X}(i + k)$ & $\land$ & $r_{\X}(i_1,i_2) = r_{\X}(i_1 + k,i_2 + k)$\\
+		$\mu_{\X}(i) = \mu_{\X}(i + k)$ \\
+		$r_{\X}(i_1,i_2) = r_{\X}(i_1 + k,i_2 + k) = r_{\X}(i_1 - i_2)$\\
 	\end{tablebox}
 	stationär $\Ra$ WSS (aber nicht anders herum!)
 \end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{Markow-Ungleichung}
-	\boxed{\P(\eset{\abs{\X} \ge a}) \le \frac{\E[\X]}{a} }
+	\boxed{\P(\eset{\abs{\X} \ge a}) \le \frac{\E[|\X|]}{a} }
 \end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{Tschebyschow-Ungleichung}
 	\boxed{\P(\eset{\abs{\X- \E[\X]} \ge a}) \le \frac{\Var[\X]}{a^2} }
 	
-	Gesetz der großen Zahlen: $\frac{1}{n} \sum_{i = 1}^n (\X_i - \E[\X_i]) \ra 0$
+	
+\end{sectionbox}
+\begin{sectionbox}
+	\subsection{Das schwache Gesetz der großen Zahlen}
+	Sei $(\X_i : i \in \N)$ eine Folge reeller, paarweise unkorrelierter Zufallsvariablen mit beschränkter Varianz:\\
+	$\frac{1}{n} \sum\limits_{i = 1}^n (\X_i - \E[\X_i]) \ra 0$\\ \\
+	Für stochastisch unabhängige und identisch verteilte Folgenelemente mit $E[\X_i] = E[X]$ und $Var[\X_i] = Var[X] < \infty$ gilt: \\
+	$\frac{1}{n} \sum\limits_{i = 1}^n (\X_i) \ra \E[\X_i] $
 \end{sectionbox}
 
-
-
-
 % SECTION ====================================================================================
-%\section{Makrowetten und bedingte Unabhängigkeit}
-% ============================================================================================
-%{\Large Nicht Prüfungsrelevant!!}
-\setcounter{section}{12}    
-\textbf{Hinweis:} Kapitel 12 (Makrowetten und bedingte Unabhängigkeit) war im WiSe 12/13 nicht prüfungsrelevant und wird deshalb hier nicht behandelt.
+\section{Markowketten \\ und bedingte Unabhängigkeit}
+\begin{sectionbox}
+	\subsection{Bedingte Unabhängigkeit}
+	A und C heißen bedingt unabhängig gegeben B, wenn gilt:\\
+	$\P(A \cap C | B) = \P(A | B)\P(C| B)$	bzw.\\
+	$\P(A | B \cap C) = \P(A | B)$ \\ \\
+	Dann gilt: \\
+	$p_{\Z|\Y,\X}(y|y,x) = p_{\Z|\Y}(z|y)$ \\
+	$f_{\Z|\Y,\X}(z|y,x) = f_{\Z|\Y}(z|y)$ \\
+	$\X,\Z$ sind bedingt unabhängig gegeben $\Y$, kurz: $\X \ra \Y \ra \Z$
+\end{sectionbox}
 
-\vfill
+\begin{sectionbox}
+	\subsection{Markowketten}
+	Eine Zufallsfolge ($\mathsf{\X}_{n}: n \in \mathbb{N}$) heißt \emph{Markowkette}, falls $\forall \ n_{i} \in \N, \\
+	i \in {1, \dots k}$ mit $n_{1} < \dots < n_{k}$ gilt:\\
+	$\mathsf{(\X_{n_{1}},\X_{n_{2}}, \dots \X_{n_{k-2}}) \ra \X_{n_{k-1}} \ra \X_{n_{k}}}$ \\
+	$\Ra$ Die Verteilung eines Folgeelements hängt nur vom direkten Vorgänger ab 
+	\begin{itemize}
+	\item $p_{\X_{n_k}|\X_{n_{k-1}},\X_{n_{k-2}},...,\X_{n_1}}(x_{n_k}|x_{n_{k-1}},x_{n_{k-2}},...,x_{n_1})$
+	$=p_{\X_{n_k}|\X_{n_{k-1}}}(x_{n_k}|x_{n_{k-1}})$ \\
+	\item $f_{\X_{n_k}|\X_{n_{k-1}},\X_{n_{k-2}},...,\X_{n_1}}(x_{n_k}|x_{n_{k-1}},x_{n_{k-2}},...,x_{n_1})$
+	$=f_{\X_{n_k}|\X_{n_{k-1}}}(x_{n_k}|x_{n_{k-1}})$
+	\end{itemize}
+	\paragraph{Zustandswahrscheinlichkeit:}
+	$p_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$\\
+	$p_{\X_1,...,\X_n}(x_1,...,x_n)=p_{\X_1}(x_1)\prod\limits_{i=2}^{n}p_{\X_i|\X_{i-1}}(x_i|x_{i-1})$
+	\paragraph{Zustandsübergangsdichte:}
+	$ f_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$\\
+	${\X_1,...,\X_n}(x_1,...,x_n)=f_{\X_1}(x_1)\prod\limits_{i=2}^{n}f_{\X_i|\X_{i-1}}(x_i|x_{i-1})$ \\ \\
+	
+	Eine Markowkette heißt \emph{homogen}, wenn die Übergangswahrscheinlichkeit unabhängig vom Index ist \\
+	$p_{\X_{n+1} | \X_{n}} (x_{n+1} | x_{n}) = p_{\X_{n+1+k} | \X_{n+k}} (x_{n+1} | x_{n})$ \\
+	$f_{\X_{n+1} | \X_{n}} (x_{n+1} | x_{n}) = f_{\X_{n+1+k} | \X_{n+k}} (x_{n+1} | x_{n})$ \\
+	
+	\emph{2-Schritt-Übergangswahrscheinlichkeit} wird wie folgt berechnet: \\
+	 $p_{\X_{n+2}|\X_n}(x_{n+2}|x_n)= \\ \sum\limits_{\xi\in\mathbb{X}}p_{\X_{n+2}|\X_{n+1}}(x_{n+2}|\xi)p_{\X_{n+1}|\X_n}(\xi |x_n)$
+	 
+	\subsubsection{Markowketten im endlichen Zustandsraum}
+	$\vec{p}_{n} \triangleq \begin{bmatrix} p_{\X_{n}}(x_{1}) \\ p_{\X_{n}}(x_{2}) \\ \vdots \\ p_{\X_{n}}(x_{N}) \end{bmatrix} \quad \in [0,1]^{N}\text{ mit }[\vec{p}_{n}]_{i} = p_{\X_{n}}(x_{i})$ \\
+	\emph{Übergangsmatrix:}
+	 $\Pi = \begin{bmatrix} p_{11} & \cdots & p_{1N} \\ \vdots & \ddots &   \\ p_{N1} & & p_{NN} \end{bmatrix} \quad \in [0,1]^{N \times N}$\\
+	 \emph{Übergangswahrscheinlichkeit:} $p_{i,j} = p_{\X_{n+1}|\X_n}(x_i,x_j)$ \\
+	 \centerline{Spaltensumme muss immer 1 ergeben!}\\ \\
+	 $\vec{p}_{n+1}  = \Pi \vec{p}_{n} \quad n \in \N$ \\
+	 $\vec{p}_{n+m}  = \Pi^{m} \vec{p}_{n} \quad n, m \in \N$ \\ \\
+	 Eine Verteilung heißt \emph{stationär}, wenn gilt:\\
+	 $\vec{p}_{\infty}  = \Pi \vec{p}_{\infty} $
+\end{sectionbox}
 
 % SECTION ====================================================================================
 \section{Reelle Zufallsprozesse}
 % ============================================================================================
+\begin{sectionbox}
+	\subsection{Ensemble und Musterfunktion}
+	\begin{itemize}
+		\item Ein Zufallsprozess kann als \emph{Ensemble} einer nicht abzählbaren Menge von Zufallsvariablen $X_{t}$ mit $t \in \mathbb{R}$ interpretiert werden.
+		\item Ein Zufallsprozess kann als \emph{Schar von Musterfunktionen} \\ $\X_{t}(\omega) : \mathbb{R} \mapsto \mathbb{R},$
+		 mit $\X(\omega)$ als deterministische Funktion von $t$, mit einem gegebenen Ereignis $\omega \in \Omega$ interpretiert werden.
+	\end{itemize}
+\end{sectionbox}
 \begin{sectionbox}
 	\subsection{Verteilungen und Momente}
 	Zeitlich, Kontinuierlich veränderliche Zufallsvariable $\X_t$\\
@@ -836,6 +912,9 @@
 \begin{sectionbox}
 	\subsection{Stationarität}
 	Ein Zufallsprozess ist \emph{stationär}, wenn um ein beliebiges $s$ $(s \in \R)$ zueinander verschobene Zufallsvektoren die selbe Verteilung besitzen.\\
+	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
+		$F_{\mathsf{X}_{t_{1}},\dots,\mathsf{X}_{t_{n}}} (x_{1}, \dots x_{n}) = F_{\mathsf{X}_{t_{1}+s},\dots,\mathsf{X}_{t_{n}+s}} (x_{1}, \dots x_{n})$
+	\end{tablebox}
 	Im \emph{weiteren Sinne stationär (W.S.S.)}, wenn:\\
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
 		$\mu_{\X}(t) = \mu_{\X}(t + s)$ & $\land$ & $r_{\X}(t_1,t_2) = r_{\X}(t_1 + s,t_2 + s)$\\
@@ -871,8 +950,8 @@
 		gemeinsam stationär $\Ra$ gemeinsam WSS (aber nicht umgekehrt!)
 	\end{emphbox}
 	\textbf{Daraus folgt} mit $s = t + \tau$\\
-	$r_{\X}(s,t) = \E[\X_{t+\tau} \X_t] = r_{\X}(\tau) = r_{\X}(-\tau)$ \qquad \quad $r_{\X}(\tau) \le r_{\X}(0)$\\
-	$r_{\X,\Y}(s,t) = r_{\X,\Y}(\tau) = \E[\X_{t+\tau} \Y_t] = \E[\Y_t \X_{t+\tau}] = r_{\Y,\X}(-\tau)$
+	$r_{\X}(s,t) = \E[\X_{t+\tau} \X_t] = r_{\X}(\tau) = r_{\X}(-\tau)$ \qquad $r_{\X}(\tau) \le r_{\X}(0)$\\
+	$r_{\X,\Y}(\tau)=\E[\X_{t+\tau} \Y_t]=\E[\Y_t \X_{t+\tau}]=r_{\Y,\X}(-\tau)$
 	\subsubsection{Stochastische Unkorreliertheit}
 	$c_{\X,\Y}(s,t) = 0 \Leftrightarrow r_{\X,\Y}(s,t) = \mu(s)\mu(t), \quad \forall s,t \in \R$
 	\subsubsection{Orthogonalität}
@@ -880,14 +959,17 @@
 \end{sectionbox}
 
 \begin{sectionbox}
-	\subsection{Wiener-Prozess}
-	
+	\subsection{Wiener-Prozess ($\sigma > 0$)}
+	Als Basis benutzen wir den Random Walk. Durch Multiplikation mit einer Heaviside-Funktion wird der Random Walk zeitkontinuierlich:\\
+	\parbox{3cm}{$\textsf{S}_n = \sum\limits_{i=1}^{n}\X_i$ \qquad \qquad $\Ra$}
+	\parbox{3.5cm}{$\textsf{S}_t  = \sum \limits_{i=1}^{n}\X_iu(t-iT) \qquad T > 0$}\\ \\
+	Für n $\ra \infty$ und T $\ra 0$, mit Schrittweite $\delta = \sqrt{\sigma^2 T}$ folgt der Wiener Prozess: $ \W_t$\\
 	\begin{tablebox}{@{\extracolsep\fill}l@{}}
-		$\textsf{S}_t  = \sum \limits_{i=1}^{n}\X_iu(t-iT) ,~T > 0 \Ra $mit n $\ra \infty$ und T $\ra 0: \W_t$\\
 		$f_{\W_t}(w) = \frac{1}{\sqrt{2 \pi \sigma^2 t}} \exp\left( -\frac{w^2}{2 \sigma^2 t} \right)$\\
 	\end{tablebox}
 \paragraph{Eigenschaften}
 \begin{itemize}
+	\item Kein Zählprozess!
 	\item $ \P(\{\W_0  = 0 \})  = 1$
 	\item hat unabhängige Inkremente $\ra r_{xy} (s,t) = 0$
 	\item $\W_t - \W_s \sim N(0,\sigma^2(t-s)), \forall 0 \le s \le t$
@@ -896,6 +978,7 @@
 
 \begin{tablebox}{@{\extracolsep\fill}ll@{}}
 	Erwartungswertfunktion. & $\mu_{\W}(t) = 0$\\
+	Varianz & $\sigma_W^2(t) =  \sigma^2 t$ \\
 	Autokorrelationsfunktion & $r_{\W}(s,t) = \sigma^2 min\{s,t\}$\\
 	Autokovarianzfunktion & $c_{\W}(s,t) = \sigma^2 min\{s,t\}$ \\ 
 \end{tablebox}
@@ -906,9 +989,10 @@
 %\columnbreak
 \begin{sectionbox}
 	\subsection{Poisson-Prozess ($N_t: \in \mathbb R_+$)}
-	
+	Beim Poisson-Prozess wird der \emph{Zeitpunkt} der Sprünge durch ZV modelliert, nicht die Amplitude. \\
+	$ N_t  = \sum \limits_{i=1}^{\infty}u(t-T_i) , \quad T = \sum \limits_{j=1}^i \X_j $\\
+	$\X_j$ ist exponentiell verteilt, $T_i$ ist Gamma-verteilt
 	\begin{tablebox}{@{\extracolsep\fill}l@{}}
-		$ N_t  = \sum \limits_{i=1}^{\infty}u(t-T_i) , \quad T = \sum \limits_{j=1}^i \X_j $\\
 		$f_{T_i}(t) = \frac{\lambda^i}{(i-1)!}t^{i-1}e^{-\lambda t}, \quad t \ge 0$\\
 		$\P\left(\{N_t = n\}\right) = \frac{(\lambda t)^n}{n!}e^{-(\lambda t)}, \quad \forall n \in \N, t \in \R_+$\\
 	\end{tablebox}
@@ -916,6 +1000,7 @@
 \paragraph{Eigenschaften}
 \begin{itemize}
 	\item ist ein Zählprozess
+	\item ist Gedächtnislos
 	\item hat unabhängige Inkremente
 	\item $N_t - N_s$ ist Poisson-verteilt mit Parameter $(\lambda(t-s)$ für alle $0 \le s \le t$
 	\item hat eine Rate $\lambda$
@@ -925,32 +1010,33 @@
 
 
 \begin{tablebox}{@{\extracolsep\fill}ll@{}}
-	Erwartungswertfunktion. & $\mu_N(t) = \lambda t$\\
+	Erwartungswertfunktion & $\mu_N(t) = \lambda t$\\
+	Varianz & $\sigma_N^2(t)=\lambda t $\\
 	Autokorrelationsfunktion & $r_N(s,t) = \lambda \min\{s,t\} + \lambda^2 st$\\
 	Autokovarianzfunktion & $c_N(s,t) = \lambda \min\{s,t\}$ \\ 
 \end{tablebox}
 \end{sectionbox}
 
+
+\vfill
 % SECTION ====================================================================================
 \section{Zufallsprozesse(ZP) und lineare Systeme}
 % ============================================================================================
 \begin{sectionbox}
 	\subsection{Allgemeines}
-	
-	
-	\begin{tablebox}{lll}
-%		\multirow{3}{*}{\includegraphics{./img/lds.pdf}}&$\textsf{W}_t$ & Ausgang\\ SAMUELTODO
-		&$\textsf{V}_t$ & Eingang\\
-		&$h(s,t)$ & Impulsantwort \\ 
-		
-	\end{tablebox}
-	
-	
-	
+	Im \emph{Zeitbereich}:\\
+	$\text{w}(t)  =  (h \ast v)(t) = \int\limits_{- \infty}^{\infty} h(t - \tau) v(\tau) \, \diff\tau$ \\
+	Im \emph{Frequenzbereich:}\\
+	$W(f) = H(f)V(f)$ \\ \\
+	\parbox{3.8cm}{\boxed{\includegraphics{./img/lds.pdf}}}
+	\parbox{3.5cm}{$\textsf{W}_t$  \,\,\,\,\,\,\,\,  Ausgang\\
+		$\textsf{V}_t$  \qquad Eingang\\
+		$h(s,t)$  Impulsantwort}	\\ \\
 	Falls Zufallsprozesse \emph{WSS}: \\
-	Erwartungswert: $\mu_{\textsf{W}} = \mu_{\textsf{V}} \int\limits_{\infty}^{\infty} h(t) \diff t$\\
-	Kreuzkorrelationsfkt: $r_{\textsf{W},\textsf{V}}(\tau) = \E [\textsf{W}_s \textsf{V}_t] =  (h * r_{\textsf{V}})(\tau)$\\
-	Autokorrelationsfkt: $r_{\textsf{W}} = \E [\textsf{W}_s \textsf{W}_t] = (\tilde h * h * r_{\textsf{V}})(\tau)$, $\quad \tilde h (\tau) = h(-\tau)$
+	\emph{Erwartungswert:} $\mu_{\textsf{W}} = \mu_{\textsf{V}} \int\limits_{\infty}^{\infty} h(t) \diff t$\\
+	\emph{Kreuzkorrelationsfkt:} $r_{\textsf{W},\textsf{V}}(\tau) = \E [\textsf{W}_s \textsf{V}_t] =  (h * r_{\textsf{V}})(\tau)$\\
+	\emph{Autokorrelationsfkt:} $r_{\textsf{W}} = \E [\textsf{W}_s \textsf{W}_t] = (\tilde h * h * r_{\textsf{V}})(\tau)$\\ 
+	 mit $\tilde h (\tau) = h(-\tau)$
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -962,11 +1048,15 @@
 	\end{emphbox}
 	
 	\parbox{3.8cm}{\boxed{S_{\textsf{V}}(f)  = \int \limits_{-\infty}^{\infty} r_{\textsf{V}}(\tau) e^{-j2\pi f \tau} \diff \tau}}
-	\parbox{3.3cm}{$r_{\textsf{V}}(\tau) \T S_{\textsf{V}}(f)$\\$r_{\textsf{V},\textsf{W}}(\tau) \T S_{\textsf{V},\textsf{W}}(f)$}\vspace{0.3em}\\
+	\parbox{3.5cm}{$r_{\textsf{V}}(\tau) \T S_{\textsf{V}}(f)$\\
+		$r_{\textsf{V},\textsf{W}}(\tau) \T S_{\textsf{V},\textsf{W}}(f)$\\
+		$r_{V,W}(-\tau) \T S^*_{V,W}(f)$\vspace{0.3em}}\\
 	Auf Frequenz bezogene Signalleistung für infitisimales Frequenzband.\\
 	
-	\begin{tablebox}{@{\extracolsep\fill}l@{}}
-		$\underbrace{S_{\textsf{W}}(f)}_{S_{\textsf{W}\textsf{W}}(f)} = \underbrace{H(f) S_{\textsf{V}\textsf{W}}(f)}_{H^*(f) S_{\textsf{W}\textsf{V}}(f)} = \underbrace{H(f) H^*(f)}_{\abs{H(f)}^2} \underbrace{S_{\textsf{V}\textsf{V}}(f)}_{S_{\textsf{V}}(f)}$\vspace{0.3em}\\
+	\begin{tablebox}{@{\extracolsep\fill}ll@{}}
+		$S_{\mathsf{Y}}(f) = |H(f)|^{2} S_{\mathsf{X}}(f)$\\
+		$S_{\mathsf{Y,X}}(f) = H(f) S_{\mathsf{X}}(f)$ \\
+		$S_{\mathsf{X,Y}}(f) = H^{*}(f) S_{\mathsf{X}}(f)$
 	\end{tablebox}
 	\parbox{\columnwidth}{ \includegraphics{./img/kreuzlds.pdf}}
 	
@@ -985,7 +1075,7 @@
 	
 \end{sectionbox}
 
-
+Momenterzeugende Funktion, Multivariate Normalverteilung, Multivariate reelle Zufallsvariablen und Komplexe Zufallsvariablen waren im WS 2015/16 nicht prüfungsrelevant und werden hier deshalb nicht behandelt.
 P.S. Stochastik $\heartsuit$ dich.
 
 
