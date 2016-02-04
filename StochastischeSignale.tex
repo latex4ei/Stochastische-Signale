@@ -851,42 +851,63 @@
 
 \begin{sectionbox}
 	\subsection{Markowketten}
-	Eine Zufallsfolge ($\mathsf{\X}_{n}: n \in \mathbb{N}$) heißt \emph{Markowkette}, falls $\forall \ n_{i} \in \N, \\
+	\subsubsection{Allgemein}
+	Eine Zufallsfolge ($\mathsf{\X}_{n}: n \in \mathbb{N}$) heißt Markowkette, falls $\forall \ n_{i} \in \N, \\
 	i \in {1, \dots k}$ mit $n_{1} < \dots < n_{k}$ gilt:\\
 	$\mathsf{(\X_{n_{1}},\X_{n_{2}}, \dots \X_{n_{k-2}}) \ra \X_{n_{k-1}} \ra \X_{n_{k}}}$ \\
-	$\Ra$ Die Verteilung eines Folgeelements hängt nur vom direkten Vorgänger ab 
-	\begin{itemize}
-	\item $p_{\X_{n_k}|\X_{n_{k-1}},\X_{n_{k-2}},...,\X_{n_1}}(x_{n_k}|x_{n_{k-1}},x_{n_{k-2}},...,x_{n_1})$
+	$\Ra$ Die Verteilung eines Folgeelements hängt nur vom direkten Vorgänger ab \\	
+	\begin{tablebox}{@{\extracolsep\fill}l@{}}
+	$p_{\X_{n_k}|\X_{n_{k-1}},\X_{n_{k-2}},...,\X_{n_1}}(x_{n_k}|x_{n_{k-1}},x_{n_{k-2}},...,x_{n_1})$ \\
 	$=p_{\X_{n_k}|\X_{n_{k-1}}}(x_{n_k}|x_{n_{k-1}})$ \\
-	\item $f_{\X_{n_k}|\X_{n_{k-1}},\X_{n_{k-2}},...,\X_{n_1}}(x_{n_k}|x_{n_{k-1}},x_{n_{k-2}},...,x_{n_1})$
+	\end{tablebox}
+
+	\begin{tablebox}{@{\extracolsep\fill}l@{}}
+	$f_{\X_{n_k}|\X_{n_{k-1}},\X_{n_{k-2}},...,\X_{n_1}}(x_{n_k}|x_{n_{k-1}},x_{n_{k-2}},...,x_{n_1})$ \\
 	$=f_{\X_{n_k}|\X_{n_{k-1}}}(x_{n_k}|x_{n_{k-1}})$
-	\end{itemize}
-	\paragraph{Zustandswahrscheinlichkeit:}
-	$p_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$\\
-	$p_{\X_1,...,\X_n}(x_1,...,x_n)=p_{\X_1}(x_1)\prod\limits_{i=2}^{n}p_{\X_i|\X_{i-1}}(x_i|x_{i-1})$
-	\paragraph{Zustandsübergangsdichte:}
-	$ f_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$\\
-	${\X_1,...,\X_n}(x_1,...,x_n)=f_{\X_1}(x_1)\prod\limits_{i=2}^{n}f_{\X_i|\X_{i-1}}(x_i|x_{i-1})$ \\ \\
+	\end{tablebox}
+
+	\subsubsection{Zustandsübergang}
+	\emph{Zustandsübergangswahrscheinlichkeit:} \\ 
+	\centerline{$p_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$}\\
 	
-	Eine Markowkette heißt \emph{homogen}, wenn die Übergangswahrscheinlichkeit unabhängig vom Index ist \\
+	\qquad Verbund-WMF: \\
+	$p_{\X_1,...,\X_n}(x_1,...,x_n)=p_{\X_1}(x_1)\prod\limits_{i=2}^{n}p_{\X_i|\X_{i-1}}(x_i|x_{i-1})$ \\ 
+	
+	\emph{Zustandsübergangsdicht:} \\
+	\centerline{$ f_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$}\\
+	
+	\qquad Verbund-WDF: \\
+	$f_{\X_1,...,\X_n}(x_1,...,x_n)=f_{\X_1}(x_1)\prod\limits_{i=2}^{n}f_{\X_i|\X_{i-1}}(x_i|x_{i-1})$ \\ \\
+
+	
+	Eine Markowkette heißt \emph{homogen}, wenn die Übergangswahrscheinlichkeit\ unabhängig vom Index ist \\
 	$p_{\X_{n+1} | \X_{n}} (x_{n+1} | x_{n}) = p_{\X_{n+1+k} | \X_{n+k}} (x_{n+1} | x_{n})$ \\
 	$f_{\X_{n+1} | \X_{n}} (x_{n+1} | x_{n}) = f_{\X_{n+1+k} | \X_{n+k}} (x_{n+1} | x_{n})$ \\
 	
-	\emph{2-Schritt-Übergangswahrscheinlichkeit} wird wie folgt berechnet: \\
+
+	\subsubsection{Chapman-Kologorow Gleichung}
+	2-Schritt-Übergangswahrscheinlichkeit: \\
 	 $p_{\X_{n+2}|\X_n}(x_{n+2}|x_n)= \\ \sum\limits_{\xi\in\mathbb{X}}p_{\X_{n+2}|\X_{n+1}}(x_{n+2}|\xi)p_{\X_{n+1}|\X_n}(\xi |x_n)$
 	 
+	m+l-Schritt-Übergangswahrscheinlichkeit: \\
+	$p_{\X_{n+m+l}|\X_n}(x_{n+m+l}|x_n) =$\\
+	\resizebox{\textwidth}{!}{$ \sum\limits_{\xi \in \mathbb{X}}p_{\X_{n+m+l}|\X_{n+m}}(x_{n+m+l}|x_{n+m})p_{\X_{n+m}|\X_{n}}(x_{n+m}|x_{n})$}
+\end{sectionbox}
+\begin{sectionbox}
 	\subsubsection{Markowketten im endlichen Zustandsraum}
 	$\vec{p}_{n} \triangleq \begin{bmatrix} p_{\X_{n}}(x_{1}) \\ p_{\X_{n}}(x_{2}) \\ \vdots \\ p_{\X_{n}}(x_{N}) \end{bmatrix} \quad \in [0,1]^{N}\text{ mit }[\vec{p}_{n}]_{i} = p_{\X_{n}}(x_{i})$ \\
 	\emph{Übergangsmatrix:}
 	 $\Pi = \begin{bmatrix} p_{11} & \cdots & p_{1N} \\ \vdots & \ddots &   \\ p_{N1} & & p_{NN} \end{bmatrix} \quad \in [0,1]^{N \times N}$\\
-	 \emph{Übergangswahrscheinlichkeit:} $p_{ij} = p_{\X_{n+1}|\X_n}(x_i|x_j)$ \\
+
+	 \emph{Übergangswahrscheinlichkeit:} $p_{ij} = p_{\X_{n+1}|\X_n}(\xi_i,\xi_j)$ \\
 	 \centerline{Spaltensumme muss immer 1 ergeben!}\\
-	\begin{tablebox}{l}
+	 \begin{tablebox}{l}
 		 $\vec{p}_{n+1}  = \Pi \vec{p}_{n} \quad n \in \N$ \\
-		 $\vec{p}_{n+m}  = \Pi^{m} \vec{p}_{n} \quad n, m \in \N$ 
-	\end{tablebox}
-	 Eine Verteilung heißt \emph{stationär}, wenn gilt:
-	\[\vec{p}_{\infty}  = \Pi \vec{p}_{\infty} \]
+		 $\vec{p}_{n+m}  = \Pi^{m} \vec{p}_{n} \quad n, m \in \N$
+	 \end{tablebox}
+	 Eine Verteilung heißt \emph{stationär}, wenn gilt:\\
+	\[\vec{p}_{\infty}  = \Pi \vec{p}_{\infty} \]\\
+
 \end{sectionbox}
 
 % SECTION ====================================================================================
