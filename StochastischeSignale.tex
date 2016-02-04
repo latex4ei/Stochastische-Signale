@@ -837,25 +837,14 @@
 \end{sectionbox}
 
 % SECTION ====================================================================================
-\section{Markowketten \\ und bedingte Unabhängigkeit}
-\begin{sectionbox}
-	\subsection{Bedingte Unabhängigkeit}
-	A und C heißen bedingt unabhängig gegeben B, wenn gilt:\\
-	$\P(A \cap C | B) = \P(A | B)\P(C| B)$	bzw.\\
-	$\P(A | B \cap C) = \P(A | B)$ \\ \\
-	Dann gilt: \\
-	$p_{\Z|\Y,\X}(y|y,x) = p_{\Z|\Y}(z|y)$ \\
-	$f_{\Z|\Y,\X}(z|y,x) = f_{\Z|\Y}(z|y)$ \\
-	$\X,\Z$ sind bedingt unabhängig gegeben $\Y$, kurz: $\X \ra \Y \ra \Z$
-\end{sectionbox}
-
+\section{Markowketten \\ (bedingte Unabhängigkeit: Abschnitt \ref{bed-unabh})}
 \begin{sectionbox}
 	\subsection{Markowketten}
 	\subsubsection{Allgemein}
 	Eine Zufallsfolge ($\mathsf{\X}_{n}: n \in \mathbb{N}$) heißt Markowkette, falls $\forall \ n_{i} \in \N, \\
 	i \in {1, \dots k}$ mit $n_{1} < \dots < n_{k}$ gilt:\\
 	$\mathsf{(\X_{n_{1}},\X_{n_{2}}, \dots \X_{n_{k-2}}) \ra \X_{n_{k-1}} \ra \X_{n_{k}}}$ \\
-	$\Ra$ Die Verteilung eines Folgeelements hängt nur vom direkten Vorgänger ab \\	
+	$\Ra$ Die Verteilung eines Folgeelements hängt nur vom direkten Vorgänger ab
 	\begin{tablebox}{@{\extracolsep\fill}l@{}}
 	$p_{\X_{n_k}|\X_{n_{k-1}},\X_{n_{k-2}},...,\X_{n_1}}(x_{n_k}|x_{n_{k-1}},x_{n_{k-2}},...,x_{n_1})$ \\
 	$=p_{\X_{n_k}|\X_{n_{k-1}}}(x_{n_k}|x_{n_{k-1}})$ \\
@@ -906,9 +895,9 @@
 		 $\vec{p}_{n+m}  = \Pi^{m} \vec{p}_{n} \quad n, m \in \N$
 	 \end{tablebox}
 	 Eine Verteilung heißt \emph{stationär}, wenn gilt:\\
-	\[\vec{p}_{\infty}  = \Pi \vec{p}_{\infty} \]\\
-
+	\[\vec{p}_{\infty}  = \Pi \vec{p}_{\infty} \]
 \end{sectionbox}
+
 
 % SECTION ====================================================================================
 \section{Reelle Zufallsprozesse}
@@ -1041,6 +1030,18 @@
 \end{tablebox}
 \end{sectionbox}
 
+\section{Bedingte Unabhängigkeit}
+\label{bed-unabh}
+\begin{sectionbox}
+	\subsection{Bedingte Unabhängigkeit}
+	A und C heißen bedingt unabhängig gegeben B, wenn gilt:\\
+	$\P(A \cap C | B) = \P(A | B)\P(C| B)$	bzw.\\
+	$\P(A | B \cap C) = \P(A | B)$ \\ \\
+	Dann gilt: \\
+	$p_{\Z|\Y,\X}(y|y,x) = p_{\Z|\Y}(z|y)$ \\
+	$f_{\Z|\Y,\X}(z|y,x) = f_{\Z|\Y}(z|y)$ \\
+	$\X,\Z$ sind bedingt unabhängig gegeben $\Y$, kurz: $\X \ra \Y \ra \Z$
+\end{sectionbox}
 
 \vfill
 % SECTION ====================================================================================
