@@ -23,6 +23,8 @@
 \DeclareMathOperator{\U}{\textit{U}}				% Zufallsvariable U
 \DeclareMathOperator{\V}{\textit{W}}				% Zufallsvariable V
 
+\DeclareTextFontCommand{\emph}{\bfseries}
+
 % Dokumentbeginn
 % ======================================================================
 \begin{document}
@@ -54,14 +56,13 @@
 
 \begin{sectionbox}
 	\subsection{Kombinatorik}
-	Mögliche Variationen/Kombinationen um $k$ Elemente von maximal $n$ Elementen zu wählen bzw. $k$ Elemente auf $n$ Felder zu verteilen:\\ \\ 
+	Mögliche Variationen/Kombinationen um $k$ Elemente von maximal $n$ Elementen zu wählen bzw. $k$ Elemente auf $n$ Felder zu verteilen:
 	\begin{tablebox}{l|cc}
 		& \large Mit Reihenfolge & \large Reihenfolge egal\\ \cmrule
 		%& ungleiche Elemente & gleiche Elemente \\ 
 		\large Mit Wiederholung & \large $n^k$ & \Large $\binom{n+k-1}{k}$\\[0.2em]
 		\large Ohne Wiederholung & \Large $\frac{n!}{(n-k)!}$ & \Large $\binom nk$\\
 	\end{tablebox}
-	
 	Permutation von $n$ mit jeweils $k$ gleichen Elementen: $\frac{n!}{k_1 ! \cdot k_2 ! \cdot ...}$ \\
 	$\binom nk = \binom n{n-k} = \frac{n!}{k! \cdot (n-k)!}$ \quad $\binom 42 = 6$ \quad $\binom 52 = 10$
 \end{sectionbox}
@@ -641,13 +642,13 @@
 	wegen der Linearität des Erwartungswerts: \\
 	$\Var [ \alpha \X + \beta] = \alpha^2 \Var [\X]$
 	
-	für die Summe von Zufallsvariablen: \\
+	für die Summe von Zufallsvariablen:  \\
 	$\Var [\sum \limits_{i=1}^n \X_i] = \sum \limits_{i=1}^{n} \Var [\X_i] + \sum \limits_{i=1}^{n} \sum \limits_{j \not= i} \Cov [\X_i, 	\X_j]$ \\
 \end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{Unkorreliertheit}
-	wenn gilt:\\
+	wenn gilt:
 	\begin{emphbox}
 		$\Cov [\X,\Y] = 0 \Leftrightarrow \E[\X\Y] = \E[\X] \E[\Y]$
 	\end{emphbox}
@@ -743,9 +744,9 @@
 	\begin{eqnarray*}
 		\E[\X^n] = \frac{1}{\i^n} \left[\frac{\diff^n}{\diff \omega^n} \varphi_{\X}(\omega)\right]_{\omega = 0}
 	\end{eqnarray*}
-	\emph{	Summe von ZV:}
+	\emph{Summe von ZV:} $Z=\sum_{i=1}^{n}X_i$
 	\begin{eqnarray*}
-		\Z = \sum_{i=1}^{n}{\X_i} & \ra	& \varphi_{\Z} (\omega) = \prod_{i=1}^{n} \varphi_{\X_i} (\omega)
+		\Z = \sum_{i=1}^{n}{\X_i} & \Ra	& \varphi_{\Z} (\omega) = \prod_{i=1}^{n} \varphi_{\X_i} (\omega)
 	\end{eqnarray*}
 \end{sectionbox}	
 
@@ -808,7 +809,7 @@
 \begin{sectionbox}
 	\subsection{Stationarität}
 	Eine Zufallsfolge ist \emph{stationär}, wenn um ein beliebiges $k$ $(k \in \N)$ zueinander verschobene Zufallsvektoren die selbe Verteilung besitzen.\\
-	Im \emph{weiteren Sinne stationär (W.S.S.)}, wenn:\\
+	Im \emph{weiteren Sinne stationär (W.S.S.)}, wenn:
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
 		$\mu_{\X}(i) = \mu_{\X}(i + k)$ \\
 		$r_{\X}(i_1,i_2) = r_{\X}(i_1 + k,i_2 + k) = r_{\X}(i_1 - i_2)$\\
@@ -878,12 +879,14 @@
 	$\vec{p}_{n} \triangleq \begin{bmatrix} p_{\X_{n}}(x_{1}) \\ p_{\X_{n}}(x_{2}) \\ \vdots \\ p_{\X_{n}}(x_{N}) \end{bmatrix} \quad \in [0,1]^{N}\text{ mit }[\vec{p}_{n}]_{i} = p_{\X_{n}}(x_{i})$ \\
 	\emph{Übergangsmatrix:}
 	 $\Pi = \begin{bmatrix} p_{11} & \cdots & p_{1N} \\ \vdots & \ddots &   \\ p_{N1} & & p_{NN} \end{bmatrix} \quad \in [0,1]^{N \times N}$\\
-	 \emph{Übergangswahrscheinlichkeit:} $p_{i,j} = p_{\X_{n+1}|\X_n}(x_i,x_j)$ \\
-	 \centerline{Spaltensumme muss immer 1 ergeben!}\\ \\
-	 $\vec{p}_{n+1}  = \Pi \vec{p}_{n} \quad n \in \N$ \\
-	 $\vec{p}_{n+m}  = \Pi^{m} \vec{p}_{n} \quad n, m \in \N$ \\ \\
-	 Eine Verteilung heißt \emph{stationär}, wenn gilt:\\
-	 $\vec{p}_{\infty}  = \Pi \vec{p}_{\infty} $
+	 \emph{Übergangswahrscheinlichkeit:} $p_{ij} = p_{\X_{n+1}|\X_n}(x_i|x_j)$ \\
+	 \centerline{Spaltensumme muss immer 1 ergeben!}\\
+	\begin{tablebox}{l}
+		 $\vec{p}_{n+1}  = \Pi \vec{p}_{n} \quad n \in \N$ \\
+		 $\vec{p}_{n+m}  = \Pi^{m} \vec{p}_{n} \quad n, m \in \N$ 
+	\end{tablebox}
+	 Eine Verteilung heißt \emph{stationär}, wenn gilt:
+	\[\vec{p}_{\infty}  = \Pi \vec{p}_{\infty} \]
 \end{sectionbox}
 
 % SECTION ====================================================================================
@@ -903,7 +906,7 @@
 	
 	\begin{emphbox}
 		\raggedright
-		\textbf{Erwartungswertfunktion:} \\ $\mu_X (t) = \E{\X_t}$ \\[0.5em]
+		\textbf{Erwartungswertfunktion:} \\ $\mu_X (t) = \E[\X_t]$ \\[0.5em]
 		\textbf{Autokorrelationsfunktion:} \\ $r_{\X}(s,t) = \E[\X_s \X_t]$\\[0.5em]
 		\textbf{Autokovarianzfunktion:} \\ $c_{\X}(s,t) = \Cov(\X_s,\X_t) = r_{\X}(s,t) - \mu_{\X}(s)\mu_{\X}(t)$
 	\end{emphbox}	
@@ -911,11 +914,11 @@
 \end{sectionbox}
 \begin{sectionbox}
 	\subsection{Stationarität}
-	Ein Zufallsprozess ist \emph{stationär}, wenn um ein beliebiges $s$ $(s \in \R)$ zueinander verschobene Zufallsvektoren die selbe Verteilung besitzen.\\
+	Ein Zufallsprozess ist \emph{stationär}, wenn um ein beliebiges $s$ $(s \in \R)$ zueinander verschobene Zufallsvektoren die selbe Verteilung besitzen.
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
 		$F_{\mathsf{X}_{t_{1}},\dots,\mathsf{X}_{t_{n}}} (x_{1}, \dots x_{n}) = F_{\mathsf{X}_{t_{1}+s},\dots,\mathsf{X}_{t_{n}+s}} (x_{1}, \dots x_{n})$
 	\end{tablebox}
-	Im \emph{weiteren Sinne stationär (W.S.S.)}, wenn:\\
+	Im \emph{weiteren Sinne stationär (W.S.S.)}, wenn:
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
 		$\mu_{\X}(t) = \mu_{\X}(t + s)$ & $\land$ & $r_{\X}(t_1,t_2) = r_{\X}(t_1 + s,t_2 + s)$\\
 	\end{tablebox}
@@ -923,7 +926,7 @@
 	$r_{\X}(s,t) = \E[\X_s \X_t] = \E[\X_{t+\tau} \X_t] = r_{\X}(s -t) = r_{\X}(\tau)$
 	
 	
-	Im \emph{weiteren Sinne zyklisch stationär}, wenn:\\
+	Im \emph{weiteren Sinne zyklisch stationär}, wenn:
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
 		$\mu_{\X}(t) = \mu_{\X}(t + T)$ & $\land$ & $r_{\X}(t_1,t_2) = r_{\X}(t_1 + T,t_2 + T)$\\
 	\end{tablebox}
@@ -990,7 +993,7 @@
 \begin{sectionbox}
 	\subsection{Poisson-Prozess ($N_t: \in \mathbb R_+$)}
 	Beim Poisson-Prozess wird der \emph{Zeitpunkt} der Sprünge durch ZV modelliert, nicht die Amplitude. \\
-	$ N_t  = \sum \limits_{i=1}^{\infty}u(t-T_i) , \quad T = \sum \limits_{j=1}^i \X_j $\\
+	$ N_t  = \sum \limits_{i=1}^{\infty}u(t-T_i) , \quad T_i = \sum \limits_{j=1}^i \X_j $\\
 	$\X_j$ ist exponentiell verteilt, $T_i$ ist Gamma-verteilt
 	\begin{tablebox}{@{\extracolsep\fill}l@{}}
 		$f_{T_i}(t) = \frac{\lambda^i}{(i-1)!}t^{i-1}e^{-\lambda t}, \quad t \ge 0$\\
