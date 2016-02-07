@@ -839,7 +839,7 @@
 	Eine Zufallsfolge ist \emph{stationär}, wenn um ein beliebiges $k$ $(k \in \N)$ zueinander verschobene Zufallsvektoren die selbe Verteilung besitzen.\\
 	Im \emph{weiteren Sinne stationär (W.S.S.)}, wenn:
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
-		$\mu_{\X}(i) = \mu_{\X}(i + k)$ \\
+		$\mu_{\X}(i) = \mu_{\X}(i + k) \qquad$ z.B. $\mu_{\X}(i)=$ const. \\
 		$r_{\X}(i_1,i_2) = r_{\X}(i_1 + k,i_2 + k) = r_{\X}(i_1 - i_2)$\\
 	\end{tablebox}
 	stationär $\Ra$ WSS (aber nicht anders herum!)
@@ -890,7 +890,7 @@
 	\qquad Verbund-WMF: \\
 	$p_{\X_1,...,\X_n}(x_1,...,x_n)=p_{\X_1}(x_1)\prod\limits_{i=2}^{n}p_{\X_i|\X_{i-1}}(x_i|x_{i-1})$ \\ 
 	
-	\emph{Zustandsübergangsdicht:} \\
+	\emph{Zustandsübergangsdichte:} \\
 	\centerline{$ f_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$}\\
 	
 	\qquad Verbund-WDF: \\
@@ -915,6 +915,7 @@
 	$\vec{p}_{n} \triangleq \begin{bmatrix} p_{\X_{n}}(x_{1}) \\ p_{\X_{n}}(x_{2}) \\ \vdots \\ p_{\X_{n}}(x_{N}) \end{bmatrix} \quad \in [0,1]^{N}\text{ mit }[\vec{p}_{n}]_{i} = p_{\X_{n}}(x_{i})$ \\
 	\emph{Übergangsmatrix:}
 	 $\Pi = \begin{bmatrix} p_{11} & \cdots & p_{1N} \\ \vdots & \ddots &   \\ p_{N1} & & p_{NN} \end{bmatrix} \quad \in [0,1]^{N \times N}$\\
+	\emph{Übergangsdiagramm:} Wie Zustandsfolgediagramm (state diagram).
 
 	 \emph{Übergangswahrscheinlichkeit:} $p_{ij} = p_{\X_{n+1}|\X_n}(\xi_i,\xi_j)$ \\
 	 \centerline{Spaltensumme muss immer 1 ergeben!}\\
@@ -944,7 +945,7 @@
 	
 	\begin{emphbox}
 		\raggedright
-		\textbf{Erwartungswertfunktion:} \\ $\mu_X (t) = \E[\X_t]$ \\[0.5em]
+		\textbf{Erwartungswertfunktion:} \\ $\mu_{\X} (t) = \E[\X_t]$ \\[0.5em]
 		\textbf{Autokorrelationsfunktion:} \\ $r_{\X}(s,t) = \E[\X_s \X_t]$\\[0.5em]
 		\textbf{Autokovarianzfunktion:} \\ $c_{\X}(s,t) = \Cov(\X_s,\X_t) = r_{\X}(s,t) - \mu_{\X}(s)\mu_{\X}(t)$
 	\end{emphbox}	
