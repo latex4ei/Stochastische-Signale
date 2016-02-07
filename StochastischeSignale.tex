@@ -165,7 +165,8 @@
 		\item 	$\P(A^c) = 1 - \P(A)$
 		\item 	$\P(\emptyset) = 0$
 		\item 	$\P(A \backslash B) = \P(A \cap B^c) = \P(A) - \P(A \cap B)$
-		\item 	$\P(A \cup B) = \P(A) + \P (B) - \P(A \cap B)$
+		\item 	$\P(A \cup B) = \P(A) + \P(B) - \P(A \cap B)$
+		\item	$\P(A \cap B) = \P(A) + \P(B) - \P(A \cup B)$
 		\item 	$A \subset B \Rightarrow \P(A) \leq \P(B)$
 		\item 	$\P(\bigcup_{i=1}^k A_i) \leq \sum_{i=1}^k \P(A_i)$
 	\end{itemize}
@@ -185,7 +186,7 @@
 \begin{sectionbox}
 	\subsection{Bedingte Wahrscheinlichkeit}
 	Bedingte Wahrscheinlichkeit für $A$ falls $B$ bereits eingetreten ist:\\
-	$\P_B(A) = \P(A|B) = \frac{\P(A \cap B)}{\P(B)}$\\ %\qquad\quad $\P(B|A) = \P(A|B) \frac{\P(B)}{\P(A)}$\\
+	$\P_B(A) = \P(A|B) = \frac{\P(A \cap B)}{\P(B)} = \frac{\P(B|A) \cdot \P(A)}{\P(B)} $\\ %\qquad\quad $\P(B|A) = \P(A|B) \frac{\P(B)}{\P(A)}$\\
 	
 	\subsubsection{Totale Wahrscheinlichkeit und Satz von Bayes}
 	Es muss gelten: $\bigcup\limits_{i \in I} B_i = \Omega$ für $B_i \cap B_j = \emptyset$, $\forall i \neq j$ \\
@@ -302,7 +303,11 @@
 	\emph{Berechnung von $f_{\X}(x)$:}\\
 	$f_{\X}(x) = \lim\limits_{\epsilon\ra0}\frac{1}{\epsilon}\int\limits_{x}^{x+\epsilon}{f_{\X}(\xi)\diff\xi} = \lim\limits_{\epsilon\ra0}\frac{1}{\epsilon}\P\left(x \leq \X \leq x + \epsilon\right)$
 	\paragraph{Normiertheit}
-	$\sum p(x) + \int_{\R} f_{\X}(x) \diff x \stackrel{!}{=} 1$
+	
+	pdf: $\int_{-\infty}^\infty f_{\X}(x) \diff x \stackrel{!}{=} 1$\\ % $f_{\X}(x) \geq 0 \forall y$, 
+	Für Kombinierte: $\sum p(x) + \int_{\R} f_{\X}(x) \diff x \stackrel{!}{=} 1$\\
+	
+	$P(\{X \in [a;b]\}) = \int_a^b f_X(x) d x$ 
 \end{sectionbox}
 \vspace{-0.15cm}
 % --------------------------------------------------------
@@ -552,7 +557,7 @@
 % ============================================================================================
 \begin{sectionbox}
 	\subsection{Definition}
-	Gibt den mittleren Wert einer Zufallsvariablen an
+	Der Erwartungswert ist der Schwerpunkt der Wahrscheinlichkeitsmasse und gibt den mittleren Wert einer Zufallsvariablen an
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -564,16 +569,20 @@
 	
 	$E[\Y] = E[g(\X)] = \sum \limits_{x \in \Omega'} g(x) p_{\X} (x)$\\
 	mit $\X : \Omega \ra \Omega' \subset \mathbb R$ und $g: \mathbb R \ra \mathbb R$
+	
 \end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{stetige Zufallsvariablen}
-	\boxed{\E[\X] = \int \limits_\mathbb R x \cdot f_{\X} (x) \diff x} für $\X : \Omega \ra \mathbb R$
+	\boxed{\E[\X] = \int_\mathbb R x \cdot f_{\X} (x) \diff x} für $\X : \Omega \ra \mathbb R$
 	
 	Für Funktionen von Zufallsvariablen:
 	
-	$E[\Y] = E[g(\X)] = \int \limits_{\mathbb R} g(x) f_X (x) \diff x$\\
-	mit $\X : \Omega \ra \mathbb R $ und $g: \mathbb R \ra \mathbb R$
+	$E[\Y] = E[g(\X)] = \int \limits_{\mathbb R} g(x) f_{\X} (x) \diff x$\\
+	mit $\X : \Omega \ra \mathbb R $ und $g: \mathbb R \ra \mathbb R$\\
+	
+	Beispiele: $E[X^2] = \int_{\mathbb{R}} x^2 f_{\X}(x) dx \\
+	E[\X \Y] = \int_{\mathbb{R}} \int_{\mathbb{R}} x y f_{\X,\Y}(x,y) dx dy$ \\
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -661,6 +670,8 @@
 	
 	für die Summe von Zufallsvariablen:  \\
 	$\Var [\sum \limits_{i=1}^n \X_i] = \sum \limits_{i=1}^{n} \Var [\X_i] + \sum \limits_{i=1}^{n} \sum \limits_{j \not= i} \Cov [\X_i, 	\X_j]$ \\
+	\\
+	$\Var [ \X+ \N] = Var[\X] + Var[\N] + 2 \cdot \Cov [ \X \N ]$
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -678,7 +689,7 @@
 
 \begin{sectionbox}
 	\subsection{Orthogonalität}
-	
+		Zwei Zufallsvariablen sind orthogonal, wenn der Korrelationswert der beiden Zufallsvariablen Null ist.
 	\begin{emphbox}
 		$\E[\X\Y] = 0$
 	\end{emphbox}
@@ -1000,7 +1011,7 @@
 \paragraph{Eigenschaften}
 \begin{itemize}
 	\item Kein Zählprozess!
-	\item $ \P(\{\W_0  = 0 \})  = 1$
+	\item $\P(\{\W_0 = 0\}) = 1 \quad \Rightarrow \quad \P(\{\W_0 = 1\}) = 0$
 	\item hat unabhängige Inkremente $\ra r_{xy} (s,t) = 0$
 	\item $\W_t - \W_s \sim N(0,\sigma^2(t-s)), \forall 0 \le s \le t$
 	\item $\W_t(\omega)$ ist eine stetige Musterfunktion mit Wahrscheinlichkeit 1
@@ -1102,7 +1113,7 @@
 	\end{tablebox}
 	\parbox{\columnwidth}{ \includegraphics{./img/kreuzlds.pdf}}
 	
-	$S_{\Y,\X}(f) = (\prod \limits_{i=1}^{n} H_i(f)) S_{\X}(f)$ \quad
+	$S_{\Y,\X}(f) = (\prod \limits_{i=1}^{n} H_i(f)) S_{\X}(f)$ \\
 	$S_{\X,\Y}(f) = (\prod \limits_{i=1}^{n} H_i^*(f)) S_{\X}(f)$\\
 	$S_{\Y,\textsf{B}}(f) = (\prod \limits_{i=1}^{n} H_i(f))(\prod \limits_{j=1}^{m} G_j(f))^* S_{\X,\textsf{A}}(f)$
 	
