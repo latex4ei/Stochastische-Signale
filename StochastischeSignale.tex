@@ -16,7 +16,7 @@
 
 % set document information
 \title{Stochastische \\ Signale}
-\author{Emanuel Regnath, Martin Zellner, Alexander Preißner, Hendrik Böttcher, Samuel Harder}	
+\author{Emanuel Regnath, Martin Zellner, Alexander Preißner, Hendrik Böttcher, Lukas Kompatscher, Samuel Harder}	
 \myemail{samuel.harder@tum.de}	
 
 \DeclareMathOperator{\W}{\textit{W}}				% Zufallsvariable W
@@ -163,9 +163,10 @@
 	\subsubsection{Weitere Eigenschaften}
 	\begin{itemize}	
 		\item 	$\P(A^c) = 1 - \P(A)$
-		\item 	$\P(\emptyset) = 0$
+		\item 	$\P(\emptyset) = 0$ \qquad $\P(\Omega)=1$
 		\item 	$\P(A \backslash B) = \P(A \cap B^c) = \P(A) - \P(A \cap B)$
 		\item 	$\P(A \cup B) = \P(A) + \P (B) - \P(A \cap B)$
+		\item 	$\P(A \cap B) = \P(A) + \P (B) - \P(A \cup B)$
 		\item 	$A \subset B \Rightarrow \P(A) \leq \P(B)$
 		\item 	$\P(\bigcup_{i=1}^k A_i) \leq \sum_{i=1}^k \P(A_i)$
 	\end{itemize}
@@ -552,7 +553,7 @@
 % ============================================================================================
 \begin{sectionbox}
 	\subsection{Definition}
-	Gibt den mittleren Wert einer Zufallsvariablen an
+	Gibt den mittleren Wert einer Zufallsvariable an
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -665,6 +666,7 @@
 	\begin{emphbox}
 		$\E[\X\Y] = 0$
 	\end{emphbox}
+	mit dem Korrelationswert $\E[\X\Y]$
 	
 \end{sectionbox}
 
@@ -676,6 +678,8 @@
 	\text{unkorreliert} & \rho_{\mathsf{\X,\Y}}=0 \\ 
 	\text{positiv korreliert} & \rho_{\mathsf{\X,\Y}}\in (0,1]\end{cases}$
 \end{sectionbox}
+
+%TODO: Lineare Regression hier einfügen
 
 
 %\begin{sectionbox}
@@ -712,6 +716,7 @@
 	
 \end{sectionbox}
 
+% Im WS2015/16 nicht Klausurrelevant
 %\begin{sectionbox}
 %	\subsection{Momenterzeugende Funktion} % (fold)
 %	\label{sub:momenterzeugende_funktion}
@@ -746,7 +751,7 @@
 	\end{eqnarray*}
 	\emph{Summe von ZV:} $Z=\sum_{i=1}^{n}X_i$
 	\begin{eqnarray*}
-		\Z = \sum_{i=1}^{n}{\X_i} & \Ra	& \varphi_{\Z} (\omega) = \prod_{i=1}^{n} \varphi_{\X_i} (\omega)
+		\varphi_{\Z} (\omega) = \prod_{i=1}^{n} \varphi_{\X_i} (\omega)
 	\end{eqnarray*}
 \end{sectionbox}	
 
@@ -756,7 +761,7 @@
 	\emph{Definition}: Seien $\X_i, i \in {1,...,n}$, stochastisch unabhängige und identisch
 	verteilte reelle Zufallsvariablen und gelte $E[\X_i] = \mu < \infty$ und $Var[\X_i] = \sigma^2 < \infty$. 
 	Dann konvergiert die Verteilung der standardisierten Summe\\ 
-	\centerline{$\Z_n= \sum\limits_{i=1}^{n}\frac{(\X_-\mu)}{\sigma\sqrt{n}}$} \\
+	\centerline{$\Z_n= \sum\limits_{i=1}^{n}\frac{(\X-\mu)}{\sigma\sqrt{n}}$} \\
 	d.h $E[\Z_n] = 0$ und $Var[\Z_n] = 1$, für $n \ra \infty$ gegen die Standartnormalverteilung. \\
 	Es gilt also: \\
 	\centerline{$\lim_{n \ra \infty} \P({\Z_n \le z}) = \Phi (z)$}
@@ -1059,9 +1064,9 @@
 		$\textsf{V}_t$  \qquad Eingang\\
 		$h(s,t)$  Impulsantwort}	\\ \\
 	Falls Zufallsprozesse \emph{WSS}: \\
-	\emph{Erwartungswert:} $\mu_{\textsf{W}} = \mu_{\textsf{V}} \int\limits_{\infty}^{\infty} h(t) \diff t$\\
+	\emph{Erwartungswert:} $\mu_{\textsf{W}} = \mu_{\textsf{V}} \int\limits_{\infty}^{-\infty} h(t) \diff t$\\
 	\emph{Kreuzkorrelationsfkt:} $r_{\textsf{W},\textsf{V}}(\tau) = \E [\textsf{W}_s \textsf{V}_t] =  (h * r_{\textsf{V}})(\tau)$\\
-	\emph{Autokorrelationsfkt:} $r_{\textsf{W}} = \E [\textsf{W}_s \textsf{W}_t] = (\tilde h * h * r_{\textsf{V}})(\tau)$\\ 
+	\emph{Autokorrelationsfkt:} $r_{\textsf{W}}(\tau) = \E [\textsf{W}_s \textsf{W}_t] = (\tilde h * h * r_{\textsf{V}})(\tau)$\\ 
 	 mit $\tilde h (\tau) = h(-\tau)$
 \end{sectionbox}
 
