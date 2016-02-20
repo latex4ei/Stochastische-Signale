@@ -543,8 +543,8 @@
 %\end{sectionbox}
 
 
-\vfill 
-%\columnbreak
+%\vfill 
+\columnbreak
 % ----------------------------------------------------------------------------
 % | Erwartungswert und Varianz |
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -552,56 +552,72 @@
 \section{Erwartungswert}
 % ============================================================================================
 \begin{sectionbox}
-	\subsection{Definition}
-	Gibt den mittleren Wert einer Zufallsvariable an
-\end{sectionbox}
+	\subsection{Erwartungswert}
+	gibt den mittleren Wert einer Zufallsvariablen an
 
-\begin{sectionbox}
-	\subsection{diskrete (reelle) Zufallsvariablen}
-	\boxed{\E [\X] = \sum \limits_{x \in \Omega'} x \P(\{ \X = x \}) = \sum \limits_{x \in \Omega'} x p_x (x)} \\
-	für $\X: \Omega \ra \Omega' \subset \mathbb R$ 
-	
-	Für Funktionen von Zufallsvariablen:
-	
-	$\E[\Y] = E[g(\X)] = \sum \limits_{x \in \Omega'} g(x) p_{\X} (x)$\\
-	mit $\X : \Omega \ra \Omega' \subset \mathbb R$ und $g: \mathbb R \ra \mathbb R$
-\end{sectionbox}
-
-\begin{sectionbox}
-	\subsection{stetige Zufallsvariablen}
-	\boxed{\E[\X] = \int \limits_\mathbb R x \cdot f_{\X} (x) \diff x} für $\X : \Omega \ra \mathbb R$
-	
-	Für Funktionen von Zufallsvariablen:
-	
-	$\E[\Y] = E[g(\X)] = \int \limits_{\mathbb R} g(x) f_X (x) \diff x$\\
-	mit $\X : \Omega \ra \mathbb R $ und $g: \mathbb R \ra \mathbb R$
-\end{sectionbox}
-
-\begin{sectionbox}
-	\subsection{Eigenschaften des Erwartungswerts}
-	
-	\begin{tablebox}{@{\extracolsep\fill}ll@{}}
-		
+	\begin{emphbox}
+		$\E [\X] = \underset{\text{diskrete} \X:\Omega \ra \Omega'}{\sum\limits_{x \in \Omega'} x \cdot \P_{\X}(x)} \quad \stackrel{\wedge}{=}\quad \underset{\text{stetige} \X: \Omega \ra \R}{\int \limits_{\R} x \cdot f_{\X} (x) \diff x}$
+	\end{emphbox}
+	Eigenschaften:
+	\begin{tablebox}{ll}	
 		Linearität: &
 		$E[\alpha \X + \beta \Y] = \alpha E [\X] + \beta E[\Y]$ \\ 
-		
 		Monotonie: & 
 		$\X \le \Y \Ra E[\X] \le E[\Y]$ \\
-		
 	\end{tablebox}
-	
 	Beweis mit der Definition und der Linearität des Integrals bzw. der Summe. \\ 
-	
-	Falls $\X$ und $\Y$ stochastisch unabhängig:
-	$\E[\X\Y] = \E[\X] \E[\Y]$ \\
-	Achtung: Umkehrung nicht möglich. \\ 
-	Stoch. Unabhängig $\Ra$ Unkorrelliertheit \\
 	\\
-	
+	$\E[\X\Y] = \E[\X] \E[\Y]$, falls $\X$ und $\Y$ stochastisch unabhängig\\
+	Umkehrung nicht möglichich: Unkorrelliertheit $\not \Ra$ Stoch. Unabhängig! \\
+	\\
 	Spezialfall für $\X: \Omega \ra \mathbb R_+$: \\
-	$\E[\X] = \int \limits_0^\infty \P(\X > t) \diff t$ (stetig) \\
-	$\E[\X] = \sum \limits_{k=0}^{\infty} \P(\X >k)$ (diskret)
+	$\E[\X] = \int \limits_0^\infty \P(\X > t) \diff t$ (stetig) \qquad $\E[\X] = \sum \limits_{k=0}^{\infty} \P(\X >k)$ (diskret)
+
+	\subsubsection{Für Funktionen von Zufallsvariablen $g: \mathbb R \ra \mathbb R$}
+	$\E[g(\X)] = \sum \limits_{x \in \Omega'} g(x) \P_{\X} (x)\quad \stackrel{\wedge}{=}\quad \int \limits_{\R} g(x) f_X (x) \diff x$
 \end{sectionbox}
+
+% \begin{sectionbox}
+% 	\subsection{diskrete (reelle) Zufallsvariablen}
+% 	\boxed{\E [\X] = \sum \limits_{x \in \Omega'} x \P(\{ \X = x \}) = \sum \limits_{x \in \Omega'} x p_x (x)} \\
+% 	für $\X: \Omega \ra \Omega' \subset \mathbb R$ 
+	
+% 	Für Funktionen von Zufallsvariablen:
+	
+% 	$\E[\Y] = E[g(\X)] = \sum \limits_{x \in \Omega'} g(x) p_{\X} (x)$\\
+% 	mit $\X : \Omega \ra \Omega' \subset \mathbb R$ und $g: \mathbb R \ra \mathbb R$
+% \end{sectionbox}
+
+% \begin{sectionbox}
+% 	\subsection{stetige Zufallsvariablen}
+% 	\boxed{\E[\X] = \int \limits_\mathbb R x \cdot f_{\X} (x) \diff x} für $\X : \Omega \ra \mathbb R$
+	
+% 	Für Funktionen von Zufallsvariablen:
+	
+% 	$\E[\Y] = E[g(\X)] = \int \limits_{\mathbb R} g(x) f_X (x) \diff x$\\
+% 	mit $\X : \Omega \ra \mathbb R $ und $g: \mathbb R \ra \mathbb R$
+% \end{sectionbox}
+
+% \begin{sectionbox}
+% 	\subsection{Eigenschaften des Erwartungswerts}
+	
+% 	\begin{tablebox}{ll}	
+% 		Linearität: &
+% 		$E[\alpha \X + \beta \Y] = \alpha E [\X] + \beta E[\Y]$ \\ 
+% 		Monotonie: & 
+% 		$\X \le \Y \Ra E[\X] \le E[\Y]$ \\
+% 	\end{tablebox}
+% 	Beweis mit der Definition und der Linearität des Integrals bzw. der Summe. \\ 
+	
+% 	Falls $\X$ und $\Y$ stochastisch unabhängig:
+% 	$\E[\X\Y] = \E[\X] \E[\Y]$ \\
+% 	Achtung: Umkehrung nicht möglich. \\ 
+% 	Stoch. Unabhängig $\Ra$ Unkorrelliertheit \\
+% 	\\
+	
+% 	Spezialfall für $\X: \Omega \ra \mathbb R_+$: \\
+% 	$\E[\X] = \int \limits_0^\infty \P(\X > t) \diff t$ (stetig) \qquad $\E[\X] = \sum \limits_{k=0}^{\infty} \P(\X >k)$ (diskret)
+% \end{sectionbox}
 
 \vfill
 %\columnbreak
@@ -610,42 +626,31 @@
 \section{Varianz und Kovarianz}
 % ============================================================================================
 \begin{sectionbox}
-	\subsection{Varianz}
-	ist ein Maß für die Stärke der Abweichung vom Erwartungswert\\
+\subsection{Varianz}
+	ist ein Maß für die Stärke der Abweichung vom Erwartungswert
 	\begin{emphbox}
-		$\Var [X] = \E \big[(\X - \E[\X])^2\big] = \E[\X^2] - \E[\X]^2$
+		$\Var [X] = \E \big[(\X - \E[\X])^2\big] = \E[\X^2] - \E[\X]^2$ 
 	\end{emphbox}
+	$\Var [ \alpha \X + \beta] = \alpha^2 \Var [\X]$ \hfill $\Var [\X] = \Cov [\X,\X]$\\[0.5em]
+	$\Var \left[\sum \limits_{i=1}^n \X_i \right] = \sum \limits_{i=1}^{n} \Var [\X_i] + \sum\limits_{j \not= i} \Cov[\X_i, \X_j]$
 	\subsubsection{Standard Abweichung}
 	$\sigma = \sqrt{\Var[\X]}$	
 \end{sectionbox}
 
 \begin{sectionbox}
-	\subsection{Kovarianz}
-	
+\subsection{Kovarianz}
+	Maß für den linearen Zusammenhang zweier Variablen
 	\begin{emphbox}
-		{$\Cov [\X,\Y] = \E[(\X- \E[\X])(\Y - \E[\Y])] = \Cov [\Y, \X]$}
+		$\Cov [\X,\Y] = \E[(\X- \E[\X])(\Y - \E[\Y])] = \Cov [\Y, \X]$\\[0.5em]
+		$\Cov [\X,\Y] = \E [\X\Y] - \E[\X] \E[\Y] = \Cov[\Y, \X]$
 	\end{emphbox}
-	
-	andere Darstellungen:
-	
-	$\Cov [\X,\Y] = \E [\X\Y] - \E[\X] \E[\Y] = \Cov[\Y, \X]$
+	$\Cov [\alpha \X + \beta, \gamma \Y + \delta] = \alpha \gamma \Cov [\X, \Y]$ \\
+	$\Cov [ \X + \textit U, \Y + \textit V] = \Cov [\X, \Y] + \Cov [\X, \textit V] + \Cov [\textit U, \Y] + \Cov [\textit U, \textit V]$ \\
+
+	\subsubsection{Korrelation = standardisierte Kovarianz}
+	$\rho(\X,\Y) = \frac{\Cov[\X,\Y]}{\sqrt{\Var[\X] \cdot \Var[\Y]}} = \frac{C_{x,y}}{σ_x \cdot σ_y}$ \qquad $\rho(\X,\Y) ∈ [-1;1]$
 \end{sectionbox}
 
-\begin{sectionbox}
-	\subsection{Spezialfälle}
-	Kovarianz mit sich selbst:  \\
-	$\Var [\X] = \Cov [\X,\X]$ \\
-	
-	aus den Definitionsgleichungen: \\
-	$\Cov [\alpha \X + \beta, \gamma \Y + \delta] = \alpha \gamma \Cov [\X, \Y]$ \\
-	$\Cov [ \X + \U, \Y + \V] = \Cov [\X, \Y] + \Cov [\X, \V] + \Cov [\U, \Y] + \Cov [\U, \V]$ \\
-	
-	wegen der Linearität des Erwartungswerts: \\
-	$\Var [ \alpha \X + \beta] = \alpha^2 \Var [\X]$
-	
-	für die Summe von Zufallsvariablen:  \\
-	$\Var \left[\sum \limits_{i=1}^n \X_i \right] = \sum \limits_{i=1}^{n} \Var [\X_i] + \sum\limits_{j \not= i} \Cov[\X_i, \X_j]$ \\
-\end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{Unkorreliertheit}
@@ -692,7 +697,7 @@
 
 
 
-%\vfill %\textcolor{red}{Bild von der Standardabweichung}
+\vfill %\textcolor{red}{Bild von der Standardabweichung}
 
 % SECTION ====================================================================================
 \section{Erzeugende und charakter. Funktionen}
