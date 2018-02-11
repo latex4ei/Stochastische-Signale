@@ -16,7 +16,7 @@
 
 % set document information
 \title{Stochastische \\ Signale}
-\author{Emanuel Regnath, Martin Zellner, Alexander Preißner, Hendrik Böttcher, Lukas Kompatscher, Samuel Harder}	
+\author{Alwin Ebermann, Emanuel Regnath, Martin Zellner, Alexander Preißner, Hendrik Böttcher, Lukas Kompatscher, Samuel Harder}	
 \myemail{samuel.harder@tum.de}	
 
 \DeclareMathOperator{\W}{\textit{W}}				% Zufallsvariable W
@@ -336,7 +336,7 @@
 	(für diskrete ZV) \\
 	$p_{\X_1}(x_1) = \sum\limits_{x_2,\shdots,x_n}{p_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n)}$
 	
-	\paragraph{Randverteilung der Wahrscheinlichkeitsdichte (WDF)} ( für stetige ZV) \\
+	\paragraph{Randverteilung der Wahrscheinlichkeitsdichte (WDF)} (für stetige ZV) \\
 	$f_{\X_1}(x_1) = \int\limits_{-\infty}^{\infty}{\shdots\int\limits_{-\infty}^{\infty}{f_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n)\diff x_n\shdots}\diff x_2}$
 \end{sectionbox}
 
@@ -355,9 +355,9 @@
 
 \begin{sectionbox}
 	\subsection{Transformation von Zufallsvariablen}
-	Berechnung von $f_{\Y}(y)$ aus $f_{\X}(x)$
-	
+	Berechnung von $f_{\Y}(y)$ aus $f_{\X}(x)$\\
 	$g(x)$ streng monoton \& differenzierbar:\\
+	$g^{-1}(y)$ - Umkehrfunktion\\
 	$f_{\Y}(y) = f_{\X}\left(g^{-1}(y)\right)\left[\abs{\frac{\diff g(x)}{\diff x}}_{x = g^{-1}(y)}\right]^{-1}$\\
 	$g(x)$ nur differenzierbar:\\
 	$f_{\Y}(y) = \sum\limits_{i = 1}^{N}{f_{\X}(x_i)\left[\abs{\frac{\diff g(x)}{\diff x}}_{x = x_i}\right]^{-1}}$ mit $i \in \{1,\dots,N\}$ \\
@@ -445,8 +445,8 @@
 \begin{sectionbox}
 	\subsection{Binomialverteilung $\mathcal B(n,p)$ ($p \in [0,1], n \in \N$)}
 	Folge von $n$ Bernoulli-Experimenten\\
-	$p$: Wahrscheinlichkeit für Erfolg \qquad $k$: Anzahl der Erfolge \\
-	\\ 
+	$p$: Wahrscheinlichkeit für Erfolg \\
+	$k$: Anzahl der Erfolge \\
 	\textbf{Wahrscheinlichkeitsmasse}
 	\\ 
 	$p_{\X}(k) = B_{n,p}(k) = \begin{cases}
@@ -456,6 +456,8 @@
 	mit $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
 	\\ 
 	\everymath{\displaystyle}
+	\parbox{3.3cm}{\emph{WMF/PMF:} \\ \includegraphics[width = 3.3cm]{./img/Binomial_pmf.pdf}}
+	\parbox{3.3cm}{\emph{KVF/CDF:} \\ \includegraphics[width = 3.3cm]{./img/Binomial_cdf.pdf}}\\
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
 		$\underset{\text{Erwartungswert}}{\E[\X] =n p}\quad $ & $\underset{\text{Varianz}}{\Var[\X] =np (1-p)}$ & $\underset{\text{Wahrscheinlichkeitserz. Funktion}}{G_X (z) = (pz + 1 -p)^n}$\\
 	\end{tablebox}	
@@ -475,7 +477,7 @@
 	
 	\everymath{\displaystyle}
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
-		$\underset{\text{Erwartungswert}}{\E[\X] =\lambda}\quad$ & $\underset{\text{Varianz}}{\Var[\X] =\lambda}$ & $\underset{\text{Wahrscheinlichkeitserz. Funktion}}{G_X (\cx s) = e^{\lambda(\cx s-1)}}$\\ 
+		$\underset{\text{Erwartungswert}}{\E[\X] =\lambda}\quad$ & $\underset{\text{Varianz}}{\Var[\X] =\lambda}$ & $\underset{\text{Wahrscheinlichkeitserz. Funktion}}{G_X (z) = e^{\lambda(z-1)}}$\\ 
 	\end{tablebox} \everymath{\textstyle}	
 	\emph{Charakteristische Funktion}
 	\qquad$\varphi_{\X}(\cx s)=\exp\big(\lambda(e^{\cx s} -1)\big)$\\
@@ -485,7 +487,7 @@
 % ====================================================================================		
 \begin{sectionbox}
 	\subsection{Geometrische Verteilung ($p \in [0,1]$)}
-	Erster Erfolg eines Bernoulli-Experiments beim $k$-ten Versuch, Gedächtnislos\\[0.5em]
+	Erster Erfolg eines Bernoulli-Experiments beim $k$-ten Versuch, \emph{Gedächtnislos}\\[0.5em]
 	\parbox{3.3cm}{\emph{WMF/PMF:} \\ $p_{\X}[k] = (1 - p)^{k - 1}p$, $k \in \N$ \\ \includegraphics[width = 3.3cm]{./img/geometric_pmf.pdf}}
 	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}[k] = 1-(1 - p)^k$, $k \in \N$ \\ \includegraphics[width = 3.3cm]{./img/geometric_cdf.pdf}}\\
 	
@@ -502,7 +504,8 @@
 % ====================================================================================
 \begin{sectionbox}
 	\subsection{Exponentialverteilung ($\lambda > 0$)}
-	Wie geometrische Verteilung für stetige Zufallsvariablen ("'Lebensdauer"'), Gedächtnislos\\[0.5em]
+	Wie geometrische Verteilung für stetige Zufallsvariablen ("'Lebensdauer"'), \emph{Gedächtnislos}\\
+	= Wartezeit bis zum ersten Auftreten eines Ereignisses\\[0.5em]
 	\parbox{3.3cm}{\emph{WDF/PDF:}\\ $f_{\X}(x) = \lambda e^{-\lambda x}$ \qquad$x \geq 0$\\ \includegraphics[width = 3.3cm]{./img/exponential_pdf.pdf}}
 	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}(x) = 1-e^{-\lambda x}$ \qquad$x \geq 0$ \\ \includegraphics[width = 3.3cm]{./img/exponential_cdf.pdf}}\\
 	\everymath{\displaystyle}
@@ -568,7 +571,9 @@
 	Beweis mit der Definition und der Linearität des Integrals bzw. der Summe. \\ 
 	\\
 	$\E[\X\Y] = \E[\X] \E[\Y]$, falls $\X$ und $\Y$ stochastisch unabhängig\\
-	Umkehrung nicht möglichich: Unkorrelliertheit $\not \Ra$ Stoch. Unabhängig! \\
+	Umkehrung nicht möglich: Unkorrelliertheit $\not \Ra$ Stoch. Unabhängig! \\
+	\\
+	$\E[\X\Y]= \int \limits_{\R}\int \limits_{\R}  xy \cdot f_{X,Y} (x,y) \diff x \diff y$\\
 	\\
 	Spezialfall für $\X: \Omega \ra \mathbb R_+$: \\
 	$\E[\X] = \int \limits_0^\infty \P(\X > t) \diff t$ (stetig) \qquad $\E[\X] = \sum \limits_{k=0}^{\infty} \P(\X >k)$ (diskret)
@@ -646,9 +651,6 @@
 	\end{emphbox}
 	$\Cov [\alpha \X + \beta, \gamma \Y + \delta] = \alpha \gamma \Cov [\X, \Y]$ \\
 	$\Cov [ \X + \textit U, \Y + \textit V] = \Cov [\X, \Y] + \Cov [\X, \textit V] + \Cov [\textit U, \Y] + \Cov [\textit U, \textit V]$ \\
-
-	\subsubsection{Korrelation = standardisierte Kovarianz}
-	$\rho(\X,\Y) = \frac{\Cov[\X,\Y]}{\sqrt{\Var[\X] \cdot \Var[\Y]}} = \frac{C_{x,y}}{σ_x \cdot σ_y}$ \qquad $\rho(\X,\Y) ∈ [-1;1]$
 \end{sectionbox}
 
 
@@ -822,7 +824,8 @@
 	Im \emph{weiteren Sinne stationär (W.S.S.)}, wenn:
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
 		$\mu_{\X}(i) = \mu_{\X}(i + k)$ \\
-		$r_{\X}(i_1,i_2) = r_{\X}(i_1 + k,i_2 + k) = r_{\X}(i_1 - i_2)$\\
+		$r_{\X}(i_1,i_2) = r_{\X}(i_1 + k,i_2 + k) = r_{\X}(i_1 - i_2)$ \\
+			\quad (verschiebungsinvariant)\\
 	\end{tablebox}
 	stationär $\Ra$ WSS (aber nicht anders herum!)
 \end{sectionbox}
@@ -938,10 +941,11 @@
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
 		$F_{\mathsf{X}_{t_{1}},\dots,\mathsf{X}_{t_{n}}} (x_{1}, \dots x_{n}) = F_{\mathsf{X}_{t_{1}+s},\dots,\mathsf{X}_{t_{n}+s}} (x_{1}, \dots x_{n})$
 	\end{tablebox}
-	Im \emph{weiteren Sinne stationär (W.S.S.)}, wenn:
+	Im \emph{weiteren Sinne stationär (WSS)}, wenn:
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
-		$\mu_{\X}(t) = \mu_{\X}(t + s)$ & $\land$ & $r_{\X}(t_1,t_2) = r_{\X}(t_1 + s,t_2 + s)$\\
-	\end{tablebox}
+		$\mu_{\X}(i) = \mu_{\X}(i + k) = \mu_{\X}$ \\
+		$r_{\X}(i_1,i_2) = r_{\X}(i_1 + k,i_2 + k) = r_{\X}(i_1 - i_2)$\\
+\end{tablebox}
 	\textbf{Daraus folgt} mit $s = t + \tau$\\
 	$r_{\X}(s,t) = \E[\X_s \X_t] = \E[\X_{t+\tau} \X_t] = r_{\X}(s -t) = r_{\X}(\tau)$
 	
@@ -1012,23 +1016,22 @@
 %\vfill
 %\columnbreak
 \begin{sectionbox}
-	\subsection{Poisson-Prozess ($N_t: \in \mathbb R_+$)}
-	Beim Poisson-Prozess wird der \emph{Zeitpunkt} der Sprünge durch ZV modelliert, nicht die Amplitude. \\
+	\subsection{Poisson-Prozess ($N_t: t\in \mathbb R_+$)}
+	Der Poisson-Prozess ist ein Zählprozess, bei dem  der \emph{Zeitpunkt} der Sprünge durch ZV modelliert wird, nicht die Amplitude. \\
 	$ N_t  = \sum \limits_{i=1}^{\infty}u(t-T_i) , \quad T_i = \sum \limits_{j=1}^i \X_j $\\
 	$\X_j$ ist exponentiell verteilt, $T_i$ ist Gamma-verteilt
 	\begin{tablebox}{@{\extracolsep\fill}l@{}}
 		$f_{T_i}(t) = \frac{\lambda^i}{(i-1)!}t^{i-1}e^{-\lambda t}, \quad t \ge 0$\\
-		$\P\left(\{N_t = n\}\right) = \frac{(\lambda t)^n}{n!}e^{-(\lambda t)}, \quad \forall n \in \N, t \in \R_+$\\
+		$\P\left(\{N_t = n\}\right) = \frac{(\lambda t)^n}{n!}e^{-(\lambda t)}, \quad \forall n \in \N_{0}, t \in \R_+$\\
 	\end{tablebox}
 
 \paragraph{Eigenschaften}
 \begin{itemize}
-	\item ist ein Zählprozess
-	\item ist Gedächtnislos
+	\item ist ein Zählprozess ($\N_{t} \in \N_{0}$, monoton steigend und stetig)
 	\item hat unabhängige Inkremente
 	\item $N_t - N_s$ ist Poisson-verteilt mit Parameter $(\lambda(t-s)$ für alle $0 \le s \le t$
 	\item hat eine Rate $\lambda$
-	\item Zeitintervalle zwischen den Inkremetierungen sind unabhängig und identisch exponentialverteilt mit Parameter $\lambda$
+	\item Zeitintervalle zwischen den Inkremetierungen sind unabhängig und identisch exponentialverteilt mit Parameter $\lambda$ $\stackrel{\wedge}{=}$ \emph{gedächtnislos}
 	
 \end{itemize}
 
@@ -1062,6 +1065,8 @@
 	\subsection{Allgemeines}
 	Im \emph{Zeitbereich}:\\
 	$\text{w}(t)  =  (h \ast v)(t) = \int\limits_{- \infty}^{\infty} h(t - \tau) v(\tau) \, \diff\tau$ \\
+	\emph{Erwartungswert:} $\mu_{\textsf{W}} = (\mu_{\textsf{V}} \ast h)(t)$ (nicht WSS)\\
+	\\
 	Im \emph{Frequenzbereich:}\\
 	$W(f) = H(f)V(f)$ \\ \\
 	\parbox{3.8cm}{\boxed{\includegraphics{./img/lds.pdf}}}
@@ -1069,7 +1074,7 @@
 		$\textsf{V}_t$  \qquad Eingang\\
 		$h(s,t)$  Impulsantwort}	\\ \\
 	Falls Zufallsprozesse \emph{WSS}: \\
-	\emph{Erwartungswert:} $\mu_{\textsf{W}} = \mu_{\textsf{V}} \int\limits_{\infty}^{-\infty} h(t) \diff t$\\
+	\emph{Erwartungswert:} $\mu_{\textsf{W}} = \mu_{\textsf{V}} \int\limits_{-\infty}^{\infty} h(t) \diff t$\\
 	\emph{Kreuzkorrelationsfkt:} $r_{\textsf{W},\textsf{V}}(\tau) = \E [\textsf{W}_s \textsf{V}_t] =  (h * r_{\textsf{V}})(\tau)$\\
 	\emph{Autokorrelationsfkt:} $r_{\textsf{W}}(\tau) = \E [\textsf{W}_s \textsf{W}_t] = (\tilde h * h * r_{\textsf{V}})(\tau)$\\ 
 	 mit $\tilde h (\tau) = h(-\tau)$
@@ -1096,7 +1101,7 @@
 	\end{tablebox}
 	\parbox{\columnwidth}{ \includegraphics{./img/kreuzlds.pdf}}
 	
-	$S_{\Y,\X}(f) = (\prod \limits_{i=1}^{n} H_i(f)) S_{\X}(f)$ \quad
+	$S_{\Y,\X}(f) = (\prod \limits_{i=1}^{n} H_i(f)) S_{\X}(f)$ \\
 	$S_{\X,\Y}(f) = (\prod \limits_{i=1}^{n} H_i^*(f)) S_{\X}(f)$\\
 	$S_{\Y,\textsf{B}}(f) = (\prod \limits_{i=1}^{n} H_i(f))(\prod \limits_{j=1}^{m} G_j(f))^* S_{\X,\textsf{A}}(f)$
 	
