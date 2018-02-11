@@ -1,11 +1,11 @@
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-% Formelsammlung von LaTeX4EI									
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Formelsammlung von LaTeX4EI
 %
 % @encode: 	UTF-8, tabwidth = 4, newline = LF
 % @author:	Lukas Kompatscher, Samuel Harder (orginal von Emanuel Regnath, Martin Zellner, Alexander Preißner und Hendrik Böttcher)
-% @date:		
+% @date:
 %
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 %---------------------------------------%
 %		Stochastische Signale			%
@@ -16,8 +16,8 @@
 
 % set document information
 \title{Stochastische \\ Signale}
-\author{Alwin Ebermann, Emanuel Regnath, Martin Zellner, Alexander Preißner, Hendrik Böttcher, Lukas Kompatscher, Samuel Harder}	
-\myemail{samuel.harder@tum.de}	
+\author{Alwin Ebermann, Emanuel Regnath, Martin Zellner, Alexander Preißner, Hendrik Böttcher, Lukas Kompatscher, Samuel Harder}
+\myemail{samuel.harder@tum.de}
 
 \DeclareMathOperator{\W}{\textit{W}}				% Zufallsvariable W
 \DeclareMathOperator{\U}{\textit{U}}				% Zufallsvariable U
@@ -28,9 +28,12 @@
 % Dokumentbeginn
 % ======================================================================
 \begin{document}
-	
+
+	\IfFileExists{git.id}{\input{git.id}}{}
+	\ifdefined\GitRevision\mydate{\GitNiceDate\ (git \GitRevision)}\fi
+
 	\maketitle
-	
+
 	% SECTION ====================================================================================
 	\section{Mengenalgebra}
 	% ============================================================================================
@@ -52,14 +55,14 @@
 			De Morgan		& $\overline{A \capdot B} = \overline{A} \cupplus \overline{B}$ & $\overline{A \cupplus B} = \overline{A} \capdot \overline{B}$\\
 		\end{tablebox}
 	\end{sectionbox}
-	
+
 
 \begin{sectionbox}
 	\subsection{Kombinatorik}
 	Mögliche Variationen/Kombinationen um $k$ Elemente von maximal $n$ Elementen zu wählen bzw. $k$ Elemente auf $n$ Felder zu verteilen:
 	\begin{tablebox}{l|cc}
 		& \large Mit Reihenfolge & \large Reihenfolge egal\\ \cmrule
-		%& ungleiche Elemente & gleiche Elemente \\ 
+		%& ungleiche Elemente & gleiche Elemente \\
 		\large Mit Wiederholung & \large $n^k$ & \Large $\binom{n+k-1}{k}$\\[0.2em]
 		\large Ohne Wiederholung & \Large $\frac{n!}{(n-k)!}$ & \Large $\binom nk$\\
 	\end{tablebox}
@@ -71,7 +74,7 @@
 %$\P(A \cup B) = \P(A\setminus B)+\P(B) = \P(A) + \P(B) - \P(A \cap B)$\\
 \begin{sectionbox}
 	\subsection{Grundbegriffe}
-	
+
 	\begin{tablebox}{ll}
 		Tupel & $(i,j) \neq (j,i)$ für $i \neq j$ \\
 		Ungeordnetes Paar & $\{i,j\} = \{j,i\}$ \\
@@ -81,8 +84,8 @@
 
 \begin{sectionbox}
 	\subsection{Integralarten}
-	
-	\renewcommand{\arraystretch}{1.6} 
+
+	\renewcommand{\arraystretch}{1.6}
 	\begin{tablebox}{ccc}
 		$F(x)$ & $f(x)$ & $f'(x)$ \\ \cmrule
 		$\frac{1}{q+1}x^{q+1}$ & $x^q$ & $qx^{q-1}$ \\
@@ -90,7 +93,7 @@
 		$x\ln(ax) -x$ & $\ln(ax)$ & $\textstyle \frac{1}{x}$\\
 		%e^x & e^x & e^x \\
 		$\frac{1}{a^2} e^{ax}(ax- 1)$ & $x \cdot e^{ax}$ & $e^{ax}(ax+1)$ \\
-		$\frac{a^x}{\ln(a)}$ & $a^x$ & $a^x \ln(a)$ \\ 
+		$\frac{a^x}{\ln(a)}$ & $a^x$ & $a^x \ln(a)$ \\
 	\end{tablebox}
 	\vspace{-8pt}
 	\begin{tablebox}{ll}
@@ -106,7 +109,7 @@
 	$(a+b+c)^2 = a^2 + b^2 + c^2 + 2ab + 2ac + 2bc$
 \end{sectionbox}
 
-%\vfill 
+%\vfill
 %\columnbreak
 % ----------------------------
 % | Wahrscheinlichkeitsräume |
@@ -161,7 +164,7 @@
 		& wenn $A_i \cap A_j = \emptyset$, $\forall i \neq j$ \\
 	\end{tabular}
 	\subsubsection{Weitere Eigenschaften}
-	\begin{itemize}	
+	\begin{itemize}
 		\item 	$\P(A^c) = 1 - \P(A)$
 		\item 	$\P(\emptyset) = 0$ \qquad $\P(\Omega)=1$
 		\item 	$\P(A \backslash B) = \P(A \cap B^c) = \P(A) - \P(A \cap B)$
@@ -170,7 +173,7 @@
 		\item 	$A \subset B \Rightarrow \P(A) \leq \P(B)$
 		\item 	$\P(\bigcup_{i=1}^k A_i) \leq \sum_{i=1}^k \P(A_i)$
 	\end{itemize}
-	
+
 
 \end{sectionbox}
 \vfill
@@ -187,7 +190,7 @@
 	\subsection{Bedingte Wahrscheinlichkeit}
 	Bedingte Wahrscheinlichkeit für $A$ falls $B$ bereits eingetreten ist:\\
 	$\P_B(A) = \P(A|B) = \frac{\P(A \cap B)}{\P(B)}$\\ %\qquad\quad $\P(B|A) = \P(A|B) \frac{\P(B)}{\P(A)}$\\
-	
+
 	\subsubsection{Totale Wahrscheinlichkeit und Satz von Bayes}
 	Es muss gelten: $\bigcup\limits_{i \in I} B_i = \Omega$ für $B_i \cap B_j = \emptyset$, $\forall i \neq j$ \\
 	\begin{tabular}{ll}
@@ -195,10 +198,10 @@
 		Satz von Bayes: & $\P(B_k | A) = \frac{\P(A | B_k)\P(B_k)}{\sum\limits_{i \in I} \P(A|B_i) \P(B_i)}$\\
 	\end{tabular}
 
-	
+
 	\subsubsection{Multiplikationssatz}
 	$\P(A \cap B) = \P(A|B)\P(B) = \P(B|A)\P(A)$
-	\\ \\ 
+	\\ \\
 	Beliebig viele Ereignisse:\\
 	$\P\left(A_1 \cap A_2 \cap \shdots \cap A_k\right) \newline
 	= \P\left(A_{\pi(1)}\right)\P\left(A_{\pi(2)}|A_{\pi(1)}\right)\P\left(A_{\pi(3)}|A_{\pi(2)} \cap A_{\pi(1)}\right) \times \newline
@@ -210,12 +213,12 @@
 	Ereignise $A$ und $B$ sind unabhängig falls:\\
 	$\P(A \cap B) = \P(A)\P(B)$ \\
 	$\Rightarrow \P(B|A)=\P(B)$  \\ \\
-	\textbf{Allgemein:}  \\ 
+	\textbf{Allgemein:}  \\
 	$\P\left(\bigcap\limits_{i \in J} A_i\right) = \prod\limits_{i \in J}\P\left(A_i\right)$
 	mit Indexmenge $I$ und $\emptyset \neq J \subseteq I$
-\end{sectionbox}	
+\end{sectionbox}
 
-%\vfill 
+%\vfill
 %\columnbreak
 
 % ------------------------------------------------------
@@ -226,9 +229,9 @@
 % ============================================================================================
 \begin{sectionbox}
 	\subsection{Definition}
-	$\X : \Omega \mapsto \Omega'$ ist Zufallsvariable, wenn für jedes Ereignis $A' \in \F'$  \\ 
-	im Bildraum ein Ereignis $A$ im Urbildraum $\F$ existiert, \\ 
-	sodass $\left\{\omega \in \Omega|\X(\omega) \in A'\right\} \in \F$\\ \\ 
+	$\X : \Omega \mapsto \Omega'$ ist Zufallsvariable, wenn für jedes Ereignis $A' \in \F'$  \\
+	im Bildraum ein Ereignis $A$ im Urbildraum $\F$ existiert, \\
+	sodass $\left\{\omega \in \Omega|\X(\omega) \in A'\right\} \in \F$\\ \\
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -268,7 +271,7 @@
 
 %\begin{sectionbox}
 	\subsubsection{Kumulative Verteilungsfunktion (KVF bzw. CDF)}
-	\boxed{F_{\X}(x) = \P(\{\X \leq x\})} \\ 
+	\boxed{F_{\X}(x) = \P(\{\X \leq x\})} \\
 	\textbf{Eigenschaften}
 	\begin{itemize}\itemsep1pt
 		\item $F_{\X}(x)$ ist monoton wachsend
@@ -283,13 +286,13 @@
 
 %\begin{sectionbox}
 	\subsubsection{Verteilung diskreter Zufallsvariablen}
-	
-	
+
+
 	\begin{tablebox}{lll}
-		
+
 		Bezeichnung  & Abk. & Zusammenhang\\ \cmrule
 		Wahrscheinlichkeitsmassenfkt. & pmf & $p_{\X}(x) = \P(\{\X = x\})$\\
-		Kumulative Verteilungsfkt. & cdf & $F_{\X}(x) = \sum\limits_{\xi\in\Omega':\xi\leq x}{p_{\X}(\xi)}$ \\ 
+		Kumulative Verteilungsfkt. & cdf & $F_{\X}(x) = \sum\limits_{\xi\in\Omega':\xi\leq x}{p_{\X}(\xi)}$ \\
 	\end{tablebox}
 %\end{sectionbox}
 
@@ -298,7 +301,7 @@
 	\begin{tablebox}{lll}
 		Bezeichnung  & Abk. & Zusammenhang\\ \cmrule
 		Wahrscheinlichkeitsdichtefkt. & pdf & $f_{\X}(x) = \frac{\diff F_{\X}(x)}{\diff x}$\\
-		Kumulative Verteilungsfkt. & cdf & $F_{\X}(x) = \int\limits_{-\infty}^{x}{f_{\X}(\xi)\diff\xi}$ \\ 
+		Kumulative Verteilungsfkt. & cdf & $F_{\X}(x) = \int\limits_{-\infty}^{x}{f_{\X}(\xi)\diff\xi}$ \\
 	\end{tablebox}
 	\emph{Berechnung von $f_{\X}(x)$:}\\
 	$f_{\X}(x) = \lim\limits_{\epsilon\ra0}\frac{1}{\epsilon}\int\limits_{x}^{x+\epsilon}{f_{\X}(\xi)\diff\xi} = \lim\limits_{\epsilon\ra0}\frac{1}{\epsilon}\P\left(x \leq \X \leq x + \epsilon\right)$
@@ -320,7 +323,7 @@
 	$F_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) =\! \int\limits_{-\infty}^{x_1}\shdots\int\limits_{-\infty}^{x_n}{f_{\X_1,\shdots,\X_n}(\xi_1,\shdots,\xi_n)\diff\xi_n\shdots\diff\xi_1}$\\
 	$f_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) = \frac{\partial^n F_{\vec{\X}}(x_1,\shdots,x_n)}{\partial x_1\shdots\partial x_n}$ \hfill $f_{\X,\Y} = f_{\Y,\X}$\\
 	(joint probability density function)
-	
+
 	\subsubsection{Marginalisierung}
 	Prinzip: Lasse alle vernachlässigbaren ZV gegen unendlich gehen. \\
 	$F_{\X_1,\shdots,\X_m}(x_1,\shdots,x_m) =
@@ -328,14 +331,14 @@
 	F_{\X_1,\shdots,\X_n}(x_1,\shdots,x_m,\infty,\shdots,\infty)$
 	\paragraph{Randverteilung:}
 	Spezialfall der Marginalisierung um aus der mehrdimensionalen KVF die KVF für eine ZV zu erhalten. \\
-	$F_{\X_1}(x_1) = 
+	$F_{\X_1}(x_1) =
 	%\lim\limits_{x_2,\shdots,x_n\ra\infty}{F_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n)} =
 	F_{\X_1,\shdots,\X_n}(x_1,\infty,\shdots,\infty)$
-	
+
 	\paragraph{Randverteilung der Wahrscheinlichkeitsmasse (PMF)}
 	(für diskrete ZV) \\
 	$p_{\X_1}(x_1) = \sum\limits_{x_2,\shdots,x_n}{p_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n)}$
-	
+
 	\paragraph{Randverteilung der Wahrscheinlichkeitsdichte (WDF)} (für stetige ZV) \\
 	$f_{\X_1}(x_1) = \int\limits_{-\infty}^{\infty}{\shdots\int\limits_{-\infty}^{\infty}{f_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n)\diff x_n\shdots}\diff x_2}$
 \end{sectionbox}
@@ -366,7 +369,7 @@
 	$Y=aX+b \Leftrightarrow g(x)=ax+b$ mit $a\in\mathbb{R}\backslash 0,\;b\in\mathbb{R}$:
 	\[\Rightarrow f_Y(y)=\frac{1}{|a|}f_X\left(\frac{y-b}{a}\right)\]
 	\[F_Y(y)=\begin{cases}F_X\left(\frac{y-b}{a}\right) & a>0 \\ 1-F_X\left(\frac{y-b}{a}\right) & a<0\end{cases}\]
-	
+
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -377,7 +380,7 @@
 
 
 
-%\vfill 
+%\vfill
 %\columnbreak
 % --------------------------------
 % |Stochastische Standardmodelle |
@@ -387,17 +390,17 @@
 % ============================================================================================
 \begin{sectionbox}
 	\subsection{Begriffe}
-	\textbf{Gedächtnislos}\\ 
+	\textbf{Gedächtnislos}\\
 	Eine Zufallsvariable X ist gedächtnislos, falls: \\
-	$\P(\{\X > a + b)\} | \{\X > a\}) = \P(\{\X > b\})$, \qquad $a,b > 0$	
-	
+	$\P(\{\X > a + b)\} | \{\X > a\}) = \P(\{\X > b\})$, \qquad $a,b > 0$
+
 \end{sectionbox}
 \begin{sectionbox}
 	\subsection{Gleichverteilung}
 	\subsubsection{Diskret}
 	$p_{\X}(x) = \frac{1}{|\Omega|}, \quad x \in \left\{1,\dots,\abs{\Omega}\right\}$\\
-	\emph{Beispiele:} Wurf einer fairen Münze, Lottozahlen			
-	
+	\emph{Beispiele:} Wurf einer fairen Münze, Lottozahlen
+
 	\subsubsection{Stetig ($a,b: -\infty < a < b < \infty$)}
 	$f_{\X}(x) = \begin{cases}
 	\frac{1}{b - a} & x \in [a,b] \\
@@ -408,21 +411,21 @@
 	0 & x < a \\
 	\frac{x-a}{b - a} & x \in [a,b] \\
 	1 & x > b \\
-	\end{cases}$					
-	\\ \\  \\ 
+	\end{cases}$
+	\\ \\  \\
 	\everymath{\displaystyle}
 	\begin{tablebox}{lll}
 		$\underset{\text{Erwartungswert}}{\E[\X] =\frac{a+b}{2}}\quad\ $ & $\underset{\text{Varianz}}{\Var[\X] =\frac{(b-a)^2}{12}}$ & $\underset{\text{Charakt. Funktion}}{\varphi_{\X}(\cx s) = \frac{e^{j \omega b}-e^{j \omega a}}{j \omega (b-a)}}$\\
 	\end{tablebox}
 	\emph{Beispiele:} Winkel beim Flaschendrehen, Phase einer empf. Sinusschwingung
-	
+
 \end{sectionbox}
-% ====================================================================================		
+% ====================================================================================
 \begin{sectionbox}
-	\subsection{Bernoulliverteilung ($p \in [0,1]$)} 
+	\subsection{Bernoulliverteilung ($p \in [0,1]$)}
 	\textbf{Wahrscheinlichkeitsmasse} \\
 	2 Ereignisse: Erfolg und Misserfolg\\
-	$p$: Wahrscheinlichkeit  \\ \\ 
+	$p$: Wahrscheinlichkeit  \\ \\
 	$p_{\X}(k) = \begin{cases}
 	p, & k = 1 \\
 	1-p & k = 0 \\
@@ -432,8 +435,8 @@
 	0, & k < 0 \\
 	1-p & 0 \le k < 1 \\
 	1 & k \ge 1\\
-	\end{cases}$					
-	\\ \\  \\ 
+	\end{cases}$
+	\\ \\  \\
 	\everymath{\displaystyle}
 	\begin{tablebox}{lll}
 		$\underset{\text{Erwartungswert}}{\E[\X] = p}\quad\ $ & $\underset{\text{Varianz}}{\Var[\X] = p (1-p)}$ & $\underset{\text{Wahrscheinlichkeitserz. Funktion}}{G_{\X} (z) = pz + 1 -p}$
@@ -441,27 +444,27 @@
 	\emph{Beispiele:} Einmaliger Wurf einer (unfairen) Münze
 \end{sectionbox}
 
-% ====================================================================================	
+% ====================================================================================
 \begin{sectionbox}
 	\subsection{Binomialverteilung $\mathcal B(n,p)$ ($p \in [0,1], n \in \N$)}
 	Folge von $n$ Bernoulli-Experimenten\\
 	$p$: Wahrscheinlichkeit für Erfolg \\
 	$k$: Anzahl der Erfolge \\
 	\textbf{Wahrscheinlichkeitsmasse}
-	\\ 
+	\\
 	$p_{\X}(k) = B_{n,p}(k) = \begin{cases}
 	\binom{n}{k} p^k (1 - p)^{n - k} & k \in \left\{0,\dots,n\right\} \\
 	0 & \text{sonst} \\
 	\end{cases}$\\
 	mit $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
-	\\ 
+	\\
 	\everymath{\displaystyle}
 	\parbox{3.3cm}{\emph{WMF/PMF:} \\ \includegraphics[width = 3.3cm]{./img/Binomial_pmf.pdf}}
 	\parbox{3.3cm}{\emph{KVF/CDF:} \\ \includegraphics[width = 3.3cm]{./img/Binomial_cdf.pdf}}\\
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
 		$\underset{\text{Erwartungswert}}{\E[\X] =n p}\quad $ & $\underset{\text{Varianz}}{\Var[\X] =np (1-p)}$ & $\underset{\text{Wahrscheinlichkeitserz. Funktion}}{G_X (z) = (pz + 1 -p)^n}$\\
-	\end{tablebox}	
-	
+	\end{tablebox}
+
 	\emph{Charakteristische Funktion}
 	\qquad$\varphi_{\X}(\cx s) = \big(1-p+pe^{\cx s}\big)^n$\\
 	\emph{Beispiele:} Anzahl der Übertragungsfehler in einem Datenblock endlicher Länge, Wiederholtes Werfen einer Münze
@@ -474,28 +477,28 @@
 	$n \ra \infty, p \ra 0, np \ra \lambda$ \quad $p_{\X}(k) = \lim\limits_{n \ra \infty}{B_{n,\frac{\lambda}{n}}(k)}$\\[0.5em]
 	\parbox{3.3cm}{\emph{WMF/PMF:} \\ $p_{\X}[k] = \frac{\lambda^k}{k!} e^{-\lambda}$ \qquad $k \in \N_0$\\ \includegraphics[width = 3.3cm]{./img/poisson_pmf.pdf}}
 	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}[k] =$ zu kompliziert \\ \includegraphics[width = 3.3cm]{./img/poisson_cdf.pdf}}\\
-	
+
 	\everymath{\displaystyle}
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
-		$\underset{\text{Erwartungswert}}{\E[\X] =\lambda}\quad$ & $\underset{\text{Varianz}}{\Var[\X] =\lambda}$ & $\underset{\text{Wahrscheinlichkeitserz. Funktion}}{G_X (z) = e^{\lambda(z-1)}}$\\ 
-	\end{tablebox} \everymath{\textstyle}	
+		$\underset{\text{Erwartungswert}}{\E[\X] =\lambda}\quad$ & $\underset{\text{Varianz}}{\Var[\X] =\lambda}$ & $\underset{\text{Wahrscheinlichkeitserz. Funktion}}{G_X (z) = e^{\lambda(z-1)}}$\\
+	\end{tablebox} \everymath{\textstyle}
 	\emph{Charakteristische Funktion}
 	\qquad$\varphi_{\X}(\cx s)=\exp\big(\lambda(e^{\cx s} -1)\big)$\\
 	\emph{Beispiele:} Zahl der Phänomene in einem Zeitintervall, Google-Anfragen in einer Stunde, Schadensmeldungen an Versicherungen in einem Monat
 \end{sectionbox}
 
-% ====================================================================================		
+% ====================================================================================
 \begin{sectionbox}
 	\subsection{Geometrische Verteilung ($p \in [0,1]$)}
 	Erster Erfolg eines Bernoulli-Experiments beim $k$-ten Versuch, \emph{Gedächtnislos}\\[0.5em]
 	\parbox{3.3cm}{\emph{WMF/PMF:} \\ $p_{\X}[k] = (1 - p)^{k - 1}p$, $k \in \N$ \\ \includegraphics[width = 3.3cm]{./img/geometric_pmf.pdf}}
 	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}[k] = 1-(1 - p)^k$, $k \in \N$ \\ \includegraphics[width = 3.3cm]{./img/geometric_cdf.pdf}}\\
-	
-	
+
+
 	\everymath{\displaystyle}
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
-		$\underset{\text{Erwartungswert}}{\E[\X] =\frac{1}{p}}$ & $\underset{\text{Varianz}}{\Var[\X] =\frac{1-p}{p^2}}$ & $\underset{\text{Wahrscheinlichkeitserz. Funktion}}{G_X (z) = \frac{pz}{1-z+pz}}$\\ 
-	\end{tablebox} 
+		$\underset{\text{Erwartungswert}}{\E[\X] =\frac{1}{p}}$ & $\underset{\text{Varianz}}{\Var[\X] =\frac{1-p}{p^2}}$ & $\underset{\text{Wahrscheinlichkeitserz. Funktion}}{G_X (z) = \frac{pz}{1-z+pz}}$\\
+	\end{tablebox}
 	\emph{Charakteristische Funktion}
 	\qquad $\varphi_{\X}(\cx s) = \frac{p e^{\i \cx s}}{1-(1-p)e^{\i \cx s}}$\\
 	\emph{Beispiele:} diskrete Dauer bis ein technisches Gerät zum ersten Mal ausfällt, Anzahl der Würfe bis man eine "6" würfelt
@@ -510,7 +513,7 @@
 	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}(x) = 1-e^{-\lambda x}$ \qquad$x \geq 0$ \\ \includegraphics[width = 3.3cm]{./img/exponential_cdf.pdf}}\\
 	\everymath{\displaystyle}
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
-		$\underset{\text{Erwartungswert}}{\E(\X) =\frac{1}{\lambda}}$ & $\underset{\text{Varianz}}{\Var(\X) =\frac{1}{\lambda^2}}$ & $\underset{\text{Charakt. Funktion}}{\varphi_{\X}(\omega) = \frac{\lambda}{\lambda-j\omega}}$\\ 
+		$\underset{\text{Erwartungswert}}{\E(\X) =\frac{1}{\lambda}}$ & $\underset{\text{Varianz}}{\Var(\X) =\frac{1}{\lambda^2}}$ & $\underset{\text{Charakt. Funktion}}{\varphi_{\X}(\omega) = \frac{\lambda}{\lambda-j\omega}}$\\
 	\end{tablebox}
 	\emph{Beispiele:} Lebensdauer von el. Bauteilen, Zeitdauer zwischen zwei Anrufen in einem Call-Center
 \end{sectionbox}
@@ -521,10 +524,10 @@
 	\parbox{3.3cm}{\emph{KVF/CDF:} \\ \includegraphics[width = 3.3cm]{./img/normal_cdf.pdf}}\\
 	\paragraph{WDF}
 	\boxed{f_X (x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \quad x \in \mathbb R}
-	
+
 	\everymath{\displaystyle}
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
-		$\underset{\text{Erwartungswert}}{\E(\X) = \mu}$ & $\underset{\text{Varianz}}{\Var(\X) =\sigma^2}$ & $\underset{\text{Charakt. Funktion}}{\varphi_{\X}(\omega) = e^{j\omega\mu-\frac{\omega^2\sigma^2}{2}}}$\\ 
+		$\underset{\text{Erwartungswert}}{\E(\X) = \mu}$ & $\underset{\text{Varianz}}{\Var(\X) =\sigma^2}$ & $\underset{\text{Charakt. Funktion}}{\varphi_{\X}(\omega) = e^{j\omega\mu-\frac{\omega^2\sigma^2}{2}}}$\\
 	\end{tablebox}
 	\emph{Schreibweise} $\X \sim \mathcal{N} (\mu,\sigma^2)$ \\
 	\emph{Beispiele:} Rauschen, Ort eines Teilchens relativ zu seiner Anfangsposition bei brownscher Molekularbewegung, abgefahrene Sachen, die man nicht genauer bestimmen will oder kann
@@ -546,7 +549,7 @@
 %\end{sectionbox}
 
 
-%\vfill 
+%\vfill
 \columnbreak
 % ----------------------------------------------------------------------------
 % | Erwartungswert und Varianz |
@@ -562,13 +565,13 @@
 		$\E [\X] = \underset{\text{diskrete} \X:\Omega \ra \Omega'}{\sum\limits_{x \in \Omega'} x \cdot \P_{\X}(x)} \quad \stackrel{\wedge}{=}\quad \underset{\text{stetige} \X: \Omega \ra \R}{\int \limits_{\R} x \cdot f_{\X} (x) \diff x}$
 	\end{emphbox}
 	Eigenschaften:
-	\begin{tablebox}{ll}	
+	\begin{tablebox}{ll}
 		Linearität: &
-		$E[\alpha \X + \beta \Y] = \alpha E [\X] + \beta E[\Y]$ \\ 
-		Monotonie: & 
+		$E[\alpha \X + \beta \Y] = \alpha E [\X] + \beta E[\Y]$ \\
+		Monotonie: &
 		$\X \le \Y \Ra E[\X] \le E[\Y]$ \\
 	\end{tablebox}
-	Beweis mit der Definition und der Linearität des Integrals bzw. der Summe. \\ 
+	Beweis mit der Definition und der Linearität des Integrals bzw. der Summe. \\
 	\\
 	$\E[\X\Y] = \E[\X] \E[\Y]$, falls $\X$ und $\Y$ stochastisch unabhängig\\
 	Umkehrung nicht möglich: Unkorrelliertheit $\not \Ra$ Stoch. Unabhängig! \\
@@ -585,10 +588,10 @@
 % \begin{sectionbox}
 % 	\subsection{diskrete (reelle) Zufallsvariablen}
 % 	\boxed{\E [\X] = \sum \limits_{x \in \Omega'} x \P(\{ \X = x \}) = \sum \limits_{x \in \Omega'} x p_x (x)} \\
-% 	für $\X: \Omega \ra \Omega' \subset \mathbb R$ 
-	
+% 	für $\X: \Omega \ra \Omega' \subset \mathbb R$
+
 % 	Für Funktionen von Zufallsvariablen:
-	
+
 % 	$\E[\Y] = E[g(\X)] = \sum \limits_{x \in \Omega'} g(x) p_{\X} (x)$\\
 % 	mit $\X : \Omega \ra \Omega' \subset \mathbb R$ und $g: \mathbb R \ra \mathbb R$
 % \end{sectionbox}
@@ -596,30 +599,30 @@
 % \begin{sectionbox}
 % 	\subsection{stetige Zufallsvariablen}
 % 	\boxed{\E[\X] = \int \limits_\mathbb R x \cdot f_{\X} (x) \diff x} für $\X : \Omega \ra \mathbb R$
-	
+
 % 	Für Funktionen von Zufallsvariablen:
-	
+
 % 	$\E[\Y] = E[g(\X)] = \int \limits_{\mathbb R} g(x) f_X (x) \diff x$\\
 % 	mit $\X : \Omega \ra \mathbb R $ und $g: \mathbb R \ra \mathbb R$
 % \end{sectionbox}
 
 % \begin{sectionbox}
 % 	\subsection{Eigenschaften des Erwartungswerts}
-	
-% 	\begin{tablebox}{ll}	
+
+% 	\begin{tablebox}{ll}
 % 		Linearität: &
-% 		$E[\alpha \X + \beta \Y] = \alpha E [\X] + \beta E[\Y]$ \\ 
-% 		Monotonie: & 
+% 		$E[\alpha \X + \beta \Y] = \alpha E [\X] + \beta E[\Y]$ \\
+% 		Monotonie: &
 % 		$\X \le \Y \Ra E[\X] \le E[\Y]$ \\
 % 	\end{tablebox}
-% 	Beweis mit der Definition und der Linearität des Integrals bzw. der Summe. \\ 
-	
+% 	Beweis mit der Definition und der Linearität des Integrals bzw. der Summe. \\
+
 % 	Falls $\X$ und $\Y$ stochastisch unabhängig:
 % 	$\E[\X\Y] = \E[\X] \E[\Y]$ \\
-% 	Achtung: Umkehrung nicht möglich. \\ 
+% 	Achtung: Umkehrung nicht möglich. \\
 % 	Stoch. Unabhängig $\Ra$ Unkorrelliertheit \\
 % 	\\
-	
+
 % 	Spezialfall für $\X: \Omega \ra \mathbb R_+$: \\
 % 	$\E[\X] = \int \limits_0^\infty \P(\X > t) \diff t$ (stetig) \qquad $\E[\X] = \sum \limits_{k=0}^{\infty} \P(\X >k)$ (diskret)
 % \end{sectionbox}
@@ -634,12 +637,12 @@
 \subsection{Varianz}
 	ist ein Maß für die Stärke der Abweichung vom Erwartungswert
 	\begin{emphbox}
-		$\Var [X] = \E \big[(\X - \E[\X])^2\big] = \E[\X^2] - \E[\X]^2$ 
+		$\Var [X] = \E \big[(\X - \E[\X])^2\big] = \E[\X^2] - \E[\X]^2$
 	\end{emphbox}
 	$\Var [ \alpha \X + \beta] = \alpha^2 \Var [\X]$ \hfill $\Var [\X] = \Cov [\X,\X]$\\[0.5em]
 	$\Var \left[\sum \limits_{i=1}^n \X_i \right] = \sum \limits_{i=1}^{n} \Var [\X_i] + \sum\limits_{j \not= i} \Cov[\X_i, \X_j]$
 	\subsubsection{Standard Abweichung}
-	$\sigma = \sqrt{\Var[\X]}$	
+	$\sigma = \sqrt{\Var[\X]}$
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -669,20 +672,20 @@
 
 \begin{sectionbox}
 	\subsection{Orthogonalität}
-	
+
 	\begin{emphbox}
 		$\E[\X\Y] = 0$
 	\end{emphbox}
 	mit dem Korrelationswert $\E[\X\Y]$
-	
+
 \end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{Korrelationskoeffizient}
 	$\rho_{\X,\Y} = \frac{\Cov[\X,\Y]}{\sqrt{\Var[\X]} \sqrt{\Var[\Y]}} = \frac{c_{\X,\Y}}{\sigma_{\X} \sigma_{\Y}}$ mit $\rho_{\X, \Y} \in [-1,1]$\\ \\
 	Korrelationskoeffizient von $\mathsf X$ und $\mathsf Y$\\\\
-	Es gilt: $\begin{cases}\text{negativ korreliert} & \rho_{\mathsf{\X,\Y}}\in [-1,0) \\ 
-	\text{unkorreliert} & \rho_{\mathsf{\X,\Y}}=0 \\ 
+	Es gilt: $\begin{cases}\text{negativ korreliert} & \rho_{\mathsf{\X,\Y}}\in [-1,0) \\
+	\text{unkorreliert} & \rho_{\mathsf{\X,\Y}}=0 \\
 	\text{positiv korreliert} & \rho_{\mathsf{\X,\Y}}\in (0,1]\end{cases}$
 \end{sectionbox}
 
@@ -706,41 +709,41 @@
 % ============================================================================================
 
 \begin{sectionbox}
-	\subsection{Wahrscheinlichkeitserzeugende Funktion} 
+	\subsection{Wahrscheinlichkeitserzeugende Funktion}
 	für $\X : \Omega \ra \mathbb N_0$
-	
+
 	\boxed{G_{\X} (z) = \E[z^{\X}] = \sum \limits_{k=0}^\infty p_{\X} (k) z^k, \quad \abs{z} \le 1}
-	
+
 	\paragraph{Anwendungen}
 	\begin{eqnarray*}
 		p_{\X}(n) =\P(\eset{\X = n}) = \frac{1}{n!} [\frac{\diff^n}{\diff z^n} G_{\X} (z)]_{z = 0}, \quad \forall n \in \mathbb N_0 \\
 		\E [\X] = [\frac{\diff}{\diff z} G_{\X} (z)]_{z = 1} \\
 		\E [\X^2]-\E[\X] = [\frac{\diff^2}{\diff z^2} G_{\X} (z)]_{z = 1} \\
-		\Var [\X] =[\frac{\diff^2}{\diff z^2} G_{\X} (z)]_{z = 1} - \E [\X]^2 + \E [\X] 
+		\Var [\X] =[\frac{\diff^2}{\diff z^2} G_{\X} (z)]_{z = 1} - \E [\X]^2 + \E [\X]
 	\end{eqnarray*}
 	Für $\X_i : \Omega \ra \mathbb N_0, i \in \eset{1, \ldots, n}$ stochastisch unabhängige, diskrete, nichtnegative ZV und $\Z = \sum_{i=1}^{n} \X_i$
 	\[G_{\Z} (z) = \prod_{i = 1}^{n} G_{\X_i} (z)\]
-	
+
 \end{sectionbox}
 
 % Im WS2015/16 nicht Klausurrelevant
 %\begin{sectionbox}
 %	\subsection{Momenterzeugende Funktion} % (fold)
 %	\label{sub:momenterzeugende_funktion}
-%	
+%
 %	Mit $\X: \Omega \ra \mathbb R$ eine reelle ZV: \\
-%	
+%
 %	\boxed{
 %		M_{\X} (s) = \E [e^{s \X}], \quad s \in \mathbb D = \eset{s \in \mathbb R }{\E [e^{s \X} < \infty]}
-%	}\\ 
-%	
-%	
+%	}\\
+%
+%
 %	Potenzreihenentwicklung (mit $s \in ]-a, a[$):\\
 %	$M_{\X} (s) = \E [ e^{s \X}] = \E \left[\sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \X^k\right] = \sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \E\left[\X^k\right]$
-%	
+%
 %	Erwartungswert:
 %	$\E[\X^n] = \left[\frac{\diff^n}{\diff s^n} M_{\X} (s)\right]_{s=0}, \quad \forall n \in \mathbb N_0$
-%	
+%
 %	Summe von ZV:
 %	$M_{\Z} (s) = \prod \limits_{i = 1}^{n} M_{\X_i} (s)$
 %\end{sectionbox}
@@ -751,7 +754,7 @@
 	\label{sub:charakteristische_funktion}
 	\boxed{\varphi_{\X} (\omega) = \ew{e^{\i \omega \X}} , \quad \omega \in \mathbb R} $\qquad \varphi_{\X} = \int\limits_{-\infty}^\infty e^{\i\omega x} f_{\X}(x) \diff x$\\
 	$f_{\X}(-x) \T \varphi(\omega)$ \\
-	
+
 	\emph{Erwartungswert:}
 	\begin{eqnarray*}
 		\E[\X^n] = \frac{1}{\i^n} \left[\frac{\diff^n}{\diff \omega^n} \varphi_{\X}(\omega)\right]_{\omega = 0}
@@ -760,24 +763,24 @@
 	\begin{eqnarray*}
 		\varphi_{\Z} (\omega) = \prod_{i=1}^{n} \varphi_{\X_i} (\omega)
 	\end{eqnarray*}
-\end{sectionbox}	
+\end{sectionbox}
 
 % subsection charakteristische_funktion (end)
 \begin{sectionbox}
 	\subsection{Der zentrale Grenzwertsatz}
 	\emph{Definition}: Seien $\X_i, i \in {1,...,n}$, stochastisch unabhängige und identisch
-	verteilte reelle Zufallsvariablen und gelte $E[\X_i] = \mu < \infty$ und $Var[\X_i] = \sigma^2 < \infty$. 
-	Dann konvergiert die Verteilung der standardisierten Summe\\ 
+	verteilte reelle Zufallsvariablen und gelte $E[\X_i] = \mu < \infty$ und $Var[\X_i] = \sigma^2 < \infty$.
+	Dann konvergiert die Verteilung der standardisierten Summe\\
 	\centerline{$\Z_n= \sum\limits_{i=1}^{n}\frac{(\X-\mu)}{\sigma\sqrt{n}}$} \\
 	d.h $E[\Z_n] = 0$ und $Var[\Z_n] = 1$, für $n \ra \infty$ gegen die Standartnormalverteilung. \\
 	Es gilt also: \\
 	\centerline{$\lim_{n \ra \infty} \P({\Z_n \le z}) = \Phi (z)$}
-\end{sectionbox}	
+\end{sectionbox}
 % subsection der_zentrale_grenzwertsatz (end)
 
 
 \vfill
-%\columnbreak 
+%\columnbreak
 
 % SECTION ====================================================================================
 \section{Reelle Zufallsfolgen}
@@ -787,7 +790,7 @@
 	\textbf{Ensemble} \\
 	$\textsf{S}_n : \Omega_n \times \Omega_{n-1} \times \dots \times \Omega_1 \ra \R$\\
 	$(\omega_n,\omega_{n-1},\dots,\omega_1) \mapsto s_n(\omega_n,\omega_{n-1},\dots,\omega_1), \quad n \in \N$\\
-	\emph{Erklärung:} Jede Realisierung von $\textsf{S}_n$ wird erzeugt durch die Menge (das Ensemble) aufeinanderfolgender Realisierungen $\X_k$ mit $k \in \{1,\dots,n\}$. \\ \\	
+	\emph{Erklärung:} Jede Realisierung von $\textsf{S}_n$ wird erzeugt durch die Menge (das Ensemble) aufeinanderfolgender Realisierungen $\X_k$ mit $k \in \{1,\dots,n\}$. \\ \\
 	\textbf{Pfad} \\
 	$\vec{\textsf{S}}_n = (\textsf{S}_n,\textsf{S}_{n-1},\dots,\textsf{S}_1) : \Omega^{(n)} \ra \R^n$\\
 	$\vec{\omega}_n \mapsto \vec{s}_n(\vec{\omega}_n) = (s_n(\vec{\omega}_n),s_{n-1}(\vec{\omega}_n),\dots,s_1(\vec{\omega}_n)), \quad n \in \N$\\
@@ -811,7 +814,7 @@
 		\boxed{
 			\textsf{S}_n = \sum\limits_{i=1}^{n}{\X_i}
 		} } \parbox{4cm}{ $\P\left(\{\X_i = +\delta\}\right) = p$ \\ $\P\left(\{\X_i = -\delta\}\right) = 1 - p$\\ symmetrisch $\Leftrightarrow p = \frac{1}{2}, \ \mu_{\textsf{S}}(n) = 0$\\ }
-		
+
 		\begin{tablebox}{@{\extracolsep\fill}ll@{}}
 			$E[S] = \mu_{\textsf{S}}(n) = n(2p - 1)\delta$ & $E[\X_i] = (2p - 1)\delta$ \\
 			$Var[S] = \sigma^2_{\textsf{S}}(n) = 4np(1 - p)\delta^2$ & $Var[\X_i] = 4p(1 - p)\delta^2$ \\
@@ -838,8 +841,8 @@
 \begin{sectionbox}
 	\subsection{Tschebyschow-Ungleichung}
 	\boxed{\P(\eset{\abs{\X- \E[\X]} \ge a}) \le \frac{\Var[\X]}{a^2} }
-	
-	
+
+
 \end{sectionbox}
 \begin{sectionbox}
 	\subsection{Das schwache Gesetz der großen Zahlen}
@@ -869,28 +872,28 @@
 	\end{tablebox}
 
 	\subsubsection{Zustandsübergang}
-	\emph{Zustandsübergangswahrscheinlichkeit:} \\ 
+	\emph{Zustandsübergangswahrscheinlichkeit:} \\
 	\centerline{$p_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$}\\
-	
+
 	\qquad Verbund-WMF: \\
-	$p_{\X_1,...,\X_n}(x_1,...,x_n)=p_{\X_1}(x_1)\prod\limits_{i=2}^{n}p_{\X_i|\X_{i-1}}(x_i|x_{i-1})$ \\ 
-	
+	$p_{\X_1,...,\X_n}(x_1,...,x_n)=p_{\X_1}(x_1)\prod\limits_{i=2}^{n}p_{\X_i|\X_{i-1}}(x_i|x_{i-1})$ \\
+
 	\emph{Zustandsübergangsdicht:} \\
 	\centerline{$ f_{\X_{n} | \X_{n-1}}(x_{n} | x_{n-1})$}\\
-	
+
 	\qquad Verbund-WDF: \\
 	$f_{\X_1,...,\X_n}(x_1,...,x_n)=f_{\X_1}(x_1)\prod\limits_{i=2}^{n}f_{\X_i|\X_{i-1}}(x_i|x_{i-1})$ \\ \\
 
-	
+
 	Eine Markowkette heißt \emph{homogen}, wenn die Übergangswahrscheinlichkeit\ unabhängig vom Index ist \\
 	$p_{\X_{n+1} | \X_{n}} (x_{n+1} | x_{n}) = p_{\X_{n+1+k} | \X_{n+k}} (x_{n+1} | x_{n})$ \\
 	$f_{\X_{n+1} | \X_{n}} (x_{n+1} | x_{n}) = f_{\X_{n+1+k} | \X_{n+k}} (x_{n+1} | x_{n})$ \\
-	
+
 
 	\subsubsection{Chapman-Kologorow Gleichung}
 	2-Schritt-Übergangswahrscheinlichkeit: \\
 	 $p_{\X_{n+2}|\X_n}(x_{n+2}|x_n)= \\ \sum\limits_{\xi\in\mathbb{X}}p_{\X_{n+2}|\X_{n+1}}(x_{n+2}|\xi)p_{\X_{n+1}|\X_n}(\xi |x_n)$
-	 
+
 	m+l-Schritt-Übergangswahrscheinlichkeit: \\
 	$p_{\X_{n+m+l}|\X_n}(x_{n+m+l}|x_n) =$\\
 	\resizebox{\textwidth}{!}{$ \sum\limits_{\xi \in \mathbb{X}}p_{\X_{n+m+l}|\X_{n+m}}(x_{n+m+l}|x_{n+m})p_{\X_{n+m}|\X_{n}}(x_{n+m}|x_{n})$}
@@ -926,13 +929,13 @@
 \begin{sectionbox}
 	\subsection{Verteilungen und Momente}
 	Zeitlich, Kontinuierlich veränderliche Zufallsvariable $\X_t$\\
-	
+
 	\begin{emphbox}
 		\raggedright
 		\textbf{Erwartungswertfunktion:} \\ $\mu_X (t) = \E[\X_t]$ \\[0.5em]
 		\textbf{Autokorrelationsfunktion:} \\ $r_{\X}(s,t) = \E[\X_s \X_t]$\\[0.5em]
 		\textbf{Autokovarianzfunktion:} \\ $c_{\X}(s,t) = \Cov(\X_s,\X_t) = r_{\X}(s,t) - \mu_{\X}(s)\mu_{\X}(t)$
-	\end{emphbox}	
+	\end{emphbox}
 	\emph{Hinweis:} Bei Integration über $r_{\X}$ immer darauf achten, dass $s - t > 0$. Bei Bedarf Integral aufteilen und Grenzen anpassen.
 \end{sectionbox}
 \begin{sectionbox}
@@ -948,8 +951,8 @@
 \end{tablebox}
 	\textbf{Daraus folgt} mit $s = t + \tau$\\
 	$r_{\X}(s,t) = \E[\X_s \X_t] = \E[\X_{t+\tau} \X_t] = r_{\X}(s -t) = r_{\X}(\tau)$
-	
-	
+
+
 	Im \emph{weiteren Sinne zyklisch stationär}, wenn:
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
 		$\mu_{\X}(t) = \mu_{\X}(t + T)$ & $\land$ & $r_{\X}(t_1,t_2) = r_{\X}(t_1 + T,t_2 + T)$\\
@@ -963,13 +966,13 @@
 		\textbf{Kreuzkorrelationsfunktion:} \\ $r_{\X,\Y}(s,t) = \E[\X_s \Y_t] = r_{\Y,\X}(t,s)$\\
 		\textbf{Kreuzkovarianzfunktion:}\\ $c_{\X,\Y}(s,t) = r_{\X,\Y}(s,t) - \mu_{\X}(s)\mu_{\Y}(t) = c_{\Y,\X}(t,s)$
 	\end{emphbox}
-	
+
 	\subsubsection{Gemeinsame Stationarität}
 	Zwei Zufallsprozesse auf demselben Wahrscheinlichkeitsraum sind \emph{gemeinsam stationär}, wenn die einzelnen ZPs jeweils selbst stationär sind und ihre gemeinsamen Verteilungen verschiebungsinvariant sind.
-	
+
 	\subsubsection{Gemeinsam im weiteren Sinne stationär}
 	\textbf{Voraussetzung:} $\X_t$ und $\Y_t$ sind gemeinsam WSS wenn,\\
-	
+
 	\begin{emphbox}
 		\raggedright
 		$\X_t$ und $\Y_t$ einzelnd WSS und\\
@@ -1008,7 +1011,7 @@
 	Erwartungswertfunktion. & $\mu_{\W}(t) = 0$\\
 	Varianz & $\sigma_W^2(t) =  \sigma^2 t$ \\
 	Autokorrelationsfunktion & $r_{\W}(s,t) = \sigma^2 min\{s,t\}$\\
-	Autokovarianzfunktion & $c_{\W}(s,t) = \sigma^2 min\{s,t\}$ \\ 
+	Autokovarianzfunktion & $c_{\W}(s,t) = \sigma^2 min\{s,t\}$ \\
 \end{tablebox}
 
 \end{sectionbox}
@@ -1032,7 +1035,7 @@
 	\item $N_t - N_s$ ist Poisson-verteilt mit Parameter $(\lambda(t-s)$ für alle $0 \le s \le t$
 	\item hat eine Rate $\lambda$
 	\item Zeitintervalle zwischen den Inkremetierungen sind unabhängig und identisch exponentialverteilt mit Parameter $\lambda$ $\stackrel{\wedge}{=}$ \emph{gedächtnislos}
-	
+
 \end{itemize}
 
 
@@ -1040,7 +1043,7 @@
 	Erwartungswertfunktion & $\mu_N(t) = \lambda t$\\
 	Varianz & $\sigma_N^2(t)=\lambda t $\\
 	Autokorrelationsfunktion & $r_N(s,t) = \lambda \min\{s,t\} + \lambda^2 st$\\
-	Autokovarianzfunktion & $c_N(s,t) = \lambda \min\{s,t\}$ \\ 
+	Autokovarianzfunktion & $c_N(s,t) = \lambda \min\{s,t\}$ \\
 \end{tablebox}
 \end{sectionbox}
 
@@ -1076,44 +1079,44 @@
 	Falls Zufallsprozesse \emph{WSS}: \\
 	\emph{Erwartungswert:} $\mu_{\textsf{W}} = \mu_{\textsf{V}} \int\limits_{-\infty}^{\infty} h(t) \diff t$\\
 	\emph{Kreuzkorrelationsfkt:} $r_{\textsf{W},\textsf{V}}(\tau) = \E [\textsf{W}_s \textsf{V}_t] =  (h * r_{\textsf{V}})(\tau)$\\
-	\emph{Autokorrelationsfkt:} $r_{\textsf{W}}(\tau) = \E [\textsf{W}_s \textsf{W}_t] = (\tilde h * h * r_{\textsf{V}})(\tau)$\\ 
+	\emph{Autokorrelationsfkt:} $r_{\textsf{W}}(\tau) = \E [\textsf{W}_s \textsf{W}_t] = (\tilde h * h * r_{\textsf{V}})(\tau)$\\
 	 mit $\tilde h (\tau) = h(-\tau)$
 \end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{Leistungsdichtespektrum (LDS)}
-	
+
 	\begin{emphbox}
 		Nicht WSS $\Ra$ Kein LDS
-		
+
 	\end{emphbox}
-	
+
 	\parbox{3.8cm}{\boxed{S_{\textsf{V}}(f)  = \int \limits_{-\infty}^{\infty} r_{\textsf{V}}(\tau) e^{-j2\pi f \tau} \diff \tau}}
 	\parbox{3.5cm}{$r_{\textsf{V}}(\tau) \T S_{\textsf{V}}(f)$\\
 		$r_{\textsf{V},\textsf{W}}(\tau) \T S_{\textsf{V},\textsf{W}}(f)$\\
 		$r_{V,W}(-\tau) \T S^*_{V,W}(f)$\vspace{0.3em}}\\
 	Auf Frequenz bezogene Signalleistung für infitisimales Frequenzband.\\
-	
+
 	\begin{tablebox}{@{\extracolsep\fill}ll@{}}
 		$S_{\mathsf{Y}}(f) = |H(f)|^{2} S_{\mathsf{X}}(f)$\\
 		$S_{\mathsf{Y,X}}(f) = H(f) S_{\mathsf{X}}(f)$ \\
 		$S_{\mathsf{X,Y}}(f) = H^{*}(f) S_{\mathsf{X}}(f)$
 	\end{tablebox}
 	\parbox{\columnwidth}{ \includegraphics{./img/kreuzlds.pdf}}
-	
+
 	$S_{\Y,\X}(f) = (\prod \limits_{i=1}^{n} H_i(f)) S_{\X}(f)$ \\
 	$S_{\X,\Y}(f) = (\prod \limits_{i=1}^{n} H_i^*(f)) S_{\X}(f)$\\
 	$S_{\Y,\textsf{B}}(f) = (\prod \limits_{i=1}^{n} H_i(f))(\prod \limits_{j=1}^{m} G_j(f))^* S_{\X,\textsf{A}}(f)$
-	
-	
-	
+
+
+
 	\begin{tablebox}{@{\extracolsep\fill}c@{}}
 		$S_{\X}(f) = S_{\X}^*(f) \quad \& \quad S_{\X,\Y}(f) = S_{\Y,\X}^*(f), \quad \forall f \in \mathbb R$ \\
 		$S_{\X}(f) = S_{\X}(-f), \quad \forall f \in \mathbb R$\\[0.1em]
 		$\int \limits_{-\infty}^{\infty} S_{\X}(f) \diff f = r_{\X}(0) = \Var[\X] + \E[\X]^2 = \sigma^2_{\X} + \mu^2_{\X}$\\[0.1em]  %$\left. \int \limits_{-\infty}^{\infty} S_{\X}(f) e^{j2\pi f\tau} \diff f \right|_{\tau = 0} =
 		$S_{\X}(f) \ge 0,\quad \forall f \in \mathbb R$ \\
 	\end{tablebox}
-	
+
 \end{sectionbox}
 
 Momenterzeugende Funktion, Multivariate Normalverteilung, Multivariate reelle Zufallsvariablen und Komplexe Zufallsvariablen waren im WS 2015/16 nicht prüfungsrelevant und werden hier deshalb nicht behandelt.
