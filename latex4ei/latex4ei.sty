@@ -3,13 +3,13 @@
 %
 % Authors: Emanuel Regnath, Martin Zellner
 % Contact: info@latex4ei.de
-% Version: 1.0
+% Version: 1.1
 % License: TBD
-% 
-% © 2011-2015, LaTeX4EI
+%
+% © 2011-2018, LaTeX4EI
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{latex4ei}[2013/05/06 Macros for LaTeX4EI]
+\ProvidesPackage{latex4ei/latex4ei}[2013/05/06 Macros for LaTeX4EI]
 
 % Options
 % ----------------------------------------------------------------------
@@ -35,26 +35,34 @@
 	% Check compiler. Hint: delete aux files if changing the compiler
 	\ifxetex%
 		%\@namedef{ver@fixltx2e.sty}{9999/12/31}%
-		
+
 		%XeLaTeX
 		\PassOptionsToPackage{no-math}{fontspec}
-	    \RequirePackage{xltxtra}
-	    \defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
-		
+		\usepackage{unicode-math}
+		\providecommand{\ocirc}{o}
+		\providecommand{\mathring}{o}
+
+	    %\RequirePackage{xltxtra}
+
+
 		% for unicode decalarations
 		%\let\DeclareUnicodeCharacter\newunicodechar
-		\setmainfont{Times New Roman}
-		\setromanfont{Times New Roman}
+		\setmainfont{Times New Roman}    % Libertinus Serif
+		\setromanfont{Times New Roman}   % Libertinus Serif
 		\setsansfont{Helvetica}
-		
+
 		% some hacking for scientific.sty
 		\AtBeginDocument{
+
+			% scale fonts to same x height
+		    \defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
+
 			\renewcommand{\C}{\mathbb C}
-			\renewcommand{\B}{\mathbb B}	
+			\renewcommand{\B}{\mathbb B}
 		}
 	\else
-		% pdfLaTeX  
-	    \RequirePackage[utf8]{inputenc}		% UTF-8 input 
+		% pdfLaTeX
+	    \RequirePackage[utf8]{inputenc}		% UTF-8 input
 	    \RequirePackage{latex4ei/latex4ei_unicode}	% UTF-8 input of math symbols
 	    \InputIfFileExists{glyphtounicode}{\pdfgentounicode=1}{}	% Glyph-to-Unicode Translation (needs PdfTex >=1.4)
 		%\RequirePackage{textcomp}				% get rid of font warnings
@@ -74,7 +82,7 @@
 	\interfootnotelinepenalty=9999    % Almost never break footnotes.
 
 
-	% Save \title, \author, \date before \maketitle 
+	% Save \title, \author, \date before \maketitle
 	\RequirePackage[pagebackref=true,pdfpagelabels]{hyperref}
 
 	% Title
@@ -100,7 +108,7 @@
 	}
 
 	% Date
-	\global\let\thedate\@date 
+	\global\let\thedate\@date
 	\renewcommand{\date}[1]{%
 		\gdef\@date{#1}%
 		\gdef\thedate{#1}
@@ -111,18 +119,21 @@
 	\providecommand{\myemail}[1]{\gdef\theemail{#1}}
 	% Web page
 	\providecommand{\mywebsite}[1]{\gdef\thewebsite{#1}}
+	% Date with git commit number
+	\providecommand{\mydate}[1]{\gdef\themydate{#1}}
 
 	% set defaults
 	\author{LaTeX4EI}
 	\title{A LaTeX4EI Document}
 	\myemail{info@latex4ei.de}
 	\mywebsite{www.latex4ei.de}
+	\mydate{\today}
 
 
 	\AtBeginDocument{
 		% set pdfoptions
 		\hypersetup{
-			pdftitle={\thetitle},    
+			pdftitle={\thetitle},
 	        pdfauthor={\theauthor},
 	        pdfcreator={LaTeX4EI template (www.latex4ei.de)},
 	        pdfkeywords={latex4ei}
@@ -160,12 +171,13 @@
 	\colorlet{col_section}{tum_blue_dark}
 	\colorlet{col_subsection}{tum_blue_dark}
 	\colorlet{col_subsubsection}{black}
-	
+	\colorlet{col_paragraph}{black}
+
 	\colorlet{col_link}{tum_blue_dark}
 	\colorlet{col_table}{tum_blue_dark}
 	\colorlet{col_figure}{tum_blue_dark}
 	\colorlet{col_itemize}{tum_blue_dark}
-	
+
 	\colorlet{col_lst}{tum_blue_dark}
 	\colorlet{col_lst_keyword}{tum_blue}
 	\colorlet{col_lst_comment}{tum_green_leaf}
@@ -177,13 +189,14 @@
 	\colorlet{col_section}{black}
 	\colorlet{col_subsection}{black}
 	\colorlet{col_subsubsection}{black}
+	\colorlet{col_paragraph}{black}
 
 	\colorlet{col_ref}{black}
 	\colorlet{col_link}{black}
 	\colorlet{col_table}{black}
 	\colorlet{col_figure}{black}
 	\colorlet{col_itemize}{black}
-	
+
 	\colorlet{col_lst}{black}
 	\colorlet{col_lst_keyword}{black}
 	\colorlet{col_lst_comment}{tum_gray}
@@ -222,7 +235,7 @@
 	\providecommand{\Ra}{\ensuremath{\Rightarrow}}								% Rightarrow
 	\providecommand{\ra}{\ensuremath{\rightarrow}} 								% Rightarrow
 	\providecommand{\lra}{\ensuremath{\longrightarrow}} 						% Longrightarrow
-	\providecommand{\upa}{\ensuremath{\uparrow}} 
+	\providecommand{\upa}{\ensuremath{\uparrow}}
 	\providecommand{\downa}{\ensuremath{\downarrow}}
 	\providecommand{\bdot}{\ensuremath{\boldsymbol \cdot}} 						% Thick dot for vector product
 	\providecommand{\svdots}{\ensuremath{\olddot :}}							% Small vertical dots
@@ -232,17 +245,20 @@
 % ----------------------------------------------------------------------
 
 	% Define BibTeX command
-	\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+	\def\BibTeX{{\rmfamily B\kern-.05em{\sc i\kern-.025em b}\kern-.08em T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 	% ToDo Command
 	\makeatletter
 	\providecommand{\todo}[1]{%
-	\textcolor{red}{\bf ToDo:\@ifundefined{@captype}{\marginpar{\color{red}\bf ToDo!}}{\relax} #1} %check for float environments
-	}  
+	\textcolor{red}{\bfseries ToDo:\@ifundefined{@captype}{\marginpar{\color{red}\bfseries ToDo!}}{\relax} #1} %check for float environments
+	}
 	\makeatother
 
 	% Special term
 	\providecommand{\term}[1]{\textit{#1}}
+
+	% small note
+	\providecommand{\note}[1]{\textit{Note: #1}}
 
 	% Related work
 	\providecommand{\work}[1]{\textit{#1}}
@@ -253,16 +269,18 @@
 % References and Links
 % ----------------------------------------------------------------------
 
+	\providecommand{\sectionname}{Section}
+
 	% several ref macros
 	\providecommand\figureref[1]{\hyperref[#1]{\figurename~\ref*{#1}}}
-	\providecommand\figurepageref[1]{\figureref{#1}(p.~\pageref{figure:#1})}
+	\providecommand\figurepageref[1]{\figureref{#1}~(p.~\pageref{#1})}
 	\providecommand\tableref[1]{\hyperref[#1]{\tablename~\ref*{#1}}}
-	\providecommand\tablepageref[1]{\tableref{#1}(p.~\pageref{table:#1})}
-	\providecommand\sourcecoderef[1]{\hyperref[#1]{\lstlistingname~\ref*{#1}}}
-	\providecommand\sourcecodepageref[1]{\sourcecoderef{#1}(p.~\pageref{sourcecode:#1})}
-	\providecommand\chapterref[1]{\chaptername~\ref*{\chaptername:#1}(p.~\pageref{chapter:#1})}
-	\providecommand\sectionref[1]{\textsection~\ref*{section:#1}(p.~\pageref{section:#1})}
-	\providecommand\appendixref[1]{\appendixname~\ref*{appendix:#1}(p.~\pageref{appendix:#1})}
+	\providecommand\tablepageref[1]{\tableref{#1}~(p.~\pageref{#1})}
+	\providecommand\listingref[1]{\hyperref[#1]{\lstlistingname~\ref*{#1}}}
+	\providecommand\listingpageref[1]{\listingref{#1}~(p.~\pageref{#1})}
+	\providecommand\chapterref[1]{\chaptername~\ref*{#1}~(p.~\pageref{#1})}
+	\providecommand\sectionref[1]{\hyperref[#1]{\sectionname~\ref*{#1}~(p.~\pageref{#1})}}
+	\providecommand\appendixref[1]{\appendixname~\ref*{#1}~(p.~\pageref{#1})}
 
 
 	% break also on hyphens inside the \url command
@@ -303,11 +321,11 @@
 % ----------------------------------------------------------------------
 	\RequirePackage{listings}
 	\lstset{
-	    basicstyle=\normalsize\tt\lst@ifdisplaystyle\small\fi,
+	    basicstyle=\normalsize\ttfamily\lst@ifdisplaystyle\small\fi,
 	    tabsize=4,
 	    %gobble=auto,				% skip initial tabs %not supported yet
 	    numbers=none,				% switch numbers on: left
-	    numberstyle=\tiny\sf\color{col_lst_number},
+	    numberstyle=\tiny\sffamily\color{col_lst_number},
 	    numbersep=1em,
 	    keepspaces=true,
 	    keywordstyle=\color{tum_blue_dark},

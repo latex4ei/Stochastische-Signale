@@ -3,10 +3,10 @@
 %
 % Authors: Emanuel Regnath, Martin Zellner
 % Contact: info@latex4ei.de
-% Version: 1.0
+% Version: 1.1
 % License: TBD
-% 
-% © 2011-2015, LaTeX4EI
+%
+% © 2011-2018, LaTeX4EI
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{latex4ei_boxes}[2015/02/06 Boxes for LaTeX4EI]
@@ -15,17 +15,13 @@
 % Packages
 % ----------------------------------------------------------------------
 \RequirePackage{mdframed}			% package to make frames for exaples, definitions and theorems
+\RequirePackage{enumitem}
 \RequirePackage{latex4ei/latex4ei_colors} 	% color definitions
 
 
 % ======================================================================
 % Styles
 % ======================================================================
-
-% Set section spacings
-\RequirePackage{titlesec}
-\titlespacing{\subsection}{0em}{0.2em}{0.2em}%
-\titlespacing{\subsubsection}{0em}{0.2em}{0.2em}%
 
 % Basic box
 % ----------------------------------------------------------------------
@@ -91,7 +87,7 @@
 		% basic style
 		style=specialbox,
 		% show only top and bottom line
-		hidealllines=true, 
+		hidealllines=true,
 		topline=true,
 		bottomline=true,
 		% background
@@ -112,7 +108,7 @@
 		% basic style
 		style=specialbox,
 		% show only top and bottom line
-		hidealllines=true, 
+		hidealllines=true,
 		topline=true,
 		bottomline=true,
 		% inner margin
@@ -180,9 +176,9 @@
 % ----------------------------------------------------------------------
 	\newenvironment{cookbox}[1]{
 		\begin{bluebox}[frametitle=#1]
-			\begin{itemize}
+			\begin{enumerate}[label=\bfseries\arabic*.]
 	}{
-			\end{itemize}
+			\end{enumerate}
 		\end{bluebox}
 	}
 
