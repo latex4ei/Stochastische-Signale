@@ -29,8 +29,8 @@
 % ======================================================================
 \begin{document}
 
-% \IfFileExists{git.id}{\input{git.id}}{}
-% \ifdefined\GitRevision\mydate{\GitNiceDate\ (git \GitRevision)}\fi
+	\IfFileExists{git.id}{\input{git.id}}{}
+	\ifdefined\GitRevision\mydate{\GitNiceDate\ (git \GitRevision)}\fi
 
 	\maketitle
 
@@ -459,8 +459,8 @@
 	mit $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
 	\\
 	\everymath{\displaystyle}
-	\parbox{3.3cm}{\emph{WMF/PMF:} \\ \includegraphics[width = 3.3cm]{./img/Binomial_pmf.pdf}}
-	\parbox{3.3cm}{\emph{KVF/CDF:} \\ \includegraphics[width = 3.3cm]{./img/Binomial_cdf.pdf}}\\
+	\parbox{3.3cm}{\emph{WMF/PMF:} \\ \includegraphics[width = 3.3cm]{img/Binomial_pmf.pdf}}
+	\parbox{3.3cm}{\emph{KVF/CDF:} \\ \includegraphics[width = 3.3cm]{img/Binomial_cdf.pdf}}\\
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
 		$\underset{\text{Erwartungswert}}{\E[\X] =n p}\quad $ & $\underset{\text{Varianz}}{\Var[\X] =np (1-p)}$ & $\underset{\text{Wahrscheinlichkeitserz. Funktion}}{G_X (z) = (pz + 1 -p)^n}$\\
 	\end{tablebox}
@@ -475,8 +475,8 @@
 	\subsection{Poisson-Verteilung ($\lambda \ge 0$)}
 	Asymptotischer Grenzfall der Binomialverteilung\\
 	$n \ra \infty, p \ra 0, np \ra \lambda$ \quad $p_{\X}(k) = \lim\limits_{n \ra \infty}{B_{n,\frac{\lambda}{n}}(k)}$\\[0.5em]
-	\parbox{3.3cm}{\emph{WMF/PMF:} \\ $p_{\X}[k] = \frac{\lambda^k}{k!} e^{-\lambda}$ \qquad $k \in \N_0$\\ \includegraphics[width = 3.3cm]{./img/poisson_pmf.pdf}}
-	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}[k] =$ zu kompliziert \\ \includegraphics[width = 3.3cm]{./img/poisson_cdf.pdf}}\\
+	\parbox{3.3cm}{\emph{WMF/PMF:} \\ $p_{\X}[k] = \frac{\lambda^k}{k!} e^{-\lambda}$ \qquad $k \in \N_0$\\ \includegraphics[width = 3.3cm]{img/poisson_pmf.pdf}}
+	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}[k] =$ zu kompliziert \\ \includegraphics[width = 3.3cm]{img/poisson_cdf.pdf}}\\
 
 	\everymath{\displaystyle}
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
@@ -491,8 +491,8 @@
 \begin{sectionbox}
 	\subsection{Geometrische Verteilung ($p \in [0,1]$)}
 	Erster Erfolg eines Bernoulli-Experiments beim $k$-ten Versuch, \emph{Gedächtnislos}\\[0.5em]
-	\parbox{3.3cm}{\emph{WMF/PMF:} \\ $p_{\X}[k] = (1 - p)^{k - 1}p$, $k \in \N$ \\ \includegraphics[width = 3.3cm]{./img/geometric_pmf.pdf}}
-	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}[k] = 1-(1 - p)^k$, $k \in \N$ \\ \includegraphics[width = 3.3cm]{./img/geometric_cdf.pdf}}\\
+	\parbox{3.3cm}{\emph{WMF/PMF:} \\ $p_{\X}[k] = (1 - p)^{k - 1}p$, $k \in \N$ \\ \includegraphics[width = 3.3cm]{img/geometric_pmf.pdf}}
+	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}[k] = 1-(1 - p)^k$, $k \in \N$ \\ \includegraphics[width = 3.3cm]{img/geometric_cdf.pdf}}\\
 
 
 	\everymath{\displaystyle}
@@ -509,8 +509,8 @@
 	\subsection{Exponentialverteilung ($\lambda > 0$)}
 	Wie geometrische Verteilung für stetige Zufallsvariablen ("'Lebensdauer"'), \emph{Gedächtnislos}\\
 	= Wartezeit bis zum ersten Auftreten eines Ereignisses\\[0.5em]
-	\parbox{3.3cm}{\emph{WDF/PDF:}\\ $f_{\X}(x) = \lambda e^{-\lambda x}$ \qquad$x \geq 0$\\ \includegraphics[width = 3.3cm]{./img/exponential_pdf.pdf}}
-	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}(x) = 1-e^{-\lambda x}$ \qquad$x \geq 0$ \\ \includegraphics[width = 3.3cm]{./img/exponential_cdf.pdf}}\\
+	\parbox{3.3cm}{\emph{WDF/PDF:}\\ $f_{\X}(x) = \lambda e^{-\lambda x}$ \qquad$x \geq 0$\\ \includegraphics[width = 3.3cm]{img/exponential_pdf.pdf}}
+	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}(x) = 1-e^{-\lambda x}$ \qquad$x \geq 0$ \\ \includegraphics[width = 3.3cm]{img/exponential_cdf.pdf}}\\
 	\everymath{\displaystyle}
 	\begin{tablebox}{l@{\extracolsep\fill}ll}
 		$\underset{\text{Erwartungswert}}{\E(\X) =\frac{1}{\lambda}}$ & $\underset{\text{Varianz}}{\Var(\X) =\frac{1}{\lambda^2}}$ & $\underset{\text{Charakt. Funktion}}{\varphi_{\X}(\omega) = \frac{\lambda}{\lambda-j\omega}}$\\
@@ -520,8 +520,8 @@
 
 \begin{sectionbox}
 	\subsection{Normalverteilung ($\mu \in \R , \sigma > 0$)}
-	\parbox{3.3cm}{\emph{WDF/PDF:} \\ \includegraphics[width = 3.3cm]{./img/normal_pdf.pdf}}
-	\parbox{3.3cm}{\emph{KVF/CDF:} \\ \includegraphics[width = 3.3cm]{./img/normal_cdf.pdf}}\\
+	\parbox{3.3cm}{\emph{WDF/PDF:} \\ \includegraphics[width = 3.3cm]{img/normal_pdf.pdf}}
+	\parbox{3.3cm}{\emph{KVF/CDF:} \\ \includegraphics[width = 3.3cm]{img/normal_cdf.pdf}}\\
 	\paragraph{WDF}
 	\boxed{f_X (x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} \quad x \in \mathbb R}
 
@@ -1072,7 +1072,7 @@
 	\\
 	Im \emph{Frequenzbereich:}\\
 	$W(f) = H(f)V(f)$ \\ \\
-	\parbox{3.8cm}{\boxed{\includegraphics{./img/lds.pdf}}}
+	\parbox{3.8cm}{\boxed{\includegraphics{img/lds.pdf}}}
 	\parbox{3.5cm}{$\textsf{W}_t$  \,\,\,\,\,\,\,\,  Ausgang\\
 		$\textsf{V}_t$  \qquad Eingang\\
 		$h(s,t)$  Impulsantwort}	\\ \\
@@ -1102,7 +1102,7 @@
 		$S_{\mathsf{Y,X}}(f) = H(f) S_{\mathsf{X}}(f)$ \\
 		$S_{\mathsf{X,Y}}(f) = H^{*}(f) S_{\mathsf{X}}(f)$
 	\end{tablebox}
-	\parbox{\columnwidth}{ \includegraphics{./img/kreuzlds.pdf}}
+	\parbox{\columnwidth}{ \includegraphics{img/kreuzlds.pdf}}
 
 	$S_{\Y,\X}(f) = (\prod \limits_{i=1}^{n} H_i(f)) S_{\X}(f)$ \\
 	$S_{\X,\Y}(f) = (\prod \limits_{i=1}^{n} H_i^*(f)) S_{\X}(f)$\\
