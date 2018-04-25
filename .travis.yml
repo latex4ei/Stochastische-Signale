@@ -23,7 +23,16 @@ install: true
 script:
 - pdflatex StochastischeSignale.tex
 - mkdir -p build
-- cd build && cmake ..; make
+- cd build && cmake ..; make; cd ..
+- mkdir -p export && cp build/*.pdf build/git.id export
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  local-dir: export
+  on:
+    branch: master
 
 notifications:
   email: false
