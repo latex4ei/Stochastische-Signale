@@ -25,6 +25,7 @@ script:
 - mkdir -p build
 - cd build && cmake ..; make; cd ..
 - mkdir -p export && cp build/*.pdf build/git.id export
+- echo "# This branch is for deployment only" >> export/README.md
 
 deploy:
   provider: pages
