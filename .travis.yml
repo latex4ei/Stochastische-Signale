@@ -14,9 +14,11 @@ before_install:
 script:
 - docker exec uselatex bash -c "mkdir -p build && cd build && cmake ..; make"
 - mkdir -p export
+- mkdir -p tmp
 - echo "# This branch is for deployment only" >> export/README.md
-- docker cp uselatex:build/*.pdf export
-- docker cp uselatex:build/git.id export
+- docker cp uselatex:build/. tmp
+- cp tmp/*.pdf export
+- cp tmp/git.id export
 
 deploy:
   provider: pages
