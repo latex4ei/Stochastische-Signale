@@ -8,11 +8,11 @@ before_install:
 - docker pull makeappdev/uselatex
 - docker run -it -d --name uselatex makeappdev/uselatex bash
 - docker ps -a
-- docker exec uselatex cmake --version; pdflatex --version
+- docker exec uselatex cmake --version && pdflatex --version
 - docker cp * uselatex:.
 
 script:
-- docker exec uselatex mkdir -p build; cd build; cmake ..; make
+- docker exec uselatex mkdir -p build && cd build && cmake .. && make
 - mkdir -p export
 - echo "# This branch is for deployment only" >> export/README.md
 - docker cp uselatex:build/*.pdf export
