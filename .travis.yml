@@ -6,16 +6,17 @@ services:
 
 before_install:
 - docker pull makeappdev/uselatex
-- docker run -d -p 127.0.0.1:80:4567 makeappdev/uselatex /bin/sh -c "cd /root/makeappdev; bundle exec foreman start;"
+- docker run -it -d --name uselatex makeappdev/uselatex bash
 - docker ps -a
-- docker run makeappdev/uselatex /bin/sh -c "cmake --version; pdflatex --version"
+- docker exec uselatex cmake --version; pdflatex --version
+- docker cp * uselatex:.
 
 script:
-- docker run makeappdev/uselatex /bin/sh -c "mkdir -p build; cd build; cmake ..; make"
+- docker exec uselatex mkdir -p build; cd build; cmake ..; make
 - mkdir -p export
 - echo "# This branch is for deployment only" >> export/README.md
-- docker cp makeappdev/uselatex:/build/*.pdf export
-- docker cp makeappdev/uselatex:/build/git.id export
+- docker cp uselatex:build/*.pdf export
+- docker cp uselatex:build/git.id export
 
 deploy:
   provider: pages
