@@ -9,7 +9,7 @@ before_install:
 - docker run -it -d --name uselatex makeappdev/uselatex bash
 - docker ps -a
 - docker exec uselatex bash -c "cmake --version; pdflatex --version"
-- docker cp * uselatex:.
+- docker cp ./* uselatex:/.
 
 script:
 - docker exec uselatex bash -c "mkdir -p build && cd build && cmake ..; make"
