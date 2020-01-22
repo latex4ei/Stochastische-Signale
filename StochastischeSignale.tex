@@ -19,6 +19,8 @@
 \author{Alwin Ebermann, Emanuel Regnath, Martin Zellner, Alexander Preißner, Hendrik Böttcher, Lukas Kompatscher, Samuel Harder}
 \myemail{samuel.harder@tum.de}
 
+\usepackage{makecell}
+
 \DeclareMathOperator{\W}{\textit{W}}				% Zufallsvariable W
 \DeclareMathOperator{\U}{\textit{U}}				% Zufallsvariable U
 \DeclareMathOperator{\V}{\textit{W}}				% Zufallsvariable V
@@ -316,7 +318,14 @@
 	$\vec{\X} = [\X_1,\shdots,\X_n]^T$ mit $X_i$ Zufallsvariablen
 	\subsubsection{Gemeinsame kumulative Verteilungsfunktion:}
 	$F_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) = \boxed{F_{\vec{\X}}(\vec{x}) = \P(\{\vec{\X} \leq \vec{x}\})} = \newline
-	\P(\{\X_1 \leq x_1,\shdots,\X_n \leq x_n\})$
+	\P(\{\X_1 \leq x_1,\shdots,\X_n \leq x_n\})$\\
+	\textbf{Eigenschaften:}
+	\begin{itemize}
+	\item in jeder Koordinate Monoton wachsend
+	\item rechtsseitig Stetig: $\forall h>0:\lim\limits_{h\rightarrow 0}F_{\X_1,...,\X_n}(x_1+h,...,x_n+h) = F_{\X_1,...,\X_n}(x_1,...,x_n),~\forall (x_1,...,x_n)\in\mathbb{R}^n$
+	\item $\lim\limits_{x_i\rightarrow -\infty}(x_1,...,x_n) = 0~\forall i=1,...,n,$\\
+	$\lim\limits_{x_1\rightarrow\infty}\cdots\lim\limits_{x_n\rightarrow\infty}F_{\X_1,...,\X_n}(x_1,...,x_n)=1$
+	\end{itemize}
 	\subsubsection{Diskrete Zufallsvariablen:}
 	$p_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) = \P(\{\vec{\X} = \vec{x}\})$ (joint probability mass function)
 	\subsubsection{Stetige Zufallsvariablen:}
@@ -392,7 +401,7 @@
 	\subsection{Begriffe}
 	\textbf{Gedächtnislos}\\
 	Eine Zufallsvariable X ist gedächtnislos, falls: \\
-	$\P(\{\X > a + b)\} | \{\X > a\}) = \P(\{\X > b\})$, \qquad $a,b > 0$
+	$\P(\{\X > a + b\} | \{\X > a\}) = \P(\{\X > b\})$, \qquad $a,b > 0$
 
 \end{sectionbox}
 \begin{sectionbox}
@@ -474,7 +483,8 @@
 \begin{sectionbox}
 	\subsection{Poisson-Verteilung ($\lambda \ge 0$)}
 	Asymptotischer Grenzfall der Binomialverteilung\\
-	$n \ra \infty, p \ra 0, np \ra \lambda$ \quad $p_{\X}(k) = \lim\limits_{n \ra \infty}{B_{n,\frac{\lambda}{n}}(k)}$\\[0.5em]
+	$n \ra \infty, p \ra 0, np \ra \lambda$ \quad $p_{\X}(k) = \lim\limits_{n \ra \infty}{B_{n,\frac{\lambda}{n}}(k)}$\\
+	$\lambda$: mittlere Wahscheinlichkeit des Eintreten des Ereignisses von p\\[0.5em]
 	\parbox{3.3cm}{\emph{WMF/PMF:} \\ $p_{\X}[k] = \frac{\lambda^k}{k!} e^{-\lambda}$ \qquad $k \in \N_0$\\ \includegraphics[width = 3.3cm]{img/poisson_pmf.pdf}}
 	\parbox{3.3cm}{\emph{KVF/CDF:} \\ $F_{\X}[k] =$ zu kompliziert \\ \includegraphics[width = 3.3cm]{img/poisson_cdf.pdf}}\\
 
@@ -564,10 +574,15 @@
 	\begin{emphbox}
 		$\E [\X] = \underset{\text{diskrete} \X:\Omega \ra \Omega'}{\sum\limits_{x \in \Omega'} x \cdot \P_{\X}(x)} \quad \stackrel{\wedge}{=}\quad \underset{\text{stetige} \X: \Omega \ra \R}{\int \limits_{\R} x \cdot f_{\X} (x) \diff x}$
 	\end{emphbox}
-	Eigenschaften:
+	\textbf{Voraussetzung:}\\
+	$\sum |x| P(\{\X=x\})<\infty$\\
+	\textbf{Eigenschaften:}
 	\begin{tablebox}{ll}
+		EW von Konstante: &
+		$E[\alpha] = \alpha$\\
 		Linearität: &
 		$E[\alpha \X + \beta \Y] = \alpha E [\X] + \beta E[\Y]$ \\
+		&$\Rightarrow E[\X-E[\X]] = 0$\\
 		Monotonie: &
 		$\X \le \Y \Ra E[\X] \le E[\Y]$ \\
 	\end{tablebox}
@@ -652,6 +667,7 @@
 		$\Cov [\X,\Y] = \E[(\X- \E[\X])(\Y - \E[\Y])] = \Cov [\Y, \X]$\\[0.5em]
 		$\Cov [\X,\Y] = \E [\X\Y] - \E[\X] \E[\Y] = \Cov[\Y, \X]$
 	\end{emphbox}
+	\textbf{Voraussetzung:} $\exists E[\X],E[Y],E[XY]$ oder $\exists E[\X^2],E[\Y^2]$\\
 	$\Cov [\alpha \X + \beta, \gamma \Y + \delta] = \alpha \gamma \Cov [\X, \Y]$ \\
 	$\Cov [ \X + \textit U, \Y + \textit V] = \Cov [\X, \Y] + \Cov [\X, \textit V] + \Cov [\textit U, \Y] + \Cov [\textit U, \textit V]$ \\
 \end{sectionbox}
@@ -676,7 +692,7 @@
 	\begin{emphbox}
 		$\E[\X\Y] = 0$
 	\end{emphbox}
-	mit dem Korrelationswert $\E[\X\Y]$
+	mit dem Korrelationswert $ r_{\X,\Y} = \E[\X\Y]$
 
 \end{sectionbox}
 
@@ -687,6 +703,21 @@
 	Es gilt: $\begin{cases}\text{negativ korreliert} & \rho_{\mathsf{\X,\Y}}\in [-1,0) \\
 	\text{unkorreliert} & \rho_{\mathsf{\X,\Y}}=0 \\
 	\text{positiv korreliert} & \rho_{\mathsf{\X,\Y}}\in (0,1]\end{cases}$
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Lineare Regression}
+	affine Abbildung $\hat{\Y} = \alpha \X + \beta$ mit Fehler $\varepsilon = \hat{\Y} - \Y$\\
+	\textbf{Optimierungsproblem:}
+	\begin{emphbox}
+	$\min\limits_{\alpha,\beta} E[\varepsilon^2] = \min\limits_{\alpha,\beta} E\left[\left(\hat{\Y}-\Y\right)^2\right]$
+	\end{emphbox}
+	\textbf{Lösung:}\\
+	$\alpha = \dfrac{E[\X\Y]-E[\X]E[\Y]}{E[\X^2]-E[\X]^2} = \dfrac{c_{\X,\Y}}{\sigma^2_{\X}} = \dfrac{c_{\X,\Y}}{\sigma^2_{\X}}\dfrac{\sigma_{\Y}}{\sigma_{\Y}} = \rho_{\X,\Y}\dfrac{\sigma_{\Y}}{\sigma_{\X}}$\\
+	$\beta = E[\Y] - \alpha E[\X] = E[\Y] - \rho_{\X,\Y}\dfrac{\sigma_{\Y}}{\sigma_{\X}}E[\X]$\\
+	$\Rightarrow \hat{\Y} = \rho_{\X,\Y}\dfrac{\sigma_{\Y}}{\sigma_{\X}}(\X-E[\X])+E[\Y]$
+	\textbf{Kleinster mittlerer quadratischer Fehler:}\\
+	$\E[\varepsilon^2]=\sigma_{\Y}^2-c_{\Y,\X}\sigma^{-2}_{\X}c_{\X,\Y}=\sigma_{\Y}^2-c_{\X,\Y}^2\sigma_{\X}^{-2}=\sigma_{\Y}^2(1-\rho_{\X,\Y}^2)$
 \end{sectionbox}
 
 %TODO: Lineare Regression hier einfügen
@@ -727,26 +758,26 @@
 \end{sectionbox}
 
 % Im WS2015/16 nicht Klausurrelevant
-%\begin{sectionbox}
-%	\subsection{Momenterzeugende Funktion} % (fold)
-%	\label{sub:momenterzeugende_funktion}
-%
-%	Mit $\X: \Omega \ra \mathbb R$ eine reelle ZV: \\
-%
-%	\boxed{
-%		M_{\X} (s) = \E [e^{s \X}], \quad s \in \mathbb D = \eset{s \in \mathbb R }{\E [e^{s \X} < \infty]}
-%	}\\
-%
-%
-%	Potenzreihenentwicklung (mit $s \in ]-a, a[$):\\
-%	$M_{\X} (s) = \E [ e^{s \X}] = \E \left[\sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \X^k\right] = \sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \E\left[\X^k\right]$
-%
-%	Erwartungswert:
-%	$\E[\X^n] = \left[\frac{\diff^n}{\diff s^n} M_{\X} (s)\right]_{s=0}, \quad \forall n \in \mathbb N_0$
-%
-%	Summe von ZV:
-%	$M_{\Z} (s) = \prod \limits_{i = 1}^{n} M_{\X_i} (s)$
-%\end{sectionbox}
+\begin{sectionbox}
+	\subsection{Momenterzeugende Funktion} % (fold)
+	\label{sub:momenterzeugende_funktion}
+
+	Mit $\X: \Omega \ra \mathbb R$ eine reelle ZV: \\
+
+	\boxed{
+		M_{\X} (s) = \E [e^{s \X}], \quad s \in \mathbb D = \eset{s \in \mathbb R }{\E [e^{s \X} < \infty]}
+	}\\
+
+
+	Potenzreihenentwicklung (mit $s \in ]-a, a[$):\\
+	$M_{\X} (s) = \E [ e^{s \X}] = \E \left[\sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \X^k\right] = \sum \limits_{k=0}^{\infty} \frac{s^k}{k!} \E\left[\X^k\right]$
+
+	Erwartungswert:
+	$\E[\X^n] = \left[\frac{\diff^n}{\diff s^n} M_{\X} (s)\right]_{s=0}, \quad \forall n \in \mathbb N_0$
+
+	Summe von ZV:
+	$M_{\Z} (s) = \prod \limits_{i = 1}^{n} M_{\X_i} (s)$
+\end{sectionbox}
 
 % subsection momenterzeugende_funktion (end)
 \begin{sectionbox}
@@ -786,7 +817,21 @@
 \section{Reelle Zufallsfolgen}
 % ============================================================================================
 \begin{sectionbox}
-	Eine reelle Zufallsfolge ist ganz einfach eine Folge reeller Zufallsvariablen. \\ \\
+	Eine reelle Zufallsfolge ist ganz einfach eine Folge reeller Zufallsvariablen. \\
+	$\X_n: \Omega \Rightarrow \mathbb{R},\quad n\in \mathbb{N}$\\
+	\begin{tablebox}{lll}
+	&$\omega$ variabel
+	&$\omega$ gegeben
+	\\\cmrule
+	$n$ variabel
+	&\makecell[l]{$\X=(\X_n : n\in\mathbb{N})$\\(Zufallsfolge)}
+	&\makecell[l]{$x=\X(\omega) = (\X_n(\omega): n\in\mathbb{N})$\\(Musterfolge)}
+	\\
+	$n$ gegeben
+	&\makecell[l]{$\X_n$\\(Zufallsvariable\\zum Folgenindex $n$)}
+	&\makecell[l]{$x_n=\X(\omega)$\\(Realisierung\\zum Folgenindex $n$)}
+	\end{tablebox}
+	\ \\
 	\textbf{Ensemble} \\
 	$\textsf{S}_n : \Omega_n \times \Omega_{n-1} \times \dots \times \Omega_1 \ra \R$\\
 	$(\omega_n,\omega_{n-1},\dots,\omega_1) \mapsto s_n(\omega_n,\omega_{n-1},\dots,\omega_1), \quad n \in \N$\\
@@ -823,7 +868,8 @@
 
 \begin{sectionbox}
 	\subsection{Stationarität}
-	Eine Zufallsfolge ist \emph{stationär}, wenn um ein beliebiges $k$ $(k \in \N)$ zueinander verschobene Zufallsvektoren die selbe Verteilung besitzen.\\
+	Eine Zufallsfolge ist \emph{stationär}, wenn um ein beliebiges $k$ $(k \in \N)$ zueinander verschobene Zufallsvektoren die selbe Verteilung besitzen:\\
+	$F_{\X_{i_1},...,\X_{i_n}}(x_1,...,x_n) = F_{\X_{i_1+k},...,\X_{i_n+k}}(x_1,...,x_n)$\\
 	Im \emph{weiteren Sinne stationär (W.S.S.)}, wenn:
 	\begin{tablebox}{@{\extracolsep\fill}lll@{}}
 		$\mu_{\X}(i) = \mu_{\X}(i + k)$ \\
@@ -831,6 +877,27 @@
 			\quad (verschiebungsinvariant)\\
 	\end{tablebox}
 	stationär $\Ra$ WSS (aber nicht anders herum!)
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Konvergenz}
+	\textbf{Fast sicher (almost surely):}\\
+	$\X_n \xrightarrow{\text{a.s.}} \X \Leftrightarrow P\left(\left\{\omega: \lim\limits_{n\rightarrow\infty}\X_n(\omega)=\X(\omega)\right\}\right)=1$\\
+	\textbf{in Wahrscheinlichkeit (in probability):}\\
+	$\X_n\xrightarrow{\text{p.}}\X\Leftrightarrow \lim\limits_{n\rightarrow\infty}P(\{\omega : |\X_n(\omega) - X(\omega)|>\varepsilon\})=0$\\
+	\textbf{im quadratischen Mittel (in the mean square sense):}\\
+	$\X_n\xrightarrow{\text{m.s.}}\X\Leftrightarrow \lim\limits_{n\rightarrow\infty}E\left[(\X_n(\omega)-\X(\omega))^2\right]=0$\\
+	\textbf{in Verteilung (in distribution):}\\
+	$\X\xrightarrow{\text{d.}}\X\Leftrightarrow\lim\limits_{n\rightarrow\infty}F_{\X_n}(x)=F_{\X}(x)$\\
+	\textbf{Zusammenhänge}
+	\begin{itemize}
+	\item $\X_n\xrightarrow{\text{a.s.}}\X \Rightarrow \X_n\xrightarrow{\text{p.}}\X$
+	\item $\X_n\xrightarrow{\text{m.s.}}\X \Rightarrow \X_n\xrightarrow{\text{p.}}\X$
+	\item $P(\{|\X_n|\leq\Y\}) = 1 \forall n \wedge E[Y^2]<\infty\wedge \X_n\xrightarrow{\text{p.}}\X \Rightarrow \X_n\xrightarrow{\text{m.s.}}\X$
+	\item $\X_n\xrightarrow{\text{p.}}\X \Rightarrow \X_n\xrightarrow{\text{d.}}\X$
+	\item $\X_n\xrightarrow{\text{a.s./p./m.s.}}\X \wedge \X_n\xrightarrow{\text{a.s./p./m.s.}}\Y\Rightarrow P(\{\X=\Y\})=1$
+	\item $\X_n\xrightarrow{\text{d.}}\X \wedge \X_n\xrightarrow{\text{d.}}\Y\Rightarrow \X \text{und}\Y\text{haben die gleiche Verteilung}$
+	\end{itemize}
 \end{sectionbox}
 
 \begin{sectionbox}
