@@ -642,7 +642,7 @@
 % 	$\E[\X] = \int \limits_0^\infty \P(\X > t) \diff t$ (stetig) \qquad $\E[\X] = \sum \limits_{k=0}^{\infty} \P(\X >k)$ (diskret)
 % \end{sectionbox}
 
-\vfill
+%\vfill
 %\columnbreak
 
 % SECTION ====================================================================================
@@ -715,7 +715,7 @@
 	\textbf{Lösung:}\\
 	$\alpha = \dfrac{E[\X\Y]-E[\X]E[\Y]}{E[\X^2]-E[\X]^2} = \dfrac{c_{\X,\Y}}{\sigma^2_{\X}} = \dfrac{c_{\X,\Y}}{\sigma^2_{\X}}\dfrac{\sigma_{\Y}}{\sigma_{\Y}} = \rho_{\X,\Y}\dfrac{\sigma_{\Y}}{\sigma_{\X}}$\\
 	$\beta = E[\Y] - \alpha E[\X] = E[\Y] - \rho_{\X,\Y}\dfrac{\sigma_{\Y}}{\sigma_{\X}}E[\X]$\\
-	$\Rightarrow \hat{\Y} = \rho_{\X,\Y}\dfrac{\sigma_{\Y}}{\sigma_{\X}}(\X-E[\X])+E[\Y]$
+	$\Rightarrow \hat{\Y} = \rho_{\X,\Y}\dfrac{\sigma_{\Y}}{\sigma_{\X}}(\X-E[\X])+E[\Y]$ \\
 	\textbf{Kleinster mittlerer quadratischer Fehler:}\\
 	$\E[\varepsilon^2]=\sigma_{\Y}^2-c_{\Y,\X}\sigma^{-2}_{\X}c_{\X,\Y}=\sigma_{\Y}^2-c_{\X,\Y}^2\sigma_{\X}^{-2}=\sigma_{\Y}^2(1-\rho_{\X,\Y}^2)$
 \end{sectionbox}
@@ -733,7 +733,7 @@
 
 
 
-\vfill %\textcolor{red}{Bild von der Standardabweichung}
+%\vfill %\textcolor{red}{Bild von der Standardabweichung}
 
 % SECTION ====================================================================================
 \section{Erzeugende und charakter. Funktionen}
@@ -808,11 +808,8 @@
 	\centerline{$\lim_{n \ra \infty} \P({\Z_n \le z}) = \Phi (z)$}
 \end{sectionbox}
 % subsection der_zentrale_grenzwertsatz (end)
-
-
-\vfill
+%\vfill
 %\columnbreak
-
 % SECTION ====================================================================================
 \section{Reelle Zufallsfolgen}
 % ============================================================================================
@@ -893,7 +890,7 @@
 	\begin{itemize}
 	\item $\X_n\xrightarrow{\text{a.s.}}\X \Rightarrow \X_n\xrightarrow{\text{p.}}\X$
 	\item $\X_n\xrightarrow{\text{m.s.}}\X \Rightarrow \X_n\xrightarrow{\text{p.}}\X$
-	\item $P(\{|\X_n|\leq\Y\}) = 1 \forall n \wedge E[Y^2]<\infty\wedge \X_n\xrightarrow{\text{p.}}\X \Rightarrow \X_n\xrightarrow{\text{m.s.}}\X$
+	\item $P(\{|\X_n|\leq\Y\}) = 1 \forall n \wedge E[Y^2]<\infty\wedge \X_n\xrightarrow{\text{p.}}\X \\ \Rightarrow \X_n\xrightarrow{\text{m.s.}}\X$
 	\item $\X_n\xrightarrow{\text{p.}}\X \Rightarrow \X_n\xrightarrow{\text{d.}}\X$
 	\item $\X_n\xrightarrow{\text{a.s./p./m.s.}}\X \wedge \X_n\xrightarrow{\text{a.s./p./m.s.}}\Y\Rightarrow P(\{\X=\Y\})=1$
 	\item $\X_n\xrightarrow{\text{d.}}\X \wedge \X_n\xrightarrow{\text{d.}}\Y\Rightarrow \X \text{und}\Y\text{haben die gleiche Verteilung}$
@@ -920,6 +917,8 @@
 \end{sectionbox}
 
 % SECTION ====================================================================================
+\begin{minipage}{\columnwidth}
+	
 \section{Markowketten \\ (bedingte Unabhängigkeit: Abschnitt \ref{bed-unabh})}
 \begin{sectionbox}
 	\subsection{Markowketten}
@@ -965,6 +964,7 @@
 	$p_{\X_{n+m+l}|\X_n}(x_{n+m+l}|x_n) =$\\
 	\resizebox{\textwidth}{!}{$ \sum\limits_{\xi \in \mathbb{X}}p_{\X_{n+m+l}|\X_{n+m}}(x_{n+m+l}|x_{n+m})p_{\X_{n+m}|\X_{n}}(x_{n+m}|x_{n})$}
 \end{sectionbox}
+\end{minipage}
 \begin{sectionbox}
 	\subsubsection{Markowketten im endlichen Zustandsraum}
 	$\vec{p}_{n} \triangleq \begin{bmatrix} p_{\X_{n}}(x_{1}) \\ p_{\X_{n}}(x_{2}) \\ \vdots \\ p_{\X_{n}}(x_{N}) \end{bmatrix} \quad \in [0,1]^{N}\text{ mit }[\vec{p}_{n}]_{i} = p_{\X_{n}}(x_{i})$ \\
