@@ -178,7 +178,7 @@
 
 
 \end{sectionbox}
-\vfill
+%\vfill
 
 % --------------------------------------------------
 % | Bedingte Wahrscheinlichkeit und Unabhängigkeit |
@@ -213,8 +213,8 @@
 \begin{sectionbox}
 	\subsection{Stochastische Unabhängigkeit}
 	Ereignise $A$ und $B$ sind unabhängig falls:\\
-	$\P(A \cap B) = \P(A)\P(B)$ \\
-	$\Rightarrow \P(B|A)=\P(B)$  \\ \\
+	$\P(A \cap B) = \P(A)\P(B)$
+	$\Rightarrow \P(B|A)=\P(B)$  \\
 	\textbf{Allgemein:}  \\
 	$\P\left(\bigcap\limits_{i \in J} A_i\right) = \prod\limits_{i \in J}\P\left(A_i\right)$
 	mit Indexmenge $I$ und $\emptyset \neq J \subseteq I$
@@ -222,32 +222,34 @@
 
 %\vfill
 %\columnbreak
-
+\vspace{-0.3cm}
 % ------------------------------------------------------
 % | Zufallsvariablen und Wahrscheinlichkeitsverteilung |
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % SECTION ====================================================================================
 \section{Zufallsvariablen}
 % ============================================================================================
+\vspace{-0.25cm}
 \begin{sectionbox}
+	\vspace{-0.05cm}
 	\subsection{Definition}
 	$\X : \Omega \mapsto \Omega'$ ist Zufallsvariable, wenn für jedes Ereignis $A' \in \F'$  \\
 	im Bildraum ein Ereignis $A$ im Urbildraum $\F$ existiert, \\
-	sodass $\left\{\omega \in \Omega|\X(\omega) \in A'\right\} \in \F$\\ \\
+	sodass $\left\{\omega \in \Omega|\X(\omega) \in A'\right\} \in \F$
 \end{sectionbox}
-
+\vspace{-0.2cm}
 \begin{sectionbox}
 	\subsection{Unabhängigkeit von Zufallsvariablen}
 	Zufallsvariablen $\X_1,\shdots,\X_n$ sind stochastisch unabhängig, wenn für jedes $\vec{x} = [x_1,\shdots,x_n]^\top \in \R^n$ gilt:
 	\[\boxed{\P(\{\X_1 \leq x_1,\shdots,\X_n \leq x_n\}) = \prod\limits_{i=1}^{n}{\P(\{\X_i \leq x_i\})}}\]
-	\underline{Gleichbedeutend:}\\
+	\underline{Gleichbedeutend:}
 	\begin{tabular}{l}
 		$F_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) = \prod\limits_{i=1}^{n}{F_{\X_i}(x_i)}$\\
 		$p_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) = \prod\limits_{i=1}^{n}{p_{\X_i}(x_i)}$\\
 		$f_{\X_1,\shdots,\X_n}(x_1,\shdots,x_n) = \prod\limits_{i=1}^{n}{f_{\X_i}(x_i)}$\\
 	\end{tabular}
 \end{sectionbox}
-
+\vspace{-0.2cm}
 %Wechselseitige Information $I(x_i,y_j) = \log_2 \frac{p_{\X|\Y}(x_i|x_j)}{p_{\X}(x)}$\\
 %Transinformation $I(\X,\Y)$\\
 %Entropie und Transinforation
@@ -258,17 +260,19 @@
 		Ereignis A gegeben: & $F_{\X|A}(x|A) = \P\left(\eset{\X \le x} | A\right)$\\
 		ZV $\Y$ gegeben: & $F_{\X|\Y}(x|y)= \P\left(\eset{\X \le x} | \eset{\Y = y}\right)$\\
 		& $p_{\X|\Y}(x|y) = \frac{p_{\X,\Y}(x,y)}{p_{\Y}(y)}$\\
-		& $f_{\X|\Y}(x|y) = \frac{f_{\X,\Y}(x,y)}{f_{\Y}(y)} = \frac{\diff F_{X|Y}(x|y)}{\diff x}$\\
+		& $f_{\X|\Y}(x|y) = \frac{f_{\X,\Y}(x,y)}{f_{\Y}(y)} = \frac{\diff F_{X|Y}(x|y)}{\diff x}$
 	\end{tabular}
 
 \end{sectionbox}
-
+\vspace{-0.3cm}
 % SECTION ====================================================================================
 \section{Wahrscheinlichkeitsverteilungen}
 % ============================================================================================
+\vspace{-0.1cm}
 \begin{sectionbox}
+\vspace{-0.05cm}
 	\subsubsection{Definition}
-	$\P_{\X}(A') = \P(\{\omega \in \Omega|\X(\omega) \in A'\}) = \P(\{\X \in A'\}) \quad \forall A' \in \F'$\\
+	$\P_{\X}(A') = \P(\{\omega \in \Omega|\X(\omega) \in A'\}) = \P(\{\X \in A'\}) \quad \forall A' \in \F'$
 %\end{sectionbox}
 
 %\begin{sectionbox}
@@ -310,7 +314,7 @@
 	\paragraph{Normiertheit}
 	$\sum p(x) + \int_{\R} f_{\X}(x) \diff x \stackrel{!}{=} 1$
 \end{sectionbox}
-\vspace{-1cm}
+
 % --------------------------------------------------------
 \begin{sectionbox}
 	\subsection{Mehrdimensionale Verteilungen}
